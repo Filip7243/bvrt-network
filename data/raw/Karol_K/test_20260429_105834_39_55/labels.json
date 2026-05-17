@@ -1,0 +1,136 @@
+{
+  "drawings": [
+    {
+      "drawing_id": 1,
+      "errors": {
+        "omissions": 0,
+        "distortions": 1,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 0,
+        "relative_size_errors": 1
+      },
+      "total_errors": 2,
+      "comment": "Rysunek jest częściowo zbliżony do wzorca, ale widoczne jest zniekształcenie konturu oraz przemieszczenie figury względem właściwego położenia. Błąd może wskazywać na trudność w precyzyjnym zakodowaniu położenia i proporcji figury już przy prostym materiale wzrokowym."
+    },
+    {
+      "drawing_id": 2,
+      "errors": {
+        "omissions": 0,
+        "distortions": 0,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 0,
+        "relative_size_errors": 0
+      },
+      "total_errors": 0,
+      "correct": 1,
+      "comment": "Rysunek można uznać za jakościowo poprawny, ponieważ dziecko zachowało ogólny kształt, proporcje i położenie figury. Wykonanie tego rysunku sugeruje, że przy prostym, pojedynczym materiale Karol potrafi skutecznie utrzymać wzrokowy ślad pamięciowy."
+    },
+    {
+      "drawing_id": 3,
+      "errors": {
+        "omissions": 0,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 1,
+        "relative_size_errors": 1
+      },
+      "total_errors": 4,
+      "comment": "W rysunku widoczne są zniekształcenia dwóch elementów kolistych, które mają nieregularny, owalny kształt, oraz nieprecyzyjne położenie małego elementu bocznego. Błędy mogą wskazywać na trudność w odtwarzaniu relacji przestrzennych między kilkoma elementami oraz w kontroli proporcji."
+    },
+    {
+      "drawing_id": 4,
+      "errors": {
+        "omissions": 0,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 1,
+        "relative_size_errors": 2
+      },
+      "total_errors": 5,
+      "comment": "Dziecko odtworzyło trzy elementy, ale ich kształty są zniekształcone, a proporcje między nimi nie są prawidłowo zachowane. Szczególnie widoczne jest zniekształcenie koła i trójkąta oraz zaburzenie względnej wielkości elementów, co może wskazywać na osłabioną organizację wzrokowo-przestrzenną przy materiale wieloelementowym."
+    },
+    {
+      "drawing_id": 5,
+      "errors": {
+        "omissions": 1,
+        "distortions": 4,
+        "perseverations": 2,
+        "rotations": 1,
+        "displacements": 4,
+        "relative_size_errors": 2
+      },
+      "total_errors": 14,
+      "comment": "W rysunku pojawia się wyraźna dezorganizacja materiału, liczne zniekształcenia, przemieszczenia oraz powtarzanie podobnych pionowych elementów. Widoczne są także błędy proporcji i możliwe pominięcie części układu, co może wskazywać na przeciążenie pamięci wzrokowej i trudność w utrzymaniu całościowej struktury wzorca."
+    },
+    {
+      "drawing_id": 6,
+      "errors": {
+        "omissions": 0,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 2,
+        "relative_size_errors": 1
+      },
+      "total_errors": 5,
+      "comment": "Rysunek zawiera ogólny układ elementów, ale struktury są uproszczone, zniekształcone i częściowo przemieszczone. Błędy dotyczą głównie nieprecyzyjnego rozmieszczenia elementów wewnętrznych oraz zaburzenia proporcji, co może wskazywać na trudność w analizie i odtwarzaniu układów złożonych z części."
+    },
+    {
+      "drawing_id": 7,
+      "errors": {
+        "omissions": 0,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 1,
+        "displacements": 2,
+        "relative_size_errors": 1
+      },
+      "total_errors": 6,
+      "comment": "W rysunku widoczne są deformacje figur, przemieszczenia oraz nieprawidłowa orientacja jednego z elementów. Taki typ błędów może wskazywać na osłabioną kontrolę relacji przestrzennych i trudność w utrzymaniu kierunku oraz położenia elementów po krótkiej ekspozycji."
+    },
+    {
+      "drawing_id": 8,
+      "errors": {
+        "omissions": 1,
+        "distortions": 4,
+        "perseverations": 1,
+        "rotations": 1,
+        "displacements": 4,
+        "relative_size_errors": 2
+      },
+      "total_errors": 13,
+      "comment": "Rysunek jest wyraźnie zdezorganizowany, ponieważ część elementów została zniekształcona, część przesunięta, a jeden z elementów uproszczony lub pominięty. Obecne są także błędy wielkości i możliwe perseweracyjne powielanie linii, co może wskazywać na przeciążenie pamięci roboczej wzrokowej oraz trudność w selekcji istotnych cech wzorca."
+    },
+    {
+      "drawing_id": 9,
+      "errors": {
+        "omissions": 1,
+        "distortions": 4,
+        "perseverations": 2,
+        "rotations": 2,
+        "displacements": 5,
+        "relative_size_errors": 2
+      },
+      "total_errors": 16,
+      "comment": "To rysunek z największym nasileniem błędów, ponieważ widoczne są liczne zniekształcenia, przemieszczenia, rotacje, powtórzenia linii oraz zaburzenia proporcji. Obraz wykonania może wskazywać na znaczną trudność w organizacji złożonego materiału wzrokowo-przestrzennego oraz na osłabioną kontrolę wykonawczą podczas odtwarzania."
+    },
+    {
+      "drawing_id": 10,
+      "errors": {
+        "omissions": 1,
+        "distortions": 3,
+        "perseverations": 1,
+        "rotations": 1,
+        "displacements": 2,
+        "relative_size_errors": 1
+      },
+      "total_errors": 9,
+      "comment": "Rysunek zawiera zniekształcenia figur, przemieszczenia oraz niepełne odtworzenie układu, a jeden z elementów wydaje się nieprawidłowo ustawiony względem wzorca. Błędy mogą wskazywać na trudność w utrzymaniu pełnej reprezentacji wzrokowej oraz w precyzyjnym odtworzeniu relacji między elementami."
+    }
+  ],
+  "final_comment": "Wykonanie Karola w Teście Pamięci Wzrokowej Bentona wskazuje na trudności w zakresie funkcji, które mierzy ten test, czyli pamięci wzrokowej, spostrzegania wzrokowo-przestrzennego, organizacji materiału wzrokowego oraz integracji wzrokowo-ruchowej. U chłopca widoczne są przede wszystkim zniekształcenia figur, przemieszczenia elementów, błędy proporcji oraz okresowe rotacje i perseweracje, szczególnie w bardziej złożonych rysunkach. Ponieważ dziecko jest praworęczne i nie zgłoszono wady wzroku, uzyskany obraz mniej przemawia za wpływem lateralizacji lub ograniczeń widzenia, a bardziej za trudnościami w zakresie kodowania, organizowania i odtwarzania informacji wzrokowo-przestrzennych. Profil wykonania może przekładać się na trudności szkolne w zadaniach wymagających dokładnego przepisywania, odwzorowywania figur, pracy z geometrią, mapami, tabelami oraz materiałem graficznym."
+}

@@ -1,0 +1,135 @@
+{
+  "drawings": [
+    {
+      "drawing_id": 1,
+      "errors": {
+        "omissions": 0,
+        "distortions": 1,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 1,
+        "relative_size_errors": 1
+      },
+      "total_errors": 3,
+      "comment": "Rysunek zawiera zniekształcenie konturu oraz zaburzenie proporcji, ponieważ figura została odtworzona jako nieregularny wielokąt o nierównych bokach, a dodatkowo widoczne jest przemieszczenie względem wzorca. Może to wskazywać na trudność w precyzyjnym kodowaniu prostego materiału wzrokowego oraz ograniczoną kontrolę dokładności graficznej, co przy obecnej wadzie wzroku może być dodatkowo nasilone."
+    },
+    {
+      "drawing_id": 2,
+      "errors": {
+        "omissions": 0,
+        "distortions": 1,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 0,
+        "relative_size_errors": 0
+      },
+      "total_errors": 1,
+      "comment": "Figura została odtworzona stosunkowo poprawnie globalnie, jednak widoczne jest niewielkie zniekształcenie kształtu. Taki profil może wskazywać, że przy bardzo prostym materiale dziecko potrafi uchwycić ogólną strukturę, natomiast trudność pojawia się na poziomie precyzji i detalu."
+    },
+    {
+      "drawing_id": 3,
+      "errors": {
+        "omissions": 0,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 2,
+        "relative_size_errors": 1
+      },
+      "total_errors": 5,
+      "comment": "W rysunku widoczne są zniekształcenia elementów kolistych, które przyjmują nieregularny kształt, oraz przemieszczenie małego elementu bocznego względem głównej struktury. Wskazuje to na trudność w utrzymaniu relacji przestrzennych oraz integracji kilku elementów w jedną spójną reprezentację."
+    },
+    {
+      "drawing_id": 4,
+      "errors": {
+        "omissions": 0,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 1,
+        "relative_size_errors": 2
+      },
+      "total_errors": 5,
+      "comment": "Rysunek zawiera zniekształcenia wszystkich figur oraz wyraźne zaburzenia proporcji między nimi, szczególnie w zakresie wielkości koła i trójkąta. Może to wskazywać na trudność w organizacji materiału wieloelementowego oraz w utrzymaniu relacji wielkościowych."
+    },
+    {
+      "drawing_id": 5,
+      "errors": {
+        "omissions": 1,
+        "distortions": 4,
+        "perseverations": 1,
+        "rotations": 0,
+        "displacements": 4,
+        "relative_size_errors": 3
+      },
+      "total_errors": 13,
+      "comment": "Widoczna jest znaczna dezorganizacja materiału, ponieważ figury są zniekształcone, część elementów została pominięta, a inne są przesunięte i powielane. Obecność perseweracji oraz licznych błędów wielkości wskazuje na przeciążenie pamięci wzrokowej i trudność w selekcji istotnych elementów wzorca."
+    },
+    {
+      "drawing_id": 6,
+      "errors": {
+        "omissions": 0,
+        "distortions": 3,
+        "perseverations": 1,
+        "rotations": 0,
+        "displacements": 3,
+        "relative_size_errors": 2
+      },
+      "total_errors": 9,
+      "comment": "Rysunek zawiera uproszczenia i zniekształcenia figur, a także przemieszczenia elementów wewnętrznych, które nie odpowiadają ich pierwotnemu układowi. Obecność powielania linii sugeruje element perseweracyjny, co może wskazywać na trudności w kontroli wykonawczej podczas odtwarzania."
+    },
+    {
+      "drawing_id": 7,
+      "errors": {
+        "omissions": 0,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 3,
+        "relative_size_errors": 2
+      },
+      "total_errors": 7,
+      "comment": "W rysunku widoczne są zniekształcenia oraz przemieszczenia elementów, przy częściowym zachowaniu ogólnej struktury. Może to wskazywać na względnie zachowaną strategię globalną przy jednoczesnej trudności w odwzorowaniu detali i proporcji."
+    },
+    {
+      "drawing_id": 8,
+      "errors": {
+        "omissions": 0,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 2,
+        "relative_size_errors": 2
+      },
+      "total_errors": 6,
+      "comment": "Rysunek zawiera uproszczenie układu oraz zniekształcenia figur, a także błędy wielkości i przemieszczenia. Wskazuje to na trudność w utrzymaniu całościowej konfiguracji wzrokowej oraz w dokładnym odwzorowaniu relacji między elementami."
+    },
+    {
+      "drawing_id": 9,
+      "errors": {
+        "omissions": 0,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 3,
+        "relative_size_errors": 2
+      },
+      "total_errors": 7,
+      "comment": "W rysunku widoczne są zniekształcenia i przemieszczenia elementów, które nie zachowują prawidłowych relacji przestrzennych. Może to wskazywać na osłabioną organizację wzrokowo-przestrzenną przy bardziej złożonym materiale."
+    },
+    {
+      "drawing_id": 10,
+      "errors": {
+        "omissions": 0,
+        "distortions": 3,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 3,
+        "relative_size_errors": 2
+      },
+      "total_errors": 8,
+      "comment": "Rysunek zawiera zniekształcenia oraz przemieszczenia, a struktura jest uproszczona i nie w pełni zgodna ze wzorcem. Może to wskazywać na trudność w utrzymaniu reprezentacji złożonego materiału oraz w precyzyjnym odwzorowaniu relacji przestrzennych."
+    }
+  ],
+  "final_comment": "Test Pamięci Wzrokowej Bentona mierzy zdolność do krótkotrwałego zapamiętywania i odtwarzania materiału wzrokowego, a także poziom spostrzegania wzrokowego, organizacji wzrokowo-przestrzennej oraz integracji wzrokowo-ruchowej. Wykonanie Tymoteusza wskazuje na obniżoną sprawność tych funkcji, szczególnie w zakresie organizacji przestrzennej oraz utrzymywania relacji między elementami figury. W profilu błędów dominują zniekształcenia, przemieszczenia oraz błędy proporcji, co wskazuje na trudności zarówno w kodowaniu informacji wzrokowej, jak i w jej późniejszym odtwarzaniu. W bardziej złożonych rysunkach pojawiają się także pominięcia i elementy perseweracyjne, co sugeruje przeciążenie pamięci roboczej wzrokowej oraz trudności w kontroli wykonawczej. Ponieważ dziecko jest praworęczne, lateralizacja nie wskazuje na nietypowy rozwój funkcji półkulowych, natomiast obecność wady wzroku stanowi istotny czynnik interpretacyjny, który może wpływać na precyzję percepcji detali, kontrolę linii oraz dokładność odwzorowania figur. W związku z tym część błędów może wynikać nie tylko z deficytów poznawczych, ale również z ograniczeń percepcyjnych. Całościowo profil wykonania wskazuje na trudności w integracji informacji wzrokowej oraz jej organizacji w pamięci krótkotrwałej, co może przekładać się na funkcjonowanie szkolne, zwłaszcza w zadaniach wymagających przepisywania, odwzorowywania, pracy z materiałem graficznym, geometrią oraz analizą wzrokową."
+}
