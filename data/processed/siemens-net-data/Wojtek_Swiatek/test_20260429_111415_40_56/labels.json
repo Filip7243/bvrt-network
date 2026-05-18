@@ -1,0 +1,135 @@
+{
+  "drawings": [
+    {
+      "drawing_id": 1,
+      "errors": {
+        "omissions": 0,
+        "distortions": 3,
+        "perseverations": 1,
+        "rotations": 1,
+        "displacements": 3,
+        "relative_size_errors": 1
+      },
+      "total_errors": 9,
+      "comment": "Rysunek zawiera znaczną dezorganizację już przy pierwszym zadaniu, ponieważ obok figury właściwej pojawia się dodatkowa, silnie zniekształcona i przekreślona struktura. Widoczne są zniekształcenia konturu, przemieszczenie elementów, zaburzenie proporcji oraz cechy perseweracyjnego powtarzania i niepewności wykonania, co może wskazywać na trudność w szybkim zakodowaniu prostego bodźca wzrokowego oraz na obniżoną kontrolę planowania graficznego."
+    },
+    {
+      "drawing_id": 2,
+      "errors": {
+        "omissions": 0,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 2,
+        "relative_size_errors": 1
+      },
+      "total_errors": 5,
+      "comment": "Figura została odtworzona jako nieregularny wielokąt z zaburzonymi bokami i kątami, przy zachowaniu jedynie ogólnej formy. Widoczne są zniekształcenia, nieprecyzyjne położenie i zaburzenie proporcji, co może wskazywać na trudność w dokładnym utrzymaniu wzrokowego śladu figury oraz w kontroli relacji kątowych."
+    },
+    {
+      "drawing_id": 3,
+      "errors": {
+        "omissions": 0,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 2,
+        "relative_size_errors": 1
+      },
+      "total_errors": 5,
+      "comment": "W rysunku obecne są zniekształcenia dwóch elementów kolistych oraz przesunięcie małego elementu bocznego względem całości. Koła mają nieregularne kształty i nie zachowują właściwej relacji przestrzennej, co może wskazywać na trudności w integracji kilku elementów oraz w odtwarzaniu ich wzajemnego położenia."
+    },
+    {
+      "drawing_id": 4,
+      "errors": {
+        "omissions": 0,
+        "distortions": 3,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 2,
+        "relative_size_errors": 2
+      },
+      "total_errors": 7,
+      "comment": "Dziecko odtworzyło trzy elementy, ale wszystkie są zniekształcone i rozmieszczone nieprecyzyjnie, a ich wielkość względem siebie nie jest zachowana. Obraz błędów może wskazywać na osłabioną organizację wzrokowo-przestrzenną oraz trudność w utrzymaniu proporcji przy materiale wieloelementowym."
+    },
+    {
+      "drawing_id": 5,
+      "errors": {
+        "omissions": 1,
+        "distortions": 4,
+        "perseverations": 1,
+        "rotations": 0,
+        "displacements": 4,
+        "relative_size_errors": 3
+      },
+      "total_errors": 13,
+      "comment": "W rysunku widoczne są liczne zniekształcenia, pominięcie części układu, przemieszczenia i błędy proporcji, a także powielanie podobnych pionowych elementów. Taki obraz może wskazywać na przeciążenie pamięci roboczej wzrokowej oraz trudność w selekcji istotnych elementów wzorca i ich uporządkowanym odtworzeniu."
+    },
+    {
+      "drawing_id": 6,
+      "errors": {
+        "omissions": 0,
+        "distortions": 3,
+        "perseverations": 1,
+        "rotations": 0,
+        "displacements": 3,
+        "relative_size_errors": 2
+      },
+      "total_errors": 9,
+      "comment": "Rysunek zawiera zniekształcone struktury prostokątne i nieprawidłowo rozmieszczone elementy wewnętrzne, przy częściowym zachowaniu ogólnego układu. Błędy mogą wskazywać na trudność w analizie relacji wewnątrz figury oraz w precyzyjnym przeniesieniu układu części na kartkę."
+    },
+    {
+      "drawing_id": 7,
+      "errors": {
+        "omissions": 1,
+        "distortions": 4,
+        "perseverations": 1,
+        "rotations": 1,
+        "displacements": 4,
+        "relative_size_errors": 2
+      },
+      "total_errors": 13,
+      "comment": "W rysunku widoczne są deformacje figur, przemieszczenia, zaburzenia wielkości oraz częściowa rotacja jednego z elementów, a mały element boczny został odtworzony niepełnie. Obraz może wskazywać na trudność w utrzymaniu kierunku, położenia i proporcji kilku elementów jednocześnie."
+    },
+    {
+      "drawing_id": 8,
+      "errors": {
+        "omissions": 2,
+        "distortions": 1,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 0,
+        "relative_size_errors": 0
+      },
+      "total_errors": 3,
+      "comment": "W tym rysunku dziecko odtworzyło jedynie mały element boczny, natomiast główne elementy układu zostały pominięte. Tak wybiórcze wykonanie może wskazywać na chwilowe załamanie strategii zapamiętywania, przeciążenie materiałem lub skupienie uwagi na elemencie pobocznym kosztem całości."
+    },
+    {
+      "drawing_id": 9,
+      "errors": {
+        "omissions": 1,
+        "distortions": 3,
+        "perseverations": 0,
+        "rotations": 1,
+        "displacements": 3,
+        "relative_size_errors": 1
+      },
+      "total_errors": 7,
+      "comment": "Rysunek zawiera pominięcie części struktury, zniekształcenia i przemieszczenia elementów oraz częściową rotację jednego z nich. Widoczna jest trudność w zachowaniu całościowego układu i relacji między elementami, co może wskazywać na osłabioną organizację wzrokowo-przestrzenną."
+    },
+    {
+      "drawing_id": 10,
+      "errors": {
+        "omissions": 0,
+        "distortions": 3,
+        "perseverations": 1,
+        "rotations": 0,
+        "displacements": 3,
+        "relative_size_errors": 2
+      },
+      "total_errors": 9,
+      "comment": "Rysunek zawiera zniekształcenia, przemieszczenia oraz zaburzenia proporcji, a dodatkowo pojawia się mały nadmiarowy element po prawej stronie. Może to wskazywać na trudność w selekcji i utrzymaniu istotnych elementów wzorca oraz na niepewną kontrolę wykonawczą podczas odtwarzania bardziej złożonego układu."
+    }
+  ],
+  "final_comment": "Wykonanie Wojtka wskazuje na wyraźne trudności w zakresie funkcji wzrokowo-przestrzennych, szczególnie w obszarze organizacji przestrzennej, zachowania proporcji oraz utrzymywania relacji między elementami. W profilu błędów dominują zniekształcenia, przemieszczenia i błędy względnej wielkości, a w wybranych rysunkach pojawiają się także pominięcia, rotacje i elementy perseweracyjne. Szczególnie istotne klinicznie jest bardzo słabe wykonanie rysunku 1 oraz wybiórcze odtworzenie jedynie małego elementu w rysunku 8, co może wskazywać na niestabilność strategii zapamiętywania i trudność w organizowaniu materiału jako całości. Leworęczność sama w sobie nie jest nieprawidłowością, ale może wiązać się z odmiennym stylem organizacji grafomotorycznej, dlatego warto obserwować kierunek rysowania, planowanie przestrzeni na kartce i płynność wykonania. Brak wady wzroku zmniejsza prawdopodobieństwo, że błędy wynikają z ograniczeń percepcyjnych, dlatego obraz wykonania bardziej przemawia za trudnościami w kodowaniu, organizacji i odtwarzaniu informacji wzrokowo-przestrzennych niż za problemem samego widzenia."
+}

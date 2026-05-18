@@ -1,0 +1,135 @@
+{
+  "drawings": [
+    {
+      "drawing_id": 1,
+      "errors": {
+        "omissions": 0,
+        "distortions": 1,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 0,
+        "relative_size_errors": 1
+      },
+      "total_errors": 2,
+      "comment": "W rysunku widoczne jest uproszczenie figury oraz zniekształcenie jej konturu, ponieważ dziecko odtworzyło kształt jako nieregularny czworobok o zaburzonych proporcjach. Błąd dotyczy przede wszystkim niedokładnego zachowania kątów oraz względnej wielkości figury wobec wzorca."
+    },
+    {
+      "drawing_id": 2,
+      "errors": {
+        "omissions": 0,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 1,
+        "relative_size_errors": 1
+      },
+      "total_errors": 4,
+      "comment": "Dziecko zachowało ogólną ideę figury wielokątnej, ale kształt został wyraźnie zniekształcony, z nieregularnymi bokami i zaburzoną symetrią. Widoczne jest także nieprecyzyjne położenie oraz nieprawidłowa wielkość figury w stosunku do wzorca."
+    },
+    {
+      "drawing_id": 3,
+      "errors": {
+        "omissions": 0,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 2,
+        "relative_size_errors": 1
+      },
+      "total_errors": 5,
+      "comment": "W rysunku występują zniekształcenia okrągłych elementów, które przyjmują formę wydłużonych owali, oraz przemieszczenie elementu bocznego względem głównej struktury. Relacja przestrzenna między kołami jest niedokładna, co wskazuje na trudność w odtworzeniu układu elementów po krótkiej ekspozycji."
+    },
+    {
+      "drawing_id": 4,
+      "errors": {
+        "omissions": 0,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 2,
+        "relative_size_errors": 1
+      },
+      "total_errors": 5,
+      "comment": "Wszystkie elementy zostały odtworzone, ale ich kształty są zniekształcone, a proporcje między nimi nie zostały zachowane. Szczególnie widoczne jest wydłużenie owalu, deformacja trójkąta oraz nieprawidłowa względna wielkość figur."
+    },
+    {
+      "drawing_id": 5,
+      "errors": {
+        "omissions": 0,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 1,
+        "relative_size_errors": 2
+      },
+      "total_errors": 5,
+      "comment": "W tym rysunku pojawia się wyraźna dezorganizacja materiału wzrokowego, ponieważ dziecko zmienia kształty elementów, upraszcza je i nie zachowuje ich wzajemnego układu. Widoczne są zniekształcenia, przemieszczenia, błąd wielkości oraz prawdopodobna perseweracja w postaci powielania podobnych pionowych elementów."
+    },
+    {
+      "drawing_id": 6,
+      "errors": {
+        "omissions": 1,
+        "distortions": 3,
+        "perseverations": 1,
+        "rotations": 0,
+        "displacements": 3,
+        "relative_size_errors": 2
+      },
+      "total_errors": 10,
+      "comment": "Dziecko odtworzyło ogólną liczbę głównych elementów, ale ich struktura wewnętrzna jest zaburzona, a części składowe zostały przesunięte i uproszczone. Błędy dotyczą przede wszystkim zniekształcenia prostokątnych układów, przemieszczenia elementów wewnętrznych oraz nieprawidłowych proporcji."
+    },
+    {
+      "drawing_id": 7,
+      "errors": {
+        "omissions": 0,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 2,
+        "relative_size_errors": 2
+      },
+      "total_errors": 6,
+      "comment": "Rysunek pokazuje częściowe uchwycenie układu trzech elementów, ale figury są zdeformowane i nie zachowują prawidłowych relacji przestrzennych. Szczególnie widoczne są błędy względnej wielkości oraz przemieszczenia, ponieważ elementy nie odpowiadają wzorcowemu ustawieniu względem siebie."
+    },
+    {
+      "drawing_id": 8,
+      "errors": {
+        "omissions": 1,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 3,
+        "relative_size_errors": 2
+      },
+      "total_errors": 8,
+      "comment": "W rysunku widoczne są uproszczenia oraz trudności w zachowaniu relacji między elementami, zwłaszcza w zakresie położenia prawego elementu oraz proporcji prostokątnych figur. Jeden z elementów został odtworzony w sposób niepełny lub zmieniony, co można traktować jako pominięcie części informacji wzrokowej."
+    },
+    {
+      "drawing_id": 9,
+      "errors": {
+        "omissions": 2,
+        "distortions": 3,
+        "perseverations": 0,
+        "rotations": 1,
+        "displacements": 2,
+        "relative_size_errors": 2
+      },
+      "total_errors": 10,
+      "comment": "W rysunku występują znaczące pominięcia, ponieważ dziecko nie odtworzyło pełnej struktury wzorca. Widoczne są również zniekształcenia kształtów, przemieszczenia oraz błąd rotacyjny, ponieważ jeden z elementów został ustawiony pod nieprawidłowym kątem względem układu wzorcowego."
+    },
+    {
+      "drawing_id": 10,
+      "errors": {
+        "omissions": 2,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 2,
+        "relative_size_errors": 1
+      },
+      "total_errors": 7,
+      "comment": "Rysunek jest silnie zredukowany i fragmentaryczny, ponieważ dziecko odtworzyło jedynie część układu, pomijając istotne elementy wzorca. Widoczne są zniekształcenia, przemieszczenia oraz zaburzona organizacja przestrzenna, co wskazuje na trudność w utrzymaniu i odtworzeniu bardziej złożonej konfiguracji wzrokowej."
+    }
+  ],
+  "final_comment": "Wykonanie testu wskazuje na obniżoną sprawność w zakresie funkcji mierzonych przez Test Pamięci Wzrokowej Bentona, czyli przede wszystkim pamięci wzrokowej, percepcji wzrokowo-przestrzennej, organizacji materiału wzrokowego oraz integracji wzrokowo-motorycznej. U dziecka widoczne są liczne zniekształcenia figur, błędy proporcji i przemieszczenia elementów, nasilające się wraz ze wzrostem złożoności rysunków. Obraz wykonania sugeruje trudności w dokładnym zakodowaniu krótkotrwale prezentowanego materiału wzrokowego oraz w jego uporządkowanym odtworzeniu graficznym. W interpretacji należy uwzględnić młodszy wiek dziecka, praworęczną lateralizację oraz zgłaszaną wadę wzroku, ponieważ czynniki te mogą wpływać na precyzję wykonania, tempo pracy i jakość kontroli wzrokowo-ruchowej."
+}

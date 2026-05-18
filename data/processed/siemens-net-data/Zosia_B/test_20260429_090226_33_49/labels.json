@@ -1,0 +1,135 @@
+{
+  "drawings": [
+    {
+      "drawing_id": 1,
+      "errors": {
+        "omissions": 0,
+        "distortions": 1,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 1,
+        "relative_size_errors": 1
+      },
+      "total_errors": 3,
+      "comment": "Rysunek zawiera zniekształcenie konturu, przemieszczenie względem wzorca oraz zaburzenie proporcji. Figura została odtworzona jako nieregularny wielokąt, co może wskazywać na trudność w precyzyjnym zakodowaniu prostego materiału wzrokowego i kontroli relacji przestrzennych."
+    },
+    {
+      "drawing_id": 2,
+      "errors": {
+        "omissions": 0,
+        "distortions": 1,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 0,
+        "relative_size_errors": 1
+      },
+      "total_errors": 2,
+      "comment": "Figura została odtworzona globalnie, ale widoczne jest zniekształcenie kształtu i nieprawidłowa względna wielkość. Może to wskazywać na zachowaną ogólną reprezentację figury przy jednoczesnej trudności w dokładnym odwzorowaniu proporcji i kątów."
+    },
+    {
+      "drawing_id": 3,
+      "errors": {
+        "omissions": 0,
+        "distortions": 1,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 1,
+        "relative_size_errors": 1
+      },
+      "total_errors": 3,
+      "comment": "W rysunku widoczne jest nieprecyzyjne odtworzenie relacji między dwoma elementami kolistymi oraz przemieszczenie elementu bocznego. Kształty są lekko zniekształcone, a proporcje nie są w pełni zachowane, co może wskazywać na trudność w integracji kilku elementów w jedną całość."
+    },
+    {
+      "drawing_id": 4,
+      "errors": {
+        "omissions": 0,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 1,
+        "relative_size_errors": 2
+      },
+      "total_errors": 5,
+      "comment": "Dziecko odtworzyło trzy elementy, ale występują zniekształcenia, przemieszczenie oraz błędy względnej wielkości. Najbardziej widoczne są nieprawidłowe proporcje między elementami, co może wskazywać na osłabioną organizację wzrokowo-przestrzenną przy materiale wieloelementowym."
+    },
+    {
+      "drawing_id": 5,
+      "errors": {
+        "omissions": 1,
+        "distortions": 3,
+        "perseverations": 1,
+        "rotations": 0,
+        "displacements": 4,
+        "relative_size_errors": 3
+      },
+      "total_errors": 12,
+      "comment": "W rysunku widoczne są liczne błędy obejmujące pominięcie części informacji, zniekształcenia, przemieszczenia, zaburzenia proporcji oraz powielanie podobnych elementów. Może to wskazywać na przeciążenie pamięci roboczej wzrokowej i trudność w utrzymaniu większej liczby elementów jednocześnie."
+    },
+    {
+      "drawing_id": 6,
+      "errors": {
+        "omissions": 0,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 2,
+        "relative_size_errors": 2
+      },
+      "total_errors": 6,
+      "comment": "Rysunek zawiera zniekształcenia figur prostokątnych i nieprawidłowe rozmieszczenie elementów wewnętrznych. Widoczne są także błędy proporcji, co może wskazywać na trudność w analizie struktury wewnętrznej figury i zachowaniu relacji część–całość."
+    },
+    {
+      "drawing_id": 7,
+      "errors": {
+        "omissions": 0,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 3,
+        "relative_size_errors": 3
+      },
+      "total_errors": 8,
+      "comment": "W rysunku widoczne są zniekształcenia kształtów, przemieszczenia oraz wyraźne błędy wielkości. Układ elementów jest zachowany tylko częściowo, co może wskazywać na trudność w utrzymaniu relacji przestrzennych między kilkoma figurami."
+    },
+    {
+      "drawing_id": 8,
+      "errors": {
+        "omissions": 1,
+        "distortions": 2,
+        "perseverations": 1,
+        "rotations": 0,
+        "displacements": 3,
+        "relative_size_errors": 2
+      },
+      "total_errors": 9,
+      "comment": "Rysunek zawiera pominięcie części informacji, przemieszczenia, zniekształcenia i błędy proporcji. Obecny jest także element powtórzenia lub niepewnego poprawiania, co może wskazywać na przeciążenie materiałem i trudność w selekcji istotnych cech wzorca."
+    },
+    {
+      "drawing_id": 9,
+      "errors": {
+        "omissions": 0,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 2,
+        "relative_size_errors": 2
+      },
+      "total_errors": 6,
+      "comment": "W rysunku obecne są zniekształcenia i przemieszczenia elementów oraz błędy wielkości. Relacje przestrzenne są częściowo zachowane, ale nieprecyzyjne, co może wskazywać na obniżoną dokładność organizacji wzrokowo-przestrzennej."
+    },
+    {
+      "drawing_id": 10,
+      "errors": {
+        "omissions": 0,
+        "distortions": 2,
+        "perseverations": 1,
+        "rotations": 1,
+        "displacements": 2,
+        "relative_size_errors": 2
+      },
+      "total_errors": 8,
+      "comment": "Rysunek zawiera zniekształcenia, przemieszczenia, błędy wielkości oraz częściową rotację jednego z elementów. Widoczne jest także powielenie lub niepewne odtworzenie małego elementu, co może wskazywać na trudność w organizacji bardziej złożonego materiału oraz osłabioną kontrolę wykonawczą."
+    }
+  ],
+  "final_comment": "Wykonanie Zosi wskazuje na trudności w zakresie dokładnego kodowania, utrzymywania i odtwarzania materiału wzrokowego po krótkiej ekspozycji. W profilu błędów dominują zniekształcenia, przemieszczenia oraz błędy względnej wielkości, które nasilają się wraz ze wzrostem złożoności rysunku. Pojedyncze pominięcia, perseweracje i rotacja pojawiają się głównie w zadaniach bardziej złożonych, co może wskazywać na przeciążenie pamięci roboczej wzrokowej oraz trudność w kontroli wykonawczej podczas odtwarzania. Zosia jest praworęczna i nie zgłoszono wady wzroku, dlatego błędy mniej prawdopodobnie wynikają z ograniczeń widzenia czy nietypowej lateralizacji, a bardziej z trudności w organizacji wzrokowo-przestrzennej, dokładnym różnicowaniu detali i utrzymywaniu relacji między elementami."
+}

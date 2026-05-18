@@ -1,0 +1,137 @@
+{
+  "drawings": [
+    {
+      "drawing_id": 1,
+      "errors": {
+        "omissions": 0,
+        "distortions": 0,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 0,
+        "relative_size_errors": 0
+      },
+      "total_errors": 0,
+      "correct": 1,
+      "comment": "Rysunek można uznać za poprawny jakościowo, ponieważ dziecko zachowało ogólny kształt, położenie i proporcje figury. Wykonanie wskazuje, że przy prostym materiale wzrokowym Karolina potrafi utrzymać ślad pamięciowy i odtworzyć podstawową strukturę figury po krótkiej ekspozycji."
+    },
+    {
+      "drawing_id": 2,
+      "errors": {
+        "omissions": 0,
+        "distortions": 1,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 1,
+        "relative_size_errors": 0
+      },
+      "total_errors": 2,
+      "comment": "W rysunku widoczne jest zniekształcenie konturu oraz lekkie przesunięcie figury względem wzorca. Błąd może wskazywać na trudność w precyzyjnym zakodowaniu kątów i granic figury, choć ogólna struktura została zachowana."
+    },
+    {
+      "drawing_id": 3,
+      "errors": {
+        "omissions": 0,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 3,
+        "relative_size_errors": 1
+      },
+      "total_errors": 6,
+      "comment": "Rysunek zawiera zniekształcenia elementów kolistych, zaburzenie ich wzajemnego położenia oraz przemieszczenie małego elementu bocznego. Taki profil błędów może wskazywać na trudność w utrzymaniu relacji przestrzennych między kilkoma elementami oraz na osłabioną kontrolę proporcji."
+    },
+    {
+      "drawing_id": 4,
+      "errors": {
+        "omissions": 0,
+        "distortions": 1,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 1,
+        "relative_size_errors": 0
+      },
+      "total_errors": 2,
+      "comment": "Dziecko odtworzyło układ trzech elementów, ale widoczne jest uproszczenie i zniekształcenie jednej z figur oraz nieprecyzyjne rozmieszczenie elementów. Błędy mogą wskazywać na trudność w dokładnym odwzorowaniu struktury wieloelementowej, mimo zachowania ogólnego schematu zadania."
+    },
+    {
+      "drawing_id": 5,
+      "errors": {
+        "omissions": 2,
+        "distortions": 2,
+        "perseverations": 1,
+        "rotations": 0,
+        "displacements": 2,
+        "relative_size_errors": 1
+      },
+      "total_errors": 8,
+      "comment": "W rysunku pojawiają się pominięcia, zniekształcenia oraz przemieszczenia elementów, a część układu została wyraźnie uproszczona. Widoczne jest także powielanie podobnej formy, co można traktować jako persewerację, a całość może wskazywać na przeciążenie pamięci wzrokowej przy większej liczbie bodźców."
+    },
+    {
+      "drawing_id": 6,
+      "errors": {
+        "omissions": 0,
+        "distortions": 1,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 1,
+        "relative_size_errors": 1
+      },
+      "total_errors": 3,
+      "comment": "Rysunek zawiera ogólny układ elementów, ale widoczne jest zniekształcenie jednej z figur, nieprecyzyjne rozmieszczenie oraz błąd względnej wielkości. Może to wskazywać na trudność w analizie wewnętrznej struktury figur i utrzymaniu proporcji między elementami."
+    },
+    {
+      "drawing_id": 7,
+      "errors": {
+        "omissions": 0,
+        "distortions": 0,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 0,
+        "relative_size_errors": 0
+      },
+      "total_errors": 0,
+      "correct": 1,
+      "comment": "Rysunek można uznać za jakościowo poprawny, ponieważ dziecko zachowało podstawowe kształty, ich układ oraz relacje przestrzenne. Wykonanie sugeruje, że przy tym materiale reprezentacja wzrokowa została skutecznie zakodowana i odtworzona."
+    },
+    {
+      "drawing_id": 8,
+      "errors": {
+        "omissions": 1,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 2,
+        "relative_size_errors": 2
+      },
+      "total_errors": 7,
+      "comment": "W rysunku widoczne jest pominięcie części informacji, zniekształcenia figur oraz przemieszczenia elementów względem wzorca. Błędy wielkości wskazują na trudność w zachowaniu proporcji, co może być związane z przeciążeniem pamięci roboczej wzrokowej i słabszą organizacją materiału graficznego."
+    },
+    {
+      "drawing_id": 9,
+      "errors": {
+        "omissions": 1,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 3,
+        "relative_size_errors": 2
+      },
+      "total_errors": 8,
+      "comment": "Rysunek zawiera przemieszczenia elementów, zniekształcenia kształtów oraz zaburzenia względnej wielkości. Widoczne jest także pominięcie części układu, co może wskazywać na trudność w utrzymaniu całościowej konfiguracji wzrokowo-przestrzennej po krótkiej ekspozycji."
+    },
+    {
+      "drawing_id": 10,
+      "errors": {
+        "omissions": 1,
+        "distortions": 1,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 1,
+        "relative_size_errors": 1
+      },
+      "total_errors": 4,
+      "comment": "W rysunku występuje pominięcie jednego z elementów lub jego częściowe zredukowanie, a także zniekształcenie i nieprecyzyjne rozmieszczenie pozostałych figur. Błędy mogą wskazywać na trudność w organizacji bardziej złożonego materiału wzrokowego oraz w zachowaniu proporcji między elementami."
+    }
+  ],
+  "final_comment": "Wykonanie Karoliny w Teście Pamięci Wzrokowej Bentona wskazuje na nierównomierną sprawność funkcji wzrokowo-przestrzennych. Test ten mierzy przede wszystkim pamięć wzrokową, spostrzeganie wzrokowe, organizację wzrokowo-przestrzenną oraz integrację wzrokowo-ruchową, czyli zdolność do krótkotrwałego zapamiętania figury i jej graficznego odtworzenia. U dziewczynki widoczne są głównie zniekształcenia, przemieszczenia oraz błędy proporcji, szczególnie w zadaniach bardziej złożonych i wieloelementowych. Brak wyraźnych rotacji sugeruje, że podstawowa orientacja kierunkowa jest względnie zachowana, natomiast obecność pojedynczych pominięć i perseweracji może wskazywać na przeciążenie pamięci roboczej wzrokowej. Leworęczność sama w sobie nie stanowi nieprawidłowości, ale może wiązać się z nieco innym stylem organizacji grafomotorycznej; w analizie warto obserwować kierunek pracy, płynność linii i rozmieszczenie elementów na kartce. Zgłaszana wada wzroku „do czytania” może dodatkowo wpływać na precyzję spostrzegania detali i jakość graficznego odwzorowania, dlatego interpretację wyniku należy łączyć z informacją, czy dziecko wykonywało badanie w okularach oraz czy warunki widzenia były optymalne."
+}

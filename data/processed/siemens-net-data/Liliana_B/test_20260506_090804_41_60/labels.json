@@ -1,0 +1,135 @@
+{
+  "drawings": [
+    {
+      "drawing_id": 1,
+      "errors": {
+        "omissions": 0,
+        "distortions": 1,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 1,
+        "relative_size_errors": 1
+      },
+      "total_errors": 3,
+      "comment": "Rysunek zawiera lekkie zniekształcenie konturu oraz przemieszczenie względem wzorca, ponieważ figura jest narysowana niżej i nieco przesunięta, a proporcje boków nie są w pełni zachowane. Może to wskazywać na wczesne trudności w precyzyjnym odwzorowaniu relacji przestrzennych, choć ogólna koncepcja figury jest zachowana."
+    },
+    {
+      "drawing_id": 2,
+      "errors": {
+        "omissions": 0,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 2,
+        "relative_size_errors": 1
+      },
+      "total_errors": 5,
+      "comment": "Figura została odtworzona jako nieregularny wielokąt, z wyraźnymi zniekształceniami boków i kątów oraz przemieszczeniem względem wzorca. Może to wskazywać na trudność w dokładnym kodowaniu kształtu oraz utrzymaniu jego struktury po krótkiej ekspozycji."
+    },
+    {
+      "drawing_id": 3,
+      "errors": {
+        "omissions": 1,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 2,
+        "relative_size_errors": 1
+      },
+      "total_errors": 6,
+      "comment": "W rysunku widoczne są dwa elementy koliste, ale mają one nieregularne kształty i nieprawidłowe proporcje, a element boczny został pominięty. Może to wskazywać na trudność w utrzymaniu wszystkich elementów wzorca w pamięci oraz w ich jednoczesnym odtworzeniu."
+    },
+    {
+      "drawing_id": 4,
+      "errors": {
+        "omissions": 0,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 2,
+        "relative_size_errors": 2
+      },
+      "total_errors": 6,
+      "comment": "Dziecko odtworzyło trzy elementy, ale każdy z nich jest zniekształcony, a ich wzajemne położenie i wielkość są nieprecyzyjne. Może to wskazywać na trudność w organizacji materiału wieloelementowego oraz w zachowaniu relacji między częściami."
+    },
+    {
+      "drawing_id": 5,
+      "errors": {
+        "omissions": 1,
+        "distortions": 3,
+        "perseverations": 1,
+        "rotations": 1,
+        "displacements": 3,
+        "relative_size_errors": 2
+      },
+      "total_errors": 11,
+      "comment": "Rysunek zawiera zniekształcenia, przemieszczenia oraz błędy proporcji, a także pojawia się rotacja jednego z elementów oraz powielanie pionowych form. Taki obraz może wskazywać na przeciążenie pamięci roboczej wzrokowej oraz trudność w planowaniu i kontroli wykonania."
+    },
+    {
+      "drawing_id": 6,
+      "errors": {
+        "omissions": 0,
+        "distortions": 3,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 3,
+        "relative_size_errors": 2
+      },
+      "total_errors": 8,
+      "comment": "W rysunku widoczne są zniekształcenia struktur prostokątnych oraz przemieszczenia elementów wewnętrznych, które nie odpowiadają ich pierwotnemu położeniu. Może to wskazywać na trudność w analizie relacji wewnętrznych i organizacji przestrzennej bardziej złożonych figur."
+    },
+    {
+      "drawing_id": 7,
+      "errors": {
+        "omissions": 0,
+        "distortions": 3,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 3,
+        "relative_size_errors": 2
+      },
+      "total_errors": 8,
+      "comment": "Rysunek zawiera deformacje figur oraz ich przemieszczenie, przy częściowym zachowaniu ogólnego schematu. Może to wskazywać na obecność strategii globalnej przy jednoczesnej trudności w odtwarzaniu szczegółów i proporcji."
+    },
+    {
+      "drawing_id": 8,
+      "errors": {
+        "omissions": 0,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 2,
+        "relative_size_errors": 2
+      },
+      "total_errors": 6,
+      "comment": "W rysunku widoczne są zniekształcenia, przemieszczenia oraz błędy wielkości, szczególnie w odniesieniu do elementu wewnętrznego. Może to wskazywać na trudność w integracji części w jedną strukturę oraz w utrzymaniu proporcji."
+    },
+    {
+      "drawing_id": 9,
+      "errors": {
+        "omissions": 0,
+        "distortions": 3,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 3,
+        "relative_size_errors": 2
+      },
+      "total_errors": 8,
+      "comment": "Rysunek zawiera zniekształcenia, przemieszczenia oraz nieprecyzyjne odwzorowanie elementów wewnętrznych. Może to wskazywać na zwiększony wysiłek poznawczy przy bardziej złożonym materiale oraz trudność w utrzymaniu reprezentacji wzrokowej."
+    },
+    {
+      "drawing_id": 10,
+      "errors": {
+        "omissions": 0,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 2,
+        "relative_size_errors": 2
+      },
+      "total_errors": 6,
+      "comment": "Rysunek zawiera uproszczenia, zniekształcenia oraz przemieszczenia elementów, a także błędy proporcji między figurami. Może to wskazywać na trudność w końcowej fazie zadania, kiedy materiał jest bardziej złożony i wymaga większej kontroli wykonawczej."
+    }
+  ],
+  "final_comment": "W przypadku Liliany obserwuje się profil wykonania wskazujący na trudności w dokładnym kodowaniu oraz odtwarzaniu informacji wzrokowej, szczególnie wtedy, gdy materiał zawiera kilka elementów i wymaga zachowania ich relacji przestrzennych. Dominującymi błędami są zniekształcenia, przemieszczenia oraz błędy względnej wielkości, co wskazuje na obniżoną precyzję spostrzegania i organizacji materiału wzrokowo-przestrzennego. W bardziej złożonych rysunkach pojawiają się także pominięcia, rotacje oraz pojedyncze elementy perseweracyjne, co może wskazywać na przeciążenie pamięci roboczej wzrokowej oraz trudność w selekcji istotnych elementów wzorca. Wydłużony czas wykonania niektórych rysunków sugeruje zwiększony wysiłek poznawczy i kompensacyjne próby kontroli zadania. Ponieważ dziecko jest praworęczne i nie zgłoszono wady wzroku, uzyskany profil bardziej przemawia za trudnościami w zakresie pamięci wzrokowej, organizacji przestrzennej oraz integracji wzrokowo-ruchowej niż za ograniczeniami percepcyjnymi."
+}

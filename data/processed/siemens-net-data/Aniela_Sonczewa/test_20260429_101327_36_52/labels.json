@@ -1,0 +1,135 @@
+{
+  "drawings": [
+    {
+      "drawing_id": 1,
+      "errors": {
+        "omissions": 0,
+        "distortions": 1,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 1,
+        "relative_size_errors": 1
+      },
+      "total_errors": 3,
+      "comment": "Widoczne jest wyraźne uproszczenie figury oraz trudność w zachowaniu jej kształtu i proporcji, co przejawia się nieregularnością linii oraz deformacją konturu. Element został odtworzony w sposób schematyczny, z jednoczesnym przemieszczeniem względem osi oraz brakiem precyzji w odwzorowaniu kątów, co u dziecka w tym wieku może wskazywać na trudności już na etapie kodowania materiału wzrokowego, a nie tylko jego odtwarzania."
+    },
+    {
+      "drawing_id": 2,
+      "errors": {
+        "omissions": 0,
+        "distortions": 1,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 0,
+        "relative_size_errors": 1
+      },
+      "total_errors": 2,
+      "comment": "Dziecko zachowuje ogólny zarys figury, jednak widoczne są zniekształcenia w zakresie kątów i symetrii, a także nieprecyzyjne proporcje. Wykonanie sugeruje, że strategia globalnego uchwycenia kształtu jest obecna, natomiast trudność dotyczy dokładności odwzorowania detali oraz stabilności planu graficznego."
+    },
+    {
+      "drawing_id": 3,
+      "errors": {
+        "omissions": 0,
+        "distortions": 1,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 1,
+        "relative_size_errors": 0
+      },
+      "total_errors": 2,
+      "comment": "Obserwuje się deformację obu okrągłych elementów, które przyjmują nieregularny, owalny kształt, a także zaburzenie relacji przestrzennej między nimi. Dodatkowy element boczny jest odseparowany od całości, co wskazuje na trudność w integracji elementów w jedną spójną reprezentację oraz osłabioną kontrolę relacji przestrzennych."
+    },
+    {
+      "drawing_id": 4,
+      "errors": {
+        "omissions": 0,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 1,
+        "relative_size_errors": 2
+      },
+      "total_errors": 5,
+      "comment": "Wszystkie elementy zostały odtworzone w sposób niedokładny, z widocznymi zniekształceniami oraz zaburzeniami proporcji. Szczególnie zauważalna jest niestabilność trójkąta oraz nieregularność kształtu koła, a także brak zachowania właściwych relacji wielkościowych pomiędzy elementami, co sugeruje przeciążenie pamięci wzrokowej przy większej liczbie komponentów."
+    },
+    {
+      "drawing_id": 5,
+      "errors": {
+        "omissions": 0,
+        "distortions": 3,
+        "perseverations": 1,
+        "rotations": 0,
+        "displacements": 2,
+        "relative_size_errors": 2
+      },
+      "total_errors": 8,
+      "comment": "Widoczna jest wyraźna fragmentaryzacja odwzorowania, polegająca na rozdzieleniu elementów oraz ich znacznym uproszczeniu. Część elementów jest pominięta, a pozostałe nie tworzą spójnej struktury, co wskazuje na trudność w jednoczesnym utrzymaniu i organizacji wielu informacji wzrokowych oraz na tendencję do redukcji złożoności materiału."
+    },
+    {
+      "drawing_id": 6,
+      "errors": {
+        "omissions": 1,
+        "distortions": 4,
+        "perseverations": 1,
+        "rotations": 0,
+        "displacements": 3,
+        "relative_size_errors": 2
+      },
+      "total_errors": 11,
+      "comment": "Figury są jedynie ogólnie podobne do wzorca, natomiast ich struktura wewnętrzna jest zaburzona, a elementy rozmieszczone są w sposób niespójny. Wykonanie wskazuje na trudności w planowaniu przestrzennym oraz organizacji materiału wzrokowego, co może być związane z ograniczoną pojemnością pamięci roboczej wzrokowej."
+    },
+    {
+      "drawing_id": 7,
+      "errors": {
+        "omissions": 0,
+        "distortions": 3,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 3,
+        "relative_size_errors": 2
+      },
+      "total_errors": 8,
+      "comment": "Figury są zdeformowane i asymetryczne, a relacje pomiędzy elementami nie odpowiadają układowi wzorcowemu. Obserwuje się brak stabilnej reprezentacji wzrokowej oraz trudności w odwzorowaniu kierunków i proporcji, co może wskazywać na osłabioną analizę przestrzenną."
+    },
+    {
+      "drawing_id": 8,
+      "errors": {
+        "omissions": 1,
+        "distortions": 3,
+        "perseverations": 1,
+        "rotations": 0,
+        "displacements": 2,
+        "relative_size_errors": 2
+      },
+      "total_errors": 9,
+      "comment": "Widoczna jest redukcja liczby elementów oraz ich uproszczenie, a także brak zachowania relacji pomiędzy nimi. Dziecko stosuje strategię upraszczania materiału zamiast jego wiernego odwzorowania, co sugeruje przeciążenie poznawcze oraz trudność w utrzymaniu pełnej reprezentacji wzrokowej."
+    },
+    {
+      "drawing_id": 9,
+      "errors": {
+        "omissions": 1,
+        "distortions": 3,
+        "perseverations": 1,
+        "rotations": 0,
+        "displacements": 3,
+        "relative_size_errors": 2
+      },
+      "total_errors": 10,
+      "comment": "Występują liczne zaburzenia proporcji oraz przemieszczenia elementów, a całość jest słabo zorganizowana przestrzennie. Widoczna jest trudność w zachowaniu osiowości oraz relacji wielkościowych, co wskazuje na osłabioną kontrolę organizacji przestrzeni i integracji elementów w całość."
+    },
+    {
+      "drawing_id": 10,
+      "errors": {
+        "omissions": 0,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 1,
+        "relative_size_errors": 2
+      },
+      "total_errors": 5,
+      "comment": "Dziecko częściowo zachowuje ogólną strukturę figury, jednak nadal obecne są deformacje oraz nieprecyzyjne relacje między elementami. Mimo pewnej poprawy w organizacji względem wcześniejszych rysunków, wykonanie nadal wskazuje na trudności w dokładnym odwzorowaniu układu przestrzennego i proporcji."
+    }
+  ],
+  "final_comment": ""
+}
