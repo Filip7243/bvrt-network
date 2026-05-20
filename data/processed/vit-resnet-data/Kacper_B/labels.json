@@ -1,0 +1,135 @@
+{
+  "drawings": [
+    {
+      "drawing_id": 1,
+      "errors": {
+        "omissions": 0,
+        "distortions": 1,
+        "perseverations": 0,
+        "rotations": 1,
+        "displacements": 1,
+        "relative_size_errors": 1
+      },
+      "total_errors": 4,
+      "comment": "Rysunek zawiera zniekształcenie figury, zaburzenie proporcji oraz nieprawidłowe położenie względem wzorca. Figura jest lekko obrócona i nieregularna, co może wskazywać na trudność w precyzyjnym kodowaniu prostego materiału wzrokowego oraz w kontroli orientacji przestrzennej."
+    },
+    {
+      "drawing_id": 2,
+      "errors": {
+        "omissions": 0,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 2,
+        "relative_size_errors": 1
+      },
+      "total_errors": 5,
+      "comment": "Figura została odtworzona jako nieregularny wielokąt, z zaburzonymi bokami, kątami i proporcjami. Widoczne jest także przesunięcie względem wzorca, co może wskazywać na trudność w utrzymaniu dokładnej reprezentacji kształtu po krótkiej ekspozycji."
+    },
+    {
+      "drawing_id": 3,
+      "errors": {
+        "omissions": 0,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 2,
+        "relative_size_errors": 1
+      },
+      "total_errors": 5,
+      "comment": "W rysunku widoczne są zniekształcenia elementów kolistych, nieprawidłowe ich wzajemne położenie oraz przemieszczenie elementu bocznego. Może to wskazywać na trudność w integracji kilku elementów w jedną całość oraz w zachowaniu relacji przestrzennych."
+    },
+    {
+      "drawing_id": 4,
+      "errors": {
+        "omissions": 0,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 1,
+        "displacements": 2,
+        "relative_size_errors": 1
+      },
+      "total_errors": 6,
+      "comment": "Dziecko odtworzyło trzy elementy, ale ich kształty są zniekształcone, a proporcje i położenie względem siebie są zaburzone. Widoczna jest także częściowa rotacja jednego elementu, co może wskazywać na osłabioną organizację wzrokowo-przestrzenną przy materiale wieloelementowym."
+    },
+    {
+      "drawing_id": 5,
+      "errors": {
+        "omissions": 2,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 1,
+        "relative_size_errors": 1
+      },
+      "total_errors": 6,
+      "comment": "W rysunku pominięto część elementów wzorca, a odtworzone figury są uproszczone i zniekształcone. Układ nie zachowuje pełnej struktury wzorcowej, co może wskazywać na przeciążenie pamięci wzrokowej oraz trudność w utrzymaniu większej liczby elementów jednocześnie."
+    },
+    {
+      "drawing_id": 6,
+      "errors": {
+        "omissions": 0,
+        "distortions": 3,
+        "perseverations": 1,
+        "rotations": 1,
+        "displacements": 3,
+        "relative_size_errors": 1
+      },
+      "total_errors": 9,
+      "comment": "Rysunek zawiera zniekształcenia figur, przemieszczenia elementów wewnętrznych oraz zaburzenia proporcji. Widoczne jest również powielenie lub niepewne poprawianie fragmentu, co może wskazywać na słabszą kontrolę wykonawczą i trudność w planowaniu graficznym."
+    },
+    {
+      "drawing_id": 7,
+      "errors": {
+        "omissions": 2,
+        "distortions": 1,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 1,
+        "relative_size_errors": 1
+      },
+      "total_errors": 5,
+      "comment": "Rysunek jest bardzo zredukowany, ponieważ dziecko odtworzyło jedynie fragment układu i pominęło większość istotnych elementów. Może to wskazywać na chwilowe załamanie strategii zapamiętywania, trudność w utrzymaniu całości wzorca lub skupienie na pojedynczym szczególe."
+    },
+    {
+      "drawing_id": 8,
+      "errors": {
+        "omissions": 1,
+        "distortions": 3,
+        "perseverations": 1,
+        "rotations": 1,
+        "displacements": 3,
+        "relative_size_errors": 2
+      },
+      "total_errors": 11,
+      "comment": "W rysunku obecne są liczne zniekształcenia, przemieszczenia, błąd rotacyjny, częściowe pominięcie oraz zaburzenia proporcji. Pojawia się także niepewne powielanie linii, co może wskazywać na przeciążenie pamięci roboczej wzrokowej i trudność w selekcji najważniejszych cech wzorca."
+    },
+    {
+      "drawing_id": 9,
+      "errors": {
+        "omissions": 1,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 1,
+        "displacements": 3,
+        "relative_size_errors": 1
+      },
+      "total_errors": 8,
+      "comment": "Rysunek zawiera pominięcie części informacji, zniekształcenia, przemieszczenia oraz rotację jednego z elementów. Może to wskazywać na trudność w zachowaniu układu przestrzennego i relacji między figurami przy bardziej złożonym materiale."
+    },
+    {
+      "drawing_id": 10,
+      "errors": {
+        "omissions": 2,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 1,
+        "relative_size_errors": 1
+      },
+      "total_errors": 6,
+      "comment": "Rysunek jest silnie zredukowany, ponieważ dziecko odtworzyło tylko część układu, pomijając ważne elementy. Widoczne są zniekształcenia, uproszczenia i zaburzenia proporcji, co może wskazywać na trudność w utrzymaniu złożonej reprezentacji wzrokowej i jej uporządkowanym odtworzeniu."
+    }
+  ],
+  "final_comment": "Wykonanie Kacpra wskazuje na trudności w zakresie dokładnego kodowania, utrzymywania i odtwarzania materiału wzrokowego po krótkiej ekspozycji. W profilu błędów dominują zniekształcenia, przemieszczenia, pominięcia oraz błędy proporcji, a w kilku rysunkach pojawiają się także rotacje i pojedyncze cechy perseweracyjne. Obraz wyników sugeruje potrzebę dalszej obserwacji funkcji wzrokowo-przestrzennych, pamięci wzrokowej oraz planowania i organizacji pracy, szczególnie w zadaniach wymagających odwzorowywania złożonych struktur. Kacper jest praworęczny i nie zgłoszono wady wzroku, dlatego trudności najprawdopodobniej wynikają z organizacji i przetwarzania informacji wzrokowo-przestrzennych oraz kontroli wykonawczej, a nie z ograniczeń percepcyjnych."
+}

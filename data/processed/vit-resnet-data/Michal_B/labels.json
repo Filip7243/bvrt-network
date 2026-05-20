@@ -1,0 +1,135 @@
+{
+  "drawings": [
+    {
+      "drawing_id": 1,
+      "errors": {
+        "omissions": 0,
+        "distortions": 1,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 1,
+        "relative_size_errors": 2
+      },
+      "total_errors": 4,
+      "comment": "Rysunek zawiera poprawne uchwycenie ogólnej struktury figury, jednak widoczne są zniekształcenia polegające na nieregularności linii oraz zaburzeniu proporcji boków, a także niewielkie przemieszczenie względem osi wzorca, co wskazuje na trudność w precyzyjnym odwzorowaniu relacji kątowych i długości oraz może świadczyć o obniżonej dokładności analizy wzrokowej przy zachowanej podstawowej identyfikacji figury."
+    },
+    {
+      "drawing_id": 2,
+      "errors": {
+        "omissions": 0,
+        "distortions": 3,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 2,
+        "relative_size_errors": 3
+      },
+      "total_errors": 8,
+      "comment": "Figura została rozpoznana jako wielobok, jednak silne zniekształcenia polegające na zaokrągleniu kątów i nieregularności konturu oraz zaburzeniu proporcji świadczą o trudnościach w analizie struktury geometrycznej, a przemieszczenie sugeruje osłabioną kontrolę przestrzenną, co może wskazywać na obniżoną precyzję percepcji wzrokowej i integracji wzrokowo-ruchowej."
+    },
+    {
+      "drawing_id": 3,
+      "errors": {
+        "omissions": 0,
+        "distortions": 4,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 3,
+        "relative_size_errors": 3
+      },
+      "total_errors": 10,
+      "comment": "Dziecko odtworzyło wszystkie elementy, jednak widoczne są znaczne zniekształcenia figur oraz ich wzajemnych relacji, szczególnie w zakresie nakładania się kształtów i ich proporcji, a także wyraźne przemieszczenia, co wskazuje na trudności w organizacji materiału wzrokowego oraz w utrzymaniu relacji przestrzennych między elementami."
+    },
+    {
+      "drawing_id": 4,
+      "errors": {
+        "omissions": 0,
+        "distortions": 3,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 2,
+        "relative_size_errors": 2
+      },
+      "total_errors": 7,
+      "comment": "Rysunek zawiera wszystkie główne elementy, jednak występują zniekształcenia figur oraz ich przemieszczenie, a także błędy proporcji, szczególnie w figurze centralnej i trójkącie, co może wskazywać na względnie zachowaną analizę globalną przy obniżonej dokładności analizy szczegółowej i kontroli wykonania."
+    },
+    {
+      "drawing_id": 5,
+      "errors": {
+        "omissions": 0,
+        "distortions": 5,
+        "perseverations": 0,
+        "rotations": 1,
+        "displacements": 4,
+        "relative_size_errors": 4
+      },
+      "total_errors": 14,
+      "comment": "Pomimo dużej liczby elementów poprawnych występują liczne zniekształcenia, znaczne przemieszczenia oraz błędy wielkości, a dodatkowo pojawia się rotacja figury, co wskazuje na istotne trudności w utrzymaniu orientacji przestrzennej oraz stabilnej reprezentacji wzoru w pamięci wzrokowej, szczególnie przy większej złożoności materiału."
+    },
+    {
+      "drawing_id": 6,
+      "errors": {
+        "omissions": 0,
+        "distortions": 3,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 3,
+        "relative_size_errors": 2
+      },
+      "total_errors": 8,
+      "comment": "Widoczne are umiarkowane zniekształcenia oraz wyraźne przemieszczenia elementów wewnętrznych względem zewnętrznych, co wskazuje na trudność w analizie relacji część–całość, a także na obniżoną zdolność planowania przestrzennego podczas odwzorowywania złożonych figur."
+    },
+    {
+      "drawing_id": 7,
+      "errors": {
+        "omissions": 0,
+        "distortions": 4,
+        "perseverations": 1,
+        "rotations": 0,
+        "displacements": 4,
+        "relative_size_errors": 3
+      },
+      "total_errors": 12,
+      "comment": "Rysunek zawiera wszystkie elementy, jednak są one silnie zniekształcone i przemieszczone, a pojawienie się dodatkowego elementu sugeruje zaburzenia organizacji przestrzennej lub trudność w selekcji informacji istotnych, co może wskazywać na przeciążenie systemu przetwarzania wzrokowego przy większej liczbie elementów."
+    },
+    {
+      "drawing_id": 8,
+      "errors": {
+        "omissions": 0,
+        "distortions": 4,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 4,
+        "relative_size_errors": 4
+      },
+      "total_errors": 12,
+      "comment": "Mimo odtworzenia struktury wzoru widoczne są znaczne zniekształcenia oraz błędy proporcji i przemieszczenia, szczególnie w relacji między dużymi figurami, co wskazuje na trudność w integracji informacji wzrokowej oraz w utrzymaniu dokładnej reprezentacji przestrzennej."
+    },
+    {
+      "drawing_id": 9,
+      "errors": {
+        "omissions": 0,
+        "distortions": 5,
+        "perseverations": 0,
+        "rotations": 2,
+        "displacements": 4,
+        "relative_size_errors": 4
+      },
+      "total_errors": 15,
+      "comment": "Rysunek wykonany z największym wysiłkiem zawiera liczne zniekształcenia, przemieszczenia oraz błędy wielkości, a także rotacje i powrót do rysunku, co wskazuje na przeciążenie pamięci wzrokowo-przestrzennej, trudność w utrzymaniu wzoru oraz osłabione planowanie i kontrolę wykonania."
+    },
+    {
+      "drawing_id": 10,
+      "errors": {
+        "omissions": 0,
+        "distortions": 4,
+        "perseverations": 0,
+        "rotations": 1,
+        "displacements": 4,
+        "relative_size_errors": 4
+      },
+      "total_errors": 13,
+      "comment": "Rysunek zawiera ogólne elementy wzoru, jednak są one znacznie zniekształcone, przemieszczone i nieproporcjonalne, co wskazuje na utrzymujące się trudności w analizie i syntezie wzrokowej oraz w organizacji przestrzennej przy wysokim obciążeniu poznawczym."
+    }
+  ],
+  "final_comment": "U Michała dominują błędy zniekształceń, przemieszczeń oraz błędy względnej wielkości, przy niewielkiej liczbie pominięć i braku istotnych perseweracji, co wskazuje, że główny problem nie dotyczy zapamiętania obecności elementów, lecz jakości ich przetwarzania i organizacji przestrzennej. Obecność rotacji w bardziej złożonych zadaniach wskazuje na trudności w utrzymaniu orientacji kierunkowej oraz osi przestrzennej, a wydłużenie czasu, przerwy i szorowanie sugerują wzrost obciążenia poznawczego oraz niepewność wykonania wraz ze wzrostem trudności. Ponieważ dziecko jest praworęczne, nie obserwuje się wpływu nietypowej lateralizacji, a brak wady wzroku sugeruje, że trudności mają charakter funkcjonalny, a nie sensoryczny, co przemawia za obniżoną integracją wzrokowo-przestrzenną oraz słabszą koordynacją wzrokowo-ruchową. Profil ten może wskazywać na niedojrzałość funkcji percepcyjno-motorycznych oraz trudności w zakresie organizacji przestrzennej, które mogą przekładać się na funkcjonowanie szkolne, szczególnie w zadaniach wymagających odwzorowywania, pisania, przepisywania oraz pracy z materiałem geometrycznym. Obraz funkcjonowania jest spójny z trudnościami w zakresie pamięci wzrokowo-przestrzennej i integracji percepcyjno-motorycznej, przy względnie zachowanej zdolności rozpoznawania ogólnej struktury bodźców."
+}

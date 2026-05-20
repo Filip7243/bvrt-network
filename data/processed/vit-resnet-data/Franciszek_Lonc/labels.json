@@ -1,0 +1,135 @@
+{
+  "drawings": [
+    {
+      "drawing_id": 1,
+      "errors": {
+        "omissions": 0,
+        "distortions": 1,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 1,
+        "relative_size_errors": 1
+      },
+      "total_errors": 3,
+      "comment": "Rysunek zawiera zniekształcenie kształtu oraz nieprawidłowe proporcje, ponieważ figura została uproszczona i nie zachowuje właściwych relacji między bokami, a dodatkowo widoczne jest lekkie przemieszczenie względem wzorca."
+    },
+    {
+      "drawing_id": 2,
+      "errors": {
+        "omissions": 0,
+        "distortions": 1,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 1,
+        "relative_size_errors": 1
+      },
+      "total_errors": 3,
+      "comment": "Figura została odtworzona w sposób uproszczony, z widocznym zniekształceniem kątów i nieregularnością linii, a także niewielkim przemieszczeniem i zaburzeniem proporcji względem wzorca."
+    },
+    {
+      "drawing_id": 3,
+      "errors": {
+        "omissions": 0,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 1,
+        "relative_size_errors": 1
+      },
+      "total_errors": 4,
+      "comment": "W rysunku widoczne są zniekształcenia elementów kolistych oraz nieprecyzyjne odwzorowanie ich wzajemnego położenia, co wskazuje na trudność w zachowaniu relacji przestrzennych oraz proporcji między elementami."
+    },
+    {
+      "drawing_id": 4,
+      "errors": {
+        "omissions": 0,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 1,
+        "relative_size_errors": 2
+      },
+      "total_errors": 5,
+      "comment": "Rysunek zawiera zniekształcenia wszystkich figur oraz wyraźne zaburzenia proporcji, szczególnie w zakresie wielkości poszczególnych elementów, przy jednoczesnym lekkim przemieszczeniu ich względem siebie."
+    },
+    {
+      "drawing_id": 5,
+      "errors": {
+        "omissions": 1,
+        "distortions": 3,
+        "perseverations": 1,
+        "rotations": 0,
+        "displacements": 3,
+        "relative_size_errors": 2
+      },
+      "total_errors": 10,
+      "comment": "W tym rysunku widoczna jest dezorganizacja materiału, polegająca na zniekształceniu figur, ich przemieszczeniu oraz częściowym pominięciu elementów, a także pojawia się powielanie podobnych form, co można interpretować jako persewerację."
+    },
+    {
+      "drawing_id": 6,
+      "errors": {
+        "omissions": 1,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 3,
+        "relative_size_errors": 2
+      },
+      "total_errors": 8,
+      "comment": "Rysunek zawiera uproszczone i zniekształcone figury, w których elementy wewnętrzne są nieprawidłowo rozmieszczone, co wskazuje na przemieszczenia oraz zaburzenia proporcji i organizacji przestrzennej."
+    },
+    {
+      "drawing_id": 7,
+      "errors": {
+        "omissions": 1,
+        "distortions": 4,
+        "perseverations": 1,
+        "rotations": 1,
+        "displacements": 3,
+        "relative_size_errors": 2
+      },
+      "total_errors": 11,
+      "comment": "W rysunku widoczna jest znaczna dezorganizacja struktury, polegająca na nakładaniu się elementów, ich zniekształceniu oraz przemieszczeniu, a także pojawia się rotacja jednego z elementów oraz powielanie linii, co wskazuje na obecność perseweracji."
+    },
+    {
+      "drawing_id": 8,
+      "errors": {
+        "omissions": 1,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 3,
+        "relative_size_errors": 2
+      },
+      "total_errors": 8,
+      "comment": "Rysunek pokazuje uproszczenie układu oraz pominięcie części informacji, a także zniekształcenia i przemieszczenia elementów, które nie zachowują prawidłowych relacji przestrzennych i proporcji."
+    },
+    {
+      "drawing_id": 9,
+      "errors": {
+        "omissions": 0,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 3,
+        "relative_size_errors": 2
+      },
+      "total_errors": 7,
+      "comment": "W rysunku występują zniekształcenia oraz wyraźne przemieszczenia elementów, które są rozmieszczone niezgodnie ze wzorcem, a także zaburzenia proporcji wpływające na ogólną organizację przestrzenną."
+    },
+    {
+      "drawing_id": 10,
+      "errors": {
+        "omissions": 0,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 1,
+        "displacements": 2,
+        "relative_size_errors": 1
+      },
+      "total_errors": 6,
+      "comment": "Rysunek zawiera zniekształcenia figur oraz ich przemieszczenie, a także widoczna jest rotacja jednego z elementów, co wskazuje na trudność w utrzymaniu prawidłowej orientacji przestrzennej i proporcji."
+    }
+  ],
+  "final_comment": "Wyniki uzyskane przez dziecko w Teście Pamięci Wzrokowej Bentona wskazują na obniżoną sprawność w zakresie pamięci wzrokowej, percepcji wzrokowo-przestrzennej oraz integracji wzrokowo-motorycznej. W wykonaniu dominują zniekształcenia kształtów, przemieszczenia elementów oraz błędy proporcji, które nasilają się wraz ze wzrostem złożoności materiału. Obserwuje się trudności w dokładnym zakodowaniu i odtworzeniu układów przestrzennych oraz w utrzymaniu relacji między elementami figury. Dodatkowo obecność sporadycznych perseweracji i rotacji wskazuje na możliwe przeciążenie funkcji wykonawczych i pamięci roboczej wzrokowej. Profil wykonania sugeruje, że trudności dziecka dotyczą nie tylko samego zapamiętywania, ale także organizacji i przetwarzania informacji wzrokowych, co może wpływać na funkcjonowanie szkolne, zwłaszcza w zadaniach wymagających analizy wzrokowej, geometrii, pisania oraz odwzorowywania struktur graficznych."
+}

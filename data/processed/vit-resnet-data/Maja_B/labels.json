@@ -1,0 +1,135 @@
+{
+  "drawings": [
+    {
+      "drawing_id": 1,
+      "errors": {
+        "omissions": 1,
+        "distortions": 0,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 0,
+        "relative_size_errors": 0
+      },
+      "total_errors": 1,
+      "comment": "Rysunek nie został wykonany, dlatego należy go traktować jako pominięcie odpowiedzi. Może to wskazywać na chwilową trudność w rozpoczęciu zadania, zakłócenie koncentracji, niezrozumienie procedury lub brak utrzymania śladu pamięciowego po ekspozycji."
+    },
+    {
+      "drawing_id": 2,
+      "errors": {
+        "omissions": 0,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 3,
+        "relative_size_errors": 2
+      },
+      "total_errors": 7,
+      "comment": "Figura została odtworzona jako nieregularny wielokąt, z zaburzonymi bokami, kątami i proporcjami oraz wyraźnym przesunięciem względem wzorca. Taki obraz może wskazywać na trudność w dokładnym kodowaniu kształtu i organizacji przestrzennej nawet przy pojedynczej figurze."
+    },
+    {
+      "drawing_id": 3,
+      "errors": {
+        "omissions": 0,
+        "distortions": 1,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 1,
+        "relative_size_errors": 0
+      },
+      "total_errors": 2,
+      "comment": "Dziecko uchwyciło ogólny układ dwóch figur kolistych i małego elementu bocznego, ale widoczne jest zniekształcenie kształtów oraz nieprecyzyjne położenie elementu bocznego. Może to wskazywać na trudność w utrzymaniu relacji przestrzennych między elementami przy częściowo zachowanej reprezentacji ogólnej."
+    },
+    {
+      "drawing_id": 4,
+      "errors": {
+        "omissions": 0,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 2,
+        "relative_size_errors": 2
+      },
+      "total_errors": 6,
+      "comment": "W rysunku widoczne są zniekształcenia wszystkich elementów, nieprecyzyjne rozmieszczenie oraz zaburzenia względnej wielkości między małym elementem, kołem i trójkątem. Może to wskazywać na osłabioną organizację wzrokowo-przestrzenną oraz trudność w porównywaniu proporcji kilku elementów jednocześnie."
+    },
+    {
+      "drawing_id": 5,
+      "errors": {
+        "omissions": 1,
+        "distortions": 3,
+        "perseverations": 1,
+        "rotations": 1,
+        "displacements": 4,
+        "relative_size_errors": 2
+      },
+      "total_errors": 12,
+      "comment": "Rysunek zawiera liczne błędy, w tym pominięcie części informacji, zniekształcenia, przemieszczenia, błędy proporcji oraz rotację jednego z elementów. Widoczne jest także powielanie podobnych pionowych form, co może wskazywać na przeciążenie pamięci roboczej wzrokowej i słabszą kontrolę wykonawczą podczas odtwarzania bardziej złożonego wzorca."
+    },
+    {
+      "drawing_id": 6,
+      "errors": {
+        "omissions": 1,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 2,
+        "relative_size_errors": 1
+      },
+      "total_errors": 6,
+      "comment": "Rysunek zawiera zniekształcenia figur oraz nieprecyzyjne rozmieszczenie elementów wewnętrznych, a część informacji została uproszczona lub pominięta. Może to wskazywać na trudność w analizie relacji część–całość oraz w utrzymaniu struktury wewnętrznej figur."
+    },
+    {
+      "drawing_id": 7,
+      "errors": {
+        "omissions": 1,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 3,
+        "relative_size_errors": 1
+      },
+      "total_errors": 7,
+      "comment": "W rysunku widoczna jest dezorganizacja układu, zniekształcenia kształtów, przemieszczenia elementów oraz redukcja części informacji. Może to wskazywać na trudność w zapamiętaniu i odtworzeniu konfiguracji wieloelementowej oraz na osłabioną kontrolę relacji przestrzennych."
+    },
+    {
+      "drawing_id": 8,
+      "errors": {
+        "omissions": 0,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 2,
+        "relative_size_errors": 2
+      },
+      "total_errors": 6,
+      "comment": "Dziecko odtworzyło ogólny układ, ale figury są zniekształcone, przesunięte i nie zachowują prawidłowych proporcji. Może to wskazywać na względnie zachowaną strategię globalną przy jednoczesnej trudności w dokładnym odwzorowaniu detali i proporcji."
+    },
+    {
+      "drawing_id": 9,
+      "errors": {
+        "omissions": 0,
+        "distortions": 2,
+        "perseverations": 1,
+        "rotations": 0,
+        "displacements": 2,
+        "relative_size_errors": 1
+      },
+      "total_errors": 6,
+      "comment": "Rysunek zawiera zniekształcenia, przemieszczenia oraz niepewne powtarzanie lub poprawianie elementu, co można traktować jako cechę perseweracyjną. Może to wskazywać na trudność w kontroli wykonawczej, utrzymaniu planu rysunku i selekcji istotnych cech wzorca."
+    },
+    {
+      "drawing_id": 10,
+      "errors": {
+        "omissions": 0,
+        "distortions": 2,
+        "perseverations": 0,
+        "rotations": 0,
+        "displacements": 2,
+        "relative_size_errors": 1
+      },
+      "total_errors": 5,
+      "comment": "Rysunek został silnie uproszczony i nie odtwarza pełnej struktury wzorca, a elementy mają zaburzone kształty, proporcje i położenie. Może to wskazywać na przeciążenie pamięci wzrokowej oraz trudność w organizacji bardziej złożonego materiału przestrzennego."
+    }
+  ],
+  "final_comment": "Wykonanie Mai wskazuje na trudności w zakresie dokładnego kodowania i odtwarzania informacji wzrokowo-przestrzennych, szczególnie w zadaniach wymagających zachowania kilku elementów oraz ich wzajemnych relacji. W profilu błędów dominują zniekształcenia, przemieszczenia oraz błędy względnej wielkości, a w trudniejszych rysunkach pojawiają się pominięcia, pojedyncza rotacja oraz cechy perseweracyjnego poprawiania lub powtarzania elementów. Pominięcie pierwszego rysunku może wskazywać na trudność adaptacyjną na początku zadania, chwilowy spadek koncentracji lub problem z utrzymaniem pierwszego śladu pamięciowego. Maja jest praworęczna i nie zgłoszono wady wzroku, dlatego uzyskany obraz mniej przemawia za wpływem lateralizacji lub ograniczeń widzenia, a bardziej za niedojrzałością lub osłabieniem funkcji wzrokowo-przestrzennych, pamięci wzrokowej i organizacji grafomotorycznej. Ze względu na wiek dziecka część trudności może mieć charakter rozwojowy, jednak liczba i typ błędów uzasadniają dalszą obserwację funkcji percepcyjno-motorycznych w kontekście nauki szkolnej, zwłaszcza przepisywania, odwzorowywania, orientacji na kartce i pracy z materiałem graficznym."
+}
