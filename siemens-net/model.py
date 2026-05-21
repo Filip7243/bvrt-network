@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from torchvision.models import efficientnet_b0, EfficientNet_B0_Weights
+from torchvision.models import EfficientNet_B0_Weights, ResNet18_Weights, efficientnet_b0, resnet18
 
 
 def build_small_classifier(input_dim, num_classes, dropout_rate):
@@ -239,6 +239,96 @@ class SiameseEfficientNetGeometryFusion(nn.Module):
                 param.requires_grad = True
 
         for param in self.feature_extractor[8].parameters():
+            param.requires_grad = True
+
+
+class SiameseResNet18GeometryFusion(nn.Module):
+    """
+    Compact Siamese ResNet18 assisted by explicit geometry features.
+
+    This mirrors the best direction from the 3D-input experiments: use a stable
+    pretrained ResNet18 representation, compare child/pattern embeddings, and
+    keep the trainable fusion head small. ResNet18 is intentionally smaller
+    than EfficientNet-B0, which is useful when every LOSO fold has only about a
+    dozen patients.
+    """
+
+    def __init__(
+        self,
+        num_classes=6,
+        geometry_feature_dim=19,
+        dropout_rate=0.35,
+        spatial_dropout_rate=0.0,
+        include_raw_features=False,
+        pretrained=True,
+    ):
+        super(SiameseResNet18GeometryFusion, self).__init__()
+
+        weights = ResNet18_Weights.DEFAULT if pretrained else None
+        self.backbone = resnet18(weights=weights)
+        self.feature_extractor = nn.Sequential(*list(self.backbone.children())[:-2])
+        self.avgpool = nn.AdaptiveAvgPool2d(1)
+        self.include_raw_features = include_raw_features
+        self.spatial_dropout = nn.Dropout2d(p=spatial_dropout_rate) if spatial_dropout_rate > 0 else nn.Identity()
+
+        feature_dim = 512
+        fusion_dim = 4 * feature_dim if include_raw_features else 2 * feature_dim
+
+        self.image_projection = nn.Sequential(
+            nn.Linear(fusion_dim, 128),
+            nn.LayerNorm(128),
+            nn.GELU(),
+            nn.Dropout(dropout_rate),
+        )
+        self.geometry_projection = nn.Sequential(
+            nn.LayerNorm(geometry_feature_dim),
+            nn.Linear(geometry_feature_dim, 16),
+            nn.GELU(),
+            nn.Dropout(0.2),
+        )
+        self.classifier = nn.Sequential(
+            nn.Linear(128 + 16, 64),
+            nn.LayerNorm(64),
+            nn.GELU(),
+            nn.Dropout(dropout_rate),
+            nn.Linear(64, num_classes),
+        )
+
+    def forward_one(self, x):
+        x = self.feature_extractor(x)
+        x = self.spatial_dropout(x)
+        x = self.avgpool(x)
+        return torch.flatten(x, 1)
+
+    def forward(self, img_child, img_pattern, geometry_features):
+        f_child = self.forward_one(img_child)
+        f_pattern = self.forward_one(img_pattern)
+        f_diff = torch.abs(f_child - f_pattern)
+        f_mul = f_child * f_pattern
+
+        if self.include_raw_features:
+            image_features = torch.cat([f_child, f_pattern, f_diff, f_mul], dim=1)
+        else:
+            image_features = torch.cat([f_diff, f_mul], dim=1)
+
+        image_embedding = self.image_projection(image_features)
+        geometry_embedding = self.geometry_projection(geometry_features)
+        combined = torch.cat([image_embedding, geometry_embedding], dim=1)
+        return self.classifier(combined)
+
+    def freeze_backbone(self):
+        for param in self.feature_extractor.parameters():
+            param.requires_grad = False
+
+    def freeze_backbone_batchnorm(self):
+        for module in self.feature_extractor.modules():
+            if isinstance(module, nn.BatchNorm2d):
+                module.eval()
+
+    def unfreeze_blocks(self, blocks_to_unfreeze=None):
+        # ResNet18 does not have EfficientNet-style numbered blocks. For cautious
+        # fine-tuning, expose only the last residual stage.
+        for param in self.backbone.layer4.parameters():
             param.requires_grad = True
 
 

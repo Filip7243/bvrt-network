@@ -1,0 +1,3002 @@
+[
+  {
+    "fold": 1,
+    "test_patient": "Aniela_Sonczewa",
+    "val_patient": null,
+    "train_patients": [
+      "Antonina_Lonc",
+      "Franciszek_Lonc"
+    ],
+    "best_val_loss": NaN,
+    "best_val_macro_f1": NaN,
+    "epochs_trained": 0,
+    "feature_dimensions": {
+      "stroke_only": 37,
+      "geometry_stroke": 100,
+      "resnet18_pair_features": 1024,
+      "resnet18_pair_features_plus_geometry_stroke": 1124
+    },
+    "test_metrics": {
+      "majority_baseline": {
+        "strategy": "majority_baseline",
+        "macro_f1": 0.48245614035087714,
+        "micro_f1": 0.8615384615384616,
+        "weighted_f1": 0.7729323308270677,
+        "hamming_loss": 0.15,
+        "subset_accuracy": 0.4,
+        "per_label": {
+          "omissions": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 3,
+            "actual_positives": 3,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": 0.0
+          },
+          "distortions": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": 1.0
+          },
+          "perseverations": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 4,
+            "actual_positives": 4,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": 0.0
+          },
+          "rotations": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0,
+            "actual_positives": 0,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": 0.0
+          },
+          "displacements": {
+            "precision": 0.9,
+            "recall": 1.0,
+            "f1": 0.9473684210526315,
+            "support": 9,
+            "actual_positives": 9,
+            "predicted_positives": 10,
+            "true_positive_matches": 9,
+            "threshold": 1.0
+          },
+          "relative_size_errors": {
+            "precision": 0.9,
+            "recall": 1.0,
+            "f1": 0.9473684210526315,
+            "support": 9,
+            "actual_positives": 9,
+            "predicted_positives": 10,
+            "true_positive_matches": 9,
+            "threshold": 1.0
+          }
+        }
+      },
+      "pattern_majority_baseline": {
+        "strategy": "pattern_majority_baseline",
+        "macro_f1": 0.6888053467000835,
+        "micro_f1": 0.8571428571428571,
+        "weighted_f1": 0.8953813104189045,
+        "hamming_loss": 0.18333333333333332,
+        "subset_accuracy": 0.3,
+        "per_label": {
+          "omissions": {
+            "precision": 0.5,
+            "recall": 1.0,
+            "f1": 0.6666666666666666,
+            "support": 3,
+            "actual_positives": 3,
+            "predicted_positives": 6,
+            "true_positive_matches": 3,
+            "threshold": 0.5
+          },
+          "distortions": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": 0.5
+          },
+          "perseverations": {
+            "precision": 0.6666666666666666,
+            "recall": 0.5,
+            "f1": 0.5714285714285714,
+            "support": 4,
+            "actual_positives": 4,
+            "predicted_positives": 3,
+            "true_positive_matches": 2,
+            "threshold": 0.5
+          },
+          "rotations": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0,
+            "actual_positives": 0,
+            "predicted_positives": 3,
+            "true_positive_matches": 0,
+            "threshold": 0.5
+          },
+          "displacements": {
+            "precision": 0.9,
+            "recall": 1.0,
+            "f1": 0.9473684210526315,
+            "support": 9,
+            "actual_positives": 9,
+            "predicted_positives": 10,
+            "true_positive_matches": 9,
+            "threshold": 0.5
+          },
+          "relative_size_errors": {
+            "precision": 0.9,
+            "recall": 1.0,
+            "f1": 0.9473684210526315,
+            "support": 9,
+            "actual_positives": 9,
+            "predicted_positives": 10,
+            "true_positive_matches": 9,
+            "threshold": 0.5
+          }
+        }
+      },
+      "always_positive_baseline": {
+        "strategy": "always_positive_baseline",
+        "macro_f1": 0.6546173125120492,
+        "micro_f1": 0.7368421052631579,
+        "weighted_f1": 0.8777988928364869,
+        "hamming_loss": 0.4166666666666667,
+        "subset_accuracy": 0.0,
+        "per_label": {
+          "omissions": {
+            "precision": 0.3,
+            "recall": 1.0,
+            "f1": 0.46153846153846156,
+            "support": 3,
+            "actual_positives": 3,
+            "predicted_positives": 10,
+            "true_positive_matches": 3,
+            "threshold": 1.0
+          },
+          "distortions": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": 1.0
+          },
+          "perseverations": {
+            "precision": 0.4,
+            "recall": 1.0,
+            "f1": 0.5714285714285714,
+            "support": 4,
+            "actual_positives": 4,
+            "predicted_positives": 10,
+            "true_positive_matches": 4,
+            "threshold": 1.0
+          },
+          "rotations": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0,
+            "actual_positives": 0,
+            "predicted_positives": 10,
+            "true_positive_matches": 0,
+            "threshold": 1.0
+          },
+          "displacements": {
+            "precision": 0.9,
+            "recall": 1.0,
+            "f1": 0.9473684210526315,
+            "support": 9,
+            "actual_positives": 9,
+            "predicted_positives": 10,
+            "true_positive_matches": 9,
+            "threshold": 1.0
+          },
+          "relative_size_errors": {
+            "precision": 0.9,
+            "recall": 1.0,
+            "f1": 0.9473684210526315,
+            "support": 9,
+            "actual_positives": 9,
+            "predicted_positives": 10,
+            "true_positive_matches": 9,
+            "threshold": 1.0
+          }
+        }
+      },
+      "stroke_only_logreg": {
+        "strategy": "stroke_only_logreg",
+        "macro_f1": 0.7215133794081162,
+        "micro_f1": 0.8333333333333334,
+        "weighted_f1": 0.921272879167616,
+        "hamming_loss": 0.23333333333333334,
+        "subset_accuracy": 0.1,
+        "per_label": {
+          "omissions": {
+            "precision": 0.375,
+            "recall": 1.0,
+            "f1": 0.5454545454545454,
+            "support": 3,
+            "actual_positives": 3,
+            "predicted_positives": 8,
+            "true_positive_matches": 3,
+            "threshold": 0.5
+          },
+          "distortions": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": 0.5
+          },
+          "perseverations": {
+            "precision": 0.8,
+            "recall": 1.0,
+            "f1": 0.8888888888888888,
+            "support": 4,
+            "actual_positives": 4,
+            "predicted_positives": 5,
+            "true_positive_matches": 4,
+            "threshold": 0.5
+          },
+          "rotations": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0,
+            "actual_positives": 0,
+            "predicted_positives": 6,
+            "true_positive_matches": 0,
+            "threshold": 0.5
+          },
+          "displacements": {
+            "precision": 0.9,
+            "recall": 1.0,
+            "f1": 0.9473684210526315,
+            "support": 9,
+            "actual_positives": 9,
+            "predicted_positives": 10,
+            "true_positive_matches": 9,
+            "threshold": 0.5
+          },
+          "relative_size_errors": {
+            "precision": 0.9,
+            "recall": 1.0,
+            "f1": 0.9473684210526315,
+            "support": 9,
+            "actual_positives": 9,
+            "predicted_positives": 10,
+            "true_positive_matches": 9,
+            "threshold": 0.5
+          }
+        }
+      },
+      "stroke_only_linearsvm": {
+        "strategy": "stroke_only_linearsvm",
+        "macro_f1": 0.7215133794081162,
+        "micro_f1": 0.8433734939759037,
+        "weighted_f1": 0.921272879167616,
+        "hamming_loss": 0.21666666666666667,
+        "subset_accuracy": 0.2,
+        "per_label": {
+          "omissions": {
+            "precision": 0.375,
+            "recall": 1.0,
+            "f1": 0.5454545454545454,
+            "support": 3,
+            "actual_positives": 3,
+            "predicted_positives": 8,
+            "true_positive_matches": 3,
+            "threshold": NaN
+          },
+          "distortions": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": NaN
+          },
+          "perseverations": {
+            "precision": 0.8,
+            "recall": 1.0,
+            "f1": 0.8888888888888888,
+            "support": 4,
+            "actual_positives": 4,
+            "predicted_positives": 5,
+            "true_positive_matches": 4,
+            "threshold": NaN
+          },
+          "rotations": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0,
+            "actual_positives": 0,
+            "predicted_positives": 5,
+            "true_positive_matches": 0,
+            "threshold": NaN
+          },
+          "displacements": {
+            "precision": 0.9,
+            "recall": 1.0,
+            "f1": 0.9473684210526315,
+            "support": 9,
+            "actual_positives": 9,
+            "predicted_positives": 10,
+            "true_positive_matches": 9,
+            "threshold": NaN
+          },
+          "relative_size_errors": {
+            "precision": 0.9,
+            "recall": 1.0,
+            "f1": 0.9473684210526315,
+            "support": 9,
+            "actual_positives": 9,
+            "predicted_positives": 10,
+            "true_positive_matches": 9,
+            "threshold": NaN
+          }
+        }
+      },
+      "geometry_stroke_logreg": {
+        "strategy": "geometry_stroke_logreg",
+        "macro_f1": 0.6848307637781321,
+        "micro_f1": 0.8095238095238095,
+        "weighted_f1": 0.8877648667122352,
+        "hamming_loss": 0.26666666666666666,
+        "subset_accuracy": 0.1,
+        "per_label": {
+          "omissions": {
+            "precision": 0.375,
+            "recall": 1.0,
+            "f1": 0.5454545454545454,
+            "support": 3,
+            "actual_positives": 3,
+            "predicted_positives": 8,
+            "true_positive_matches": 3,
+            "threshold": 0.5
+          },
+          "distortions": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": 0.5
+          },
+          "perseverations": {
+            "precision": 0.5714285714285714,
+            "recall": 1.0,
+            "f1": 0.7272727272727273,
+            "support": 4,
+            "actual_positives": 4,
+            "predicted_positives": 7,
+            "true_positive_matches": 4,
+            "threshold": 0.5
+          },
+          "rotations": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0,
+            "actual_positives": 0,
+            "predicted_positives": 5,
+            "true_positive_matches": 0,
+            "threshold": 0.5
+          },
+          "displacements": {
+            "precision": 0.8888888888888888,
+            "recall": 0.8888888888888888,
+            "f1": 0.8888888888888888,
+            "support": 9,
+            "actual_positives": 9,
+            "predicted_positives": 9,
+            "true_positive_matches": 8,
+            "threshold": 0.5
+          },
+          "relative_size_errors": {
+            "precision": 0.9,
+            "recall": 1.0,
+            "f1": 0.9473684210526315,
+            "support": 9,
+            "actual_positives": 9,
+            "predicted_positives": 10,
+            "true_positive_matches": 9,
+            "threshold": 0.5
+          }
+        }
+      },
+      "geometry_stroke_linearsvm": {
+        "strategy": "geometry_stroke_linearsvm",
+        "macro_f1": 0.6893762183235866,
+        "micro_f1": 0.8095238095238095,
+        "weighted_f1": 0.8921804511278194,
+        "hamming_loss": 0.26666666666666666,
+        "subset_accuracy": 0.1,
+        "per_label": {
+          "omissions": {
+            "precision": 0.3333333333333333,
+            "recall": 1.0,
+            "f1": 0.5,
+            "support": 3,
+            "actual_positives": 3,
+            "predicted_positives": 9,
+            "true_positive_matches": 3,
+            "threshold": NaN
+          },
+          "distortions": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": NaN
+          },
+          "perseverations": {
+            "precision": 0.6666666666666666,
+            "recall": 1.0,
+            "f1": 0.8,
+            "support": 4,
+            "actual_positives": 4,
+            "predicted_positives": 6,
+            "true_positive_matches": 4,
+            "threshold": NaN
+          },
+          "rotations": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0,
+            "actual_positives": 0,
+            "predicted_positives": 5,
+            "true_positive_matches": 0,
+            "threshold": NaN
+          },
+          "displacements": {
+            "precision": 0.8888888888888888,
+            "recall": 0.8888888888888888,
+            "f1": 0.8888888888888888,
+            "support": 9,
+            "actual_positives": 9,
+            "predicted_positives": 9,
+            "true_positive_matches": 8,
+            "threshold": NaN
+          },
+          "relative_size_errors": {
+            "precision": 0.9,
+            "recall": 1.0,
+            "f1": 0.9473684210526315,
+            "support": 9,
+            "actual_positives": 9,
+            "predicted_positives": 10,
+            "true_positive_matches": 9,
+            "threshold": NaN
+          }
+        }
+      },
+      "resnet18_pair_features_logreg": {
+        "strategy": "resnet18_pair_features_logreg",
+        "macro_f1": 0.49672257566994404,
+        "micro_f1": 0.6933333333333334,
+        "weighted_f1": 0.6341898702800959,
+        "hamming_loss": 0.38333333333333336,
+        "subset_accuracy": 0.0,
+        "per_label": {
+          "omissions": {
+            "precision": 0.3,
+            "recall": 1.0,
+            "f1": 0.46153846153846156,
+            "support": 3,
+            "actual_positives": 3,
+            "predicted_positives": 10,
+            "true_positive_matches": 3,
+            "threshold": 0.5
+          },
+          "distortions": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": 0.5
+          },
+          "perseverations": {
+            "precision": 0.4,
+            "recall": 1.0,
+            "f1": 0.5714285714285714,
+            "support": 4,
+            "actual_positives": 4,
+            "predicted_positives": 10,
+            "true_positive_matches": 4,
+            "threshold": 0.5
+          },
+          "rotations": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0,
+            "actual_positives": 0,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": 0.5
+          },
+          "displacements": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 9,
+            "actual_positives": 9,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": 0.5
+          },
+          "relative_size_errors": {
+            "precision": 0.9,
+            "recall": 1.0,
+            "f1": 0.9473684210526315,
+            "support": 9,
+            "actual_positives": 9,
+            "predicted_positives": 10,
+            "true_positive_matches": 9,
+            "threshold": 0.5
+          }
+        }
+      },
+      "resnet18_pair_features_linearsvm": {
+        "strategy": "resnet18_pair_features_linearsvm",
+        "macro_f1": 0.49672257566994404,
+        "micro_f1": 0.6933333333333334,
+        "weighted_f1": 0.6341898702800959,
+        "hamming_loss": 0.38333333333333336,
+        "subset_accuracy": 0.0,
+        "per_label": {
+          "omissions": {
+            "precision": 0.3,
+            "recall": 1.0,
+            "f1": 0.46153846153846156,
+            "support": 3,
+            "actual_positives": 3,
+            "predicted_positives": 10,
+            "true_positive_matches": 3,
+            "threshold": NaN
+          },
+          "distortions": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": NaN
+          },
+          "perseverations": {
+            "precision": 0.4,
+            "recall": 1.0,
+            "f1": 0.5714285714285714,
+            "support": 4,
+            "actual_positives": 4,
+            "predicted_positives": 10,
+            "true_positive_matches": 4,
+            "threshold": NaN
+          },
+          "rotations": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0,
+            "actual_positives": 0,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": NaN
+          },
+          "displacements": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 9,
+            "actual_positives": 9,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": NaN
+          },
+          "relative_size_errors": {
+            "precision": 0.9,
+            "recall": 1.0,
+            "f1": 0.9473684210526315,
+            "support": 9,
+            "actual_positives": 9,
+            "predicted_positives": 10,
+            "true_positive_matches": 9,
+            "threshold": NaN
+          }
+        }
+      },
+      "resnet18_pair_features_plus_geometry_stroke_logreg": {
+        "strategy": "resnet18_pair_features_plus_geometry_stroke_logreg",
+        "macro_f1": 0.49672257566994404,
+        "micro_f1": 0.6933333333333334,
+        "weighted_f1": 0.6341898702800959,
+        "hamming_loss": 0.38333333333333336,
+        "subset_accuracy": 0.0,
+        "per_label": {
+          "omissions": {
+            "precision": 0.3,
+            "recall": 1.0,
+            "f1": 0.46153846153846156,
+            "support": 3,
+            "actual_positives": 3,
+            "predicted_positives": 10,
+            "true_positive_matches": 3,
+            "threshold": 0.5
+          },
+          "distortions": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": 0.5
+          },
+          "perseverations": {
+            "precision": 0.4,
+            "recall": 1.0,
+            "f1": 0.5714285714285714,
+            "support": 4,
+            "actual_positives": 4,
+            "predicted_positives": 10,
+            "true_positive_matches": 4,
+            "threshold": 0.5
+          },
+          "rotations": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0,
+            "actual_positives": 0,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": 0.5
+          },
+          "displacements": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 9,
+            "actual_positives": 9,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": 0.5
+          },
+          "relative_size_errors": {
+            "precision": 0.9,
+            "recall": 1.0,
+            "f1": 0.9473684210526315,
+            "support": 9,
+            "actual_positives": 9,
+            "predicted_positives": 10,
+            "true_positive_matches": 9,
+            "threshold": 0.5
+          }
+        }
+      },
+      "resnet18_pair_features_plus_geometry_stroke_linearsvm": {
+        "strategy": "resnet18_pair_features_plus_geometry_stroke_linearsvm",
+        "macro_f1": 0.49672257566994404,
+        "micro_f1": 0.6933333333333334,
+        "weighted_f1": 0.6341898702800959,
+        "hamming_loss": 0.38333333333333336,
+        "subset_accuracy": 0.0,
+        "per_label": {
+          "omissions": {
+            "precision": 0.3,
+            "recall": 1.0,
+            "f1": 0.46153846153846156,
+            "support": 3,
+            "actual_positives": 3,
+            "predicted_positives": 10,
+            "true_positive_matches": 3,
+            "threshold": NaN
+          },
+          "distortions": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": NaN
+          },
+          "perseverations": {
+            "precision": 0.4,
+            "recall": 1.0,
+            "f1": 0.5714285714285714,
+            "support": 4,
+            "actual_positives": 4,
+            "predicted_positives": 10,
+            "true_positive_matches": 4,
+            "threshold": NaN
+          },
+          "rotations": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0,
+            "actual_positives": 0,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": NaN
+          },
+          "displacements": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 9,
+            "actual_positives": 9,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": NaN
+          },
+          "relative_size_errors": {
+            "precision": 0.9,
+            "recall": 1.0,
+            "f1": 0.9473684210526315,
+            "support": 9,
+            "actual_positives": 9,
+            "predicted_positives": 10,
+            "true_positive_matches": 9,
+            "threshold": NaN
+          }
+        }
+      },
+      "resnet18_pair_features_plus_geometry_stroke_classifier_chain_logreg": {
+        "strategy": "resnet18_pair_features_plus_geometry_stroke_classifier_chain_logreg",
+        "macro_f1": 0.49672257566994404,
+        "micro_f1": 0.6933333333333334,
+        "weighted_f1": 0.6341898702800959,
+        "hamming_loss": 0.38333333333333336,
+        "subset_accuracy": 0.0,
+        "per_label": {
+          "omissions": {
+            "precision": 0.3,
+            "recall": 1.0,
+            "f1": 0.46153846153846156,
+            "support": 3,
+            "actual_positives": 3,
+            "predicted_positives": 10,
+            "true_positive_matches": 3,
+            "threshold": 0.5
+          },
+          "distortions": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": 0.5
+          },
+          "perseverations": {
+            "precision": 0.4,
+            "recall": 1.0,
+            "f1": 0.5714285714285714,
+            "support": 4,
+            "actual_positives": 4,
+            "predicted_positives": 10,
+            "true_positive_matches": 4,
+            "threshold": 0.5
+          },
+          "rotations": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0,
+            "actual_positives": 0,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": 0.5
+          },
+          "displacements": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 9,
+            "actual_positives": 9,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": 0.5
+          },
+          "relative_size_errors": {
+            "precision": 0.9,
+            "recall": 1.0,
+            "f1": 0.9473684210526315,
+            "support": 9,
+            "actual_positives": 9,
+            "predicted_positives": 10,
+            "true_positive_matches": 9,
+            "threshold": 0.5
+          }
+        }
+      },
+      "resnet18_pair_features_plus_geometry_stroke_classifier_chain_linearsvm": {
+        "strategy": "resnet18_pair_features_plus_geometry_stroke_classifier_chain_linearsvm",
+        "macro_f1": 0.49672257566994404,
+        "micro_f1": 0.6933333333333334,
+        "weighted_f1": 0.6341898702800959,
+        "hamming_loss": 0.38333333333333336,
+        "subset_accuracy": 0.0,
+        "per_label": {
+          "omissions": {
+            "precision": 0.3,
+            "recall": 1.0,
+            "f1": 0.46153846153846156,
+            "support": 3,
+            "actual_positives": 3,
+            "predicted_positives": 10,
+            "true_positive_matches": 3,
+            "threshold": NaN
+          },
+          "distortions": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": NaN
+          },
+          "perseverations": {
+            "precision": 0.4,
+            "recall": 1.0,
+            "f1": 0.5714285714285714,
+            "support": 4,
+            "actual_positives": 4,
+            "predicted_positives": 10,
+            "true_positive_matches": 4,
+            "threshold": NaN
+          },
+          "rotations": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0,
+            "actual_positives": 0,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": NaN
+          },
+          "displacements": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 9,
+            "actual_positives": 9,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": NaN
+          },
+          "relative_size_errors": {
+            "precision": 0.9,
+            "recall": 1.0,
+            "f1": 0.9473684210526315,
+            "support": 9,
+            "actual_positives": 9,
+            "predicted_positives": 10,
+            "true_positive_matches": 9,
+            "threshold": NaN
+          }
+        }
+      },
+      "resnet18_pair_features_plus_geometry_stroke_classifier_chain_logreg_ensemble": {
+        "strategy": "resnet18_pair_features_plus_geometry_stroke_classifier_chain_logreg_ensemble",
+        "macro_f1": 0.49672257566994404,
+        "micro_f1": 0.6933333333333334,
+        "weighted_f1": 0.6341898702800959,
+        "hamming_loss": 0.38333333333333336,
+        "subset_accuracy": 0.0,
+        "per_label": {
+          "omissions": {
+            "precision": 0.3,
+            "recall": 1.0,
+            "f1": 0.46153846153846156,
+            "support": 3,
+            "actual_positives": 3,
+            "predicted_positives": 10,
+            "true_positive_matches": 3,
+            "threshold": 0.5
+          },
+          "distortions": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": 0.5
+          },
+          "perseverations": {
+            "precision": 0.4,
+            "recall": 1.0,
+            "f1": 0.5714285714285714,
+            "support": 4,
+            "actual_positives": 4,
+            "predicted_positives": 10,
+            "true_positive_matches": 4,
+            "threshold": 0.5
+          },
+          "rotations": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0,
+            "actual_positives": 0,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": 0.5
+          },
+          "displacements": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 9,
+            "actual_positives": 9,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": 0.5
+          },
+          "relative_size_errors": {
+            "precision": 0.9,
+            "recall": 1.0,
+            "f1": 0.9473684210526315,
+            "support": 9,
+            "actual_positives": 9,
+            "predicted_positives": 10,
+            "true_positive_matches": 9,
+            "threshold": 0.5
+          }
+        }
+      }
+    }
+  },
+  {
+    "fold": 2,
+    "test_patient": "Antonina_Lonc",
+    "val_patient": null,
+    "train_patients": [
+      "Aniela_Sonczewa",
+      "Franciszek_Lonc"
+    ],
+    "best_val_loss": NaN,
+    "best_val_macro_f1": NaN,
+    "epochs_trained": 0,
+    "feature_dimensions": {
+      "stroke_only": 37,
+      "geometry_stroke": 100,
+      "resnet18_pair_features": 1024,
+      "resnet18_pair_features_plus_geometry_stroke": 1124
+    },
+    "test_metrics": {
+      "majority_baseline": {
+        "strategy": "majority_baseline",
+        "macro_f1": 0.49122807017543857,
+        "micro_f1": 0.8923076923076924,
+        "weighted_f1": 0.8150375939849624,
+        "hamming_loss": 0.11666666666666667,
+        "subset_accuracy": 0.5,
+        "per_label": {
+          "omissions": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 4,
+            "actual_positives": 4,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": 0.0
+          },
+          "distortions": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": 1.0
+          },
+          "perseverations": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 1,
+            "actual_positives": 1,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": 0.0
+          },
+          "rotations": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 1,
+            "actual_positives": 1,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": 0.0
+          },
+          "displacements": {
+            "precision": 0.9,
+            "recall": 1.0,
+            "f1": 0.9473684210526315,
+            "support": 9,
+            "actual_positives": 9,
+            "predicted_positives": 10,
+            "true_positive_matches": 9,
+            "threshold": 1.0
+          },
+          "relative_size_errors": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": 1.0
+          }
+        }
+      },
+      "pattern_majority_baseline": {
+        "strategy": "pattern_majority_baseline",
+        "macro_f1": 0.6578947368421052,
+        "micro_f1": 0.8571428571428571,
+        "weighted_f1": 0.9007518796992482,
+        "hamming_loss": 0.18333333333333332,
+        "subset_accuracy": 0.4,
+        "per_label": {
+          "omissions": {
+            "precision": 0.6,
+            "recall": 0.75,
+            "f1": 0.6666666666666666,
+            "support": 4,
+            "actual_positives": 4,
+            "predicted_positives": 5,
+            "true_positive_matches": 3,
+            "threshold": 0.5
+          },
+          "distortions": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": 0.5
+          },
+          "perseverations": {
+            "precision": 0.2,
+            "recall": 1.0,
+            "f1": 0.3333333333333333,
+            "support": 1,
+            "actual_positives": 1,
+            "predicted_positives": 5,
+            "true_positive_matches": 1,
+            "threshold": 0.5
+          },
+          "rotations": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 1,
+            "actual_positives": 1,
+            "predicted_positives": 2,
+            "true_positive_matches": 0,
+            "threshold": 0.5
+          },
+          "displacements": {
+            "precision": 0.9,
+            "recall": 1.0,
+            "f1": 0.9473684210526315,
+            "support": 9,
+            "actual_positives": 9,
+            "predicted_positives": 10,
+            "true_positive_matches": 9,
+            "threshold": 0.5
+          },
+          "relative_size_errors": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": 0.5
+          }
+        }
+      },
+      "always_positive_baseline": {
+        "strategy": "always_positive_baseline",
+        "macro_f1": 0.6470722260195945,
+        "micro_f1": 0.7368421052631579,
+        "weighted_f1": 0.8907333268235522,
+        "hamming_loss": 0.4166666666666667,
+        "subset_accuracy": 0.0,
+        "per_label": {
+          "omissions": {
+            "precision": 0.4,
+            "recall": 1.0,
+            "f1": 0.5714285714285714,
+            "support": 4,
+            "actual_positives": 4,
+            "predicted_positives": 10,
+            "true_positive_matches": 4,
+            "threshold": 1.0
+          },
+          "distortions": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": 1.0
+          },
+          "perseverations": {
+            "precision": 0.1,
+            "recall": 1.0,
+            "f1": 0.18181818181818182,
+            "support": 1,
+            "actual_positives": 1,
+            "predicted_positives": 10,
+            "true_positive_matches": 1,
+            "threshold": 1.0
+          },
+          "rotations": {
+            "precision": 0.1,
+            "recall": 1.0,
+            "f1": 0.18181818181818182,
+            "support": 1,
+            "actual_positives": 1,
+            "predicted_positives": 10,
+            "true_positive_matches": 1,
+            "threshold": 1.0
+          },
+          "displacements": {
+            "precision": 0.9,
+            "recall": 1.0,
+            "f1": 0.9473684210526315,
+            "support": 9,
+            "actual_positives": 9,
+            "predicted_positives": 10,
+            "true_positive_matches": 9,
+            "threshold": 1.0
+          },
+          "relative_size_errors": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": 1.0
+          }
+        }
+      },
+      "stroke_only_logreg": {
+        "strategy": "stroke_only_logreg",
+        "macro_f1": 0.654720133667502,
+        "micro_f1": 0.7733333333333333,
+        "weighted_f1": 0.8276834944504118,
+        "hamming_loss": 0.2833333333333333,
+        "subset_accuracy": 0.2,
+        "per_label": {
+          "omissions": {
+            "precision": 0.5,
+            "recall": 0.75,
+            "f1": 0.6,
+            "support": 4,
+            "actual_positives": 4,
+            "predicted_positives": 6,
+            "true_positive_matches": 3,
+            "threshold": 0.5
+          },
+          "distortions": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": 0.5
+          },
+          "perseverations": {
+            "precision": 0.2,
+            "recall": 1.0,
+            "f1": 0.3333333333333333,
+            "support": 1,
+            "actual_positives": 1,
+            "predicted_positives": 5,
+            "true_positive_matches": 1,
+            "threshold": 0.5
+          },
+          "rotations": {
+            "precision": 0.2,
+            "recall": 1.0,
+            "f1": 0.3333333333333333,
+            "support": 1,
+            "actual_positives": 1,
+            "predicted_positives": 5,
+            "true_positive_matches": 1,
+            "threshold": 0.5
+          },
+          "displacements": {
+            "precision": 1.0,
+            "recall": 0.5555555555555556,
+            "f1": 0.7142857142857143,
+            "support": 9,
+            "actual_positives": 9,
+            "predicted_positives": 5,
+            "true_positive_matches": 5,
+            "threshold": 0.5
+          },
+          "relative_size_errors": {
+            "precision": 1.0,
+            "recall": 0.9,
+            "f1": 0.9473684210526315,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 9,
+            "true_positive_matches": 9,
+            "threshold": 0.5
+          }
+        }
+      },
+      "stroke_only_linearsvm": {
+        "strategy": "stroke_only_linearsvm",
+        "macro_f1": 0.6824979114452799,
+        "micro_f1": 0.7945205479452054,
+        "weighted_f1": 0.8324453992123165,
+        "hamming_loss": 0.25,
+        "subset_accuracy": 0.4,
+        "per_label": {
+          "omissions": {
+            "precision": 0.5,
+            "recall": 0.75,
+            "f1": 0.6,
+            "support": 4,
+            "actual_positives": 4,
+            "predicted_positives": 6,
+            "true_positive_matches": 3,
+            "threshold": NaN
+          },
+          "distortions": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": NaN
+          },
+          "perseverations": {
+            "precision": 0.2,
+            "recall": 1.0,
+            "f1": 0.3333333333333333,
+            "support": 1,
+            "actual_positives": 1,
+            "predicted_positives": 5,
+            "true_positive_matches": 1,
+            "threshold": NaN
+          },
+          "rotations": {
+            "precision": 0.3333333333333333,
+            "recall": 1.0,
+            "f1": 0.5,
+            "support": 1,
+            "actual_positives": 1,
+            "predicted_positives": 3,
+            "true_positive_matches": 1,
+            "threshold": NaN
+          },
+          "displacements": {
+            "precision": 1.0,
+            "recall": 0.5555555555555556,
+            "f1": 0.7142857142857143,
+            "support": 9,
+            "actual_positives": 9,
+            "predicted_positives": 5,
+            "true_positive_matches": 5,
+            "threshold": NaN
+          },
+          "relative_size_errors": {
+            "precision": 1.0,
+            "recall": 0.9,
+            "f1": 0.9473684210526315,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 9,
+            "true_positive_matches": 9,
+            "threshold": NaN
+          }
+        }
+      },
+      "geometry_stroke_logreg": {
+        "strategy": "geometry_stroke_logreg",
+        "macro_f1": 0.6729274165806673,
+        "micro_f1": 0.7948717948717948,
+        "weighted_f1": 0.8557747309450097,
+        "hamming_loss": 0.26666666666666666,
+        "subset_accuracy": 0.2,
+        "per_label": {
+          "omissions": {
+            "precision": 0.5,
+            "recall": 0.75,
+            "f1": 0.6,
+            "support": 4,
+            "actual_positives": 4,
+            "predicted_positives": 6,
+            "true_positive_matches": 3,
+            "threshold": 0.5
+          },
+          "distortions": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": 0.5
+          },
+          "perseverations": {
+            "precision": 0.2,
+            "recall": 1.0,
+            "f1": 0.3333333333333333,
+            "support": 1,
+            "actual_positives": 1,
+            "predicted_positives": 5,
+            "true_positive_matches": 1,
+            "threshold": 0.5
+          },
+          "rotations": {
+            "precision": 0.2,
+            "recall": 1.0,
+            "f1": 0.3333333333333333,
+            "support": 1,
+            "actual_positives": 1,
+            "predicted_positives": 5,
+            "true_positive_matches": 1,
+            "threshold": 0.5
+          },
+          "displacements": {
+            "precision": 0.875,
+            "recall": 0.7777777777777778,
+            "f1": 0.8235294117647058,
+            "support": 9,
+            "actual_positives": 9,
+            "predicted_positives": 8,
+            "true_positive_matches": 7,
+            "threshold": 0.5
+          },
+          "relative_size_errors": {
+            "precision": 1.0,
+            "recall": 0.9,
+            "f1": 0.9473684210526315,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 9,
+            "true_positive_matches": 9,
+            "threshold": 0.5
+          }
+        }
+      },
+      "geometry_stroke_linearsvm": {
+        "strategy": "geometry_stroke_linearsvm",
+        "macro_f1": 0.6949317738791422,
+        "micro_f1": 0.8205128205128205,
+        "weighted_f1": 0.8802005012531329,
+        "hamming_loss": 0.23333333333333334,
+        "subset_accuracy": 0.2,
+        "per_label": {
+          "omissions": {
+            "precision": 0.6,
+            "recall": 0.75,
+            "f1": 0.6666666666666666,
+            "support": 4,
+            "actual_positives": 4,
+            "predicted_positives": 5,
+            "true_positive_matches": 3,
+            "threshold": NaN
+          },
+          "distortions": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": NaN
+          },
+          "perseverations": {
+            "precision": 0.2,
+            "recall": 1.0,
+            "f1": 0.3333333333333333,
+            "support": 1,
+            "actual_positives": 1,
+            "predicted_positives": 5,
+            "true_positive_matches": 1,
+            "threshold": NaN
+          },
+          "rotations": {
+            "precision": 0.2,
+            "recall": 1.0,
+            "f1": 0.3333333333333333,
+            "support": 1,
+            "actual_positives": 1,
+            "predicted_positives": 5,
+            "true_positive_matches": 1,
+            "threshold": NaN
+          },
+          "displacements": {
+            "precision": 0.8888888888888888,
+            "recall": 0.8888888888888888,
+            "f1": 0.8888888888888888,
+            "support": 9,
+            "actual_positives": 9,
+            "predicted_positives": 9,
+            "true_positive_matches": 8,
+            "threshold": NaN
+          },
+          "relative_size_errors": {
+            "precision": 1.0,
+            "recall": 0.9,
+            "f1": 0.9473684210526315,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 9,
+            "true_positive_matches": 9,
+            "threshold": NaN
+          }
+        }
+      },
+      "resnet18_pair_features_logreg": {
+        "strategy": "resnet18_pair_features_logreg",
+        "macro_f1": 0.4804055593529278,
+        "micro_f1": 0.5882352941176471,
+        "weighted_f1": 0.6050190411092665,
+        "hamming_loss": 0.5833333333333334,
+        "subset_accuracy": 0.0,
+        "per_label": {
+          "omissions": {
+            "precision": 0.4,
+            "recall": 1.0,
+            "f1": 0.5714285714285714,
+            "support": 4,
+            "actual_positives": 4,
+            "predicted_positives": 10,
+            "true_positive_matches": 4,
+            "threshold": 0.5
+          },
+          "distortions": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": 0.5
+          },
+          "perseverations": {
+            "precision": 0.1,
+            "recall": 1.0,
+            "f1": 0.18181818181818182,
+            "support": 1,
+            "actual_positives": 1,
+            "predicted_positives": 10,
+            "true_positive_matches": 1,
+            "threshold": 0.5
+          },
+          "rotations": {
+            "precision": 0.1,
+            "recall": 1.0,
+            "f1": 0.18181818181818182,
+            "support": 1,
+            "actual_positives": 1,
+            "predicted_positives": 10,
+            "true_positive_matches": 1,
+            "threshold": 0.5
+          },
+          "displacements": {
+            "precision": 0.9,
+            "recall": 1.0,
+            "f1": 0.9473684210526315,
+            "support": 9,
+            "actual_positives": 9,
+            "predicted_positives": 10,
+            "true_positive_matches": 9,
+            "threshold": 0.5
+          },
+          "relative_size_errors": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": 0.5
+          }
+        }
+      },
+      "resnet18_pair_features_linearsvm": {
+        "strategy": "resnet18_pair_features_linearsvm",
+        "macro_f1": 0.4804055593529278,
+        "micro_f1": 0.5882352941176471,
+        "weighted_f1": 0.6050190411092665,
+        "hamming_loss": 0.5833333333333334,
+        "subset_accuracy": 0.0,
+        "per_label": {
+          "omissions": {
+            "precision": 0.4,
+            "recall": 1.0,
+            "f1": 0.5714285714285714,
+            "support": 4,
+            "actual_positives": 4,
+            "predicted_positives": 10,
+            "true_positive_matches": 4,
+            "threshold": NaN
+          },
+          "distortions": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": NaN
+          },
+          "perseverations": {
+            "precision": 0.1,
+            "recall": 1.0,
+            "f1": 0.18181818181818182,
+            "support": 1,
+            "actual_positives": 1,
+            "predicted_positives": 10,
+            "true_positive_matches": 1,
+            "threshold": NaN
+          },
+          "rotations": {
+            "precision": 0.1,
+            "recall": 1.0,
+            "f1": 0.18181818181818182,
+            "support": 1,
+            "actual_positives": 1,
+            "predicted_positives": 10,
+            "true_positive_matches": 1,
+            "threshold": NaN
+          },
+          "displacements": {
+            "precision": 0.9,
+            "recall": 1.0,
+            "f1": 0.9473684210526315,
+            "support": 9,
+            "actual_positives": 9,
+            "predicted_positives": 10,
+            "true_positive_matches": 9,
+            "threshold": NaN
+          },
+          "relative_size_errors": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": NaN
+          }
+        }
+      },
+      "resnet18_pair_features_plus_geometry_stroke_logreg": {
+        "strategy": "resnet18_pair_features_plus_geometry_stroke_logreg",
+        "macro_f1": 0.3225108225108225,
+        "micro_f1": 0.4266666666666667,
+        "weighted_f1": 0.36141001855287563,
+        "hamming_loss": 0.7166666666666667,
+        "subset_accuracy": 0.0,
+        "per_label": {
+          "omissions": {
+            "precision": 0.4,
+            "recall": 1.0,
+            "f1": 0.5714285714285714,
+            "support": 4,
+            "actual_positives": 4,
+            "predicted_positives": 10,
+            "true_positive_matches": 4,
+            "threshold": 0.5
+          },
+          "distortions": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": 0.5
+          },
+          "perseverations": {
+            "precision": 0.1,
+            "recall": 1.0,
+            "f1": 0.18181818181818182,
+            "support": 1,
+            "actual_positives": 1,
+            "predicted_positives": 10,
+            "true_positive_matches": 1,
+            "threshold": 0.5
+          },
+          "rotations": {
+            "precision": 0.1,
+            "recall": 1.0,
+            "f1": 0.18181818181818182,
+            "support": 1,
+            "actual_positives": 1,
+            "predicted_positives": 10,
+            "true_positive_matches": 1,
+            "threshold": 0.5
+          },
+          "displacements": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 9,
+            "actual_positives": 9,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": 0.5
+          },
+          "relative_size_errors": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": 0.5
+          }
+        }
+      },
+      "resnet18_pair_features_plus_geometry_stroke_linearsvm": {
+        "strategy": "resnet18_pair_features_plus_geometry_stroke_linearsvm",
+        "macro_f1": 0.3225108225108225,
+        "micro_f1": 0.4266666666666667,
+        "weighted_f1": 0.36141001855287563,
+        "hamming_loss": 0.7166666666666667,
+        "subset_accuracy": 0.0,
+        "per_label": {
+          "omissions": {
+            "precision": 0.4,
+            "recall": 1.0,
+            "f1": 0.5714285714285714,
+            "support": 4,
+            "actual_positives": 4,
+            "predicted_positives": 10,
+            "true_positive_matches": 4,
+            "threshold": NaN
+          },
+          "distortions": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": NaN
+          },
+          "perseverations": {
+            "precision": 0.1,
+            "recall": 1.0,
+            "f1": 0.18181818181818182,
+            "support": 1,
+            "actual_positives": 1,
+            "predicted_positives": 10,
+            "true_positive_matches": 1,
+            "threshold": NaN
+          },
+          "rotations": {
+            "precision": 0.1,
+            "recall": 1.0,
+            "f1": 0.18181818181818182,
+            "support": 1,
+            "actual_positives": 1,
+            "predicted_positives": 10,
+            "true_positive_matches": 1,
+            "threshold": NaN
+          },
+          "displacements": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 9,
+            "actual_positives": 9,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": NaN
+          },
+          "relative_size_errors": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": NaN
+          }
+        }
+      },
+      "resnet18_pair_features_plus_geometry_stroke_classifier_chain_logreg": {
+        "strategy": "resnet18_pair_features_plus_geometry_stroke_classifier_chain_logreg",
+        "macro_f1": 0.3225108225108225,
+        "micro_f1": 0.4266666666666667,
+        "weighted_f1": 0.36141001855287563,
+        "hamming_loss": 0.7166666666666667,
+        "subset_accuracy": 0.0,
+        "per_label": {
+          "omissions": {
+            "precision": 0.4,
+            "recall": 1.0,
+            "f1": 0.5714285714285714,
+            "support": 4,
+            "actual_positives": 4,
+            "predicted_positives": 10,
+            "true_positive_matches": 4,
+            "threshold": 0.5
+          },
+          "distortions": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": 0.5
+          },
+          "perseverations": {
+            "precision": 0.1,
+            "recall": 1.0,
+            "f1": 0.18181818181818182,
+            "support": 1,
+            "actual_positives": 1,
+            "predicted_positives": 10,
+            "true_positive_matches": 1,
+            "threshold": 0.5
+          },
+          "rotations": {
+            "precision": 0.1,
+            "recall": 1.0,
+            "f1": 0.18181818181818182,
+            "support": 1,
+            "actual_positives": 1,
+            "predicted_positives": 10,
+            "true_positive_matches": 1,
+            "threshold": 0.5
+          },
+          "displacements": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 9,
+            "actual_positives": 9,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": 0.5
+          },
+          "relative_size_errors": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": 0.5
+          }
+        }
+      },
+      "resnet18_pair_features_plus_geometry_stroke_classifier_chain_linearsvm": {
+        "strategy": "resnet18_pair_features_plus_geometry_stroke_classifier_chain_linearsvm",
+        "macro_f1": 0.3225108225108225,
+        "micro_f1": 0.4266666666666667,
+        "weighted_f1": 0.36141001855287563,
+        "hamming_loss": 0.7166666666666667,
+        "subset_accuracy": 0.0,
+        "per_label": {
+          "omissions": {
+            "precision": 0.4,
+            "recall": 1.0,
+            "f1": 0.5714285714285714,
+            "support": 4,
+            "actual_positives": 4,
+            "predicted_positives": 10,
+            "true_positive_matches": 4,
+            "threshold": NaN
+          },
+          "distortions": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": NaN
+          },
+          "perseverations": {
+            "precision": 0.1,
+            "recall": 1.0,
+            "f1": 0.18181818181818182,
+            "support": 1,
+            "actual_positives": 1,
+            "predicted_positives": 10,
+            "true_positive_matches": 1,
+            "threshold": NaN
+          },
+          "rotations": {
+            "precision": 0.1,
+            "recall": 1.0,
+            "f1": 0.18181818181818182,
+            "support": 1,
+            "actual_positives": 1,
+            "predicted_positives": 10,
+            "true_positive_matches": 1,
+            "threshold": NaN
+          },
+          "displacements": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 9,
+            "actual_positives": 9,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": NaN
+          },
+          "relative_size_errors": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": NaN
+          }
+        }
+      },
+      "resnet18_pair_features_plus_geometry_stroke_classifier_chain_logreg_ensemble": {
+        "strategy": "resnet18_pair_features_plus_geometry_stroke_classifier_chain_logreg_ensemble",
+        "macro_f1": 0.3225108225108225,
+        "micro_f1": 0.4266666666666667,
+        "weighted_f1": 0.36141001855287563,
+        "hamming_loss": 0.7166666666666667,
+        "subset_accuracy": 0.0,
+        "per_label": {
+          "omissions": {
+            "precision": 0.4,
+            "recall": 1.0,
+            "f1": 0.5714285714285714,
+            "support": 4,
+            "actual_positives": 4,
+            "predicted_positives": 10,
+            "true_positive_matches": 4,
+            "threshold": 0.5
+          },
+          "distortions": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": 0.5
+          },
+          "perseverations": {
+            "precision": 0.1,
+            "recall": 1.0,
+            "f1": 0.18181818181818182,
+            "support": 1,
+            "actual_positives": 1,
+            "predicted_positives": 10,
+            "true_positive_matches": 1,
+            "threshold": 0.5
+          },
+          "rotations": {
+            "precision": 0.1,
+            "recall": 1.0,
+            "f1": 0.18181818181818182,
+            "support": 1,
+            "actual_positives": 1,
+            "predicted_positives": 10,
+            "true_positive_matches": 1,
+            "threshold": 0.5
+          },
+          "displacements": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 9,
+            "actual_positives": 9,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": 0.5
+          },
+          "relative_size_errors": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": 0.5
+          }
+        }
+      }
+    }
+  },
+  {
+    "fold": 3,
+    "test_patient": "Franciszek_Lonc",
+    "val_patient": null,
+    "train_patients": [
+      "Aniela_Sonczewa",
+      "Antonina_Lonc"
+    ],
+    "best_val_loss": NaN,
+    "best_val_macro_f1": NaN,
+    "epochs_trained": 0,
+    "feature_dimensions": {
+      "stroke_only": 37,
+      "geometry_stroke": 100,
+      "resnet18_pair_features": 1024,
+      "resnet18_pair_features_plus_geometry_stroke": 1124
+    },
+    "test_metrics": {
+      "majority_baseline": {
+        "strategy": "majority_baseline",
+        "macro_f1": 0.5,
+        "micro_f1": 0.8823529411764706,
+        "weighted_f1": 0.7894736842105263,
+        "hamming_loss": 0.13333333333333333,
+        "subset_accuracy": 0.5,
+        "per_label": {
+          "omissions": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 4,
+            "actual_positives": 4,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": 0.0
+          },
+          "distortions": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": 1.0
+          },
+          "perseverations": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2,
+            "actual_positives": 2,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": 0.0
+          },
+          "rotations": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2,
+            "actual_positives": 2,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": 0.0
+          },
+          "displacements": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": 1.0
+          },
+          "relative_size_errors": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": 1.0
+          }
+        }
+      },
+      "pattern_majority_baseline": {
+        "strategy": "pattern_majority_baseline",
+        "macro_f1": 0.6388888888888888,
+        "micro_f1": 0.8571428571428571,
+        "weighted_f1": 0.8596491228070174,
+        "hamming_loss": 0.18333333333333332,
+        "subset_accuracy": 0.4,
+        "per_label": {
+          "omissions": {
+            "precision": 0.5,
+            "recall": 0.5,
+            "f1": 0.5,
+            "support": 4,
+            "actual_positives": 4,
+            "predicted_positives": 4,
+            "true_positive_matches": 2,
+            "threshold": 0.5
+          },
+          "distortions": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": 0.5
+          },
+          "perseverations": {
+            "precision": 0.25,
+            "recall": 0.5,
+            "f1": 0.3333333333333333,
+            "support": 2,
+            "actual_positives": 2,
+            "predicted_positives": 4,
+            "true_positive_matches": 1,
+            "threshold": 0.5
+          },
+          "rotations": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2,
+            "actual_positives": 2,
+            "predicted_positives": 1,
+            "true_positive_matches": 0,
+            "threshold": 0.5
+          },
+          "displacements": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": 0.5
+          },
+          "relative_size_errors": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": 0.5
+          }
+        }
+      },
+      "always_positive_baseline": {
+        "strategy": "always_positive_baseline",
+        "macro_f1": 0.7063492063492064,
+        "micro_f1": 0.7755102040816326,
+        "weighted_f1": 0.8847117794486216,
+        "hamming_loss": 0.36666666666666664,
+        "subset_accuracy": 0.1,
+        "per_label": {
+          "omissions": {
+            "precision": 0.4,
+            "recall": 1.0,
+            "f1": 0.5714285714285714,
+            "support": 4,
+            "actual_positives": 4,
+            "predicted_positives": 10,
+            "true_positive_matches": 4,
+            "threshold": 1.0
+          },
+          "distortions": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": 1.0
+          },
+          "perseverations": {
+            "precision": 0.2,
+            "recall": 1.0,
+            "f1": 0.3333333333333333,
+            "support": 2,
+            "actual_positives": 2,
+            "predicted_positives": 10,
+            "true_positive_matches": 2,
+            "threshold": 1.0
+          },
+          "rotations": {
+            "precision": 0.2,
+            "recall": 1.0,
+            "f1": 0.3333333333333333,
+            "support": 2,
+            "actual_positives": 2,
+            "predicted_positives": 10,
+            "true_positive_matches": 2,
+            "threshold": 1.0
+          },
+          "displacements": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": 1.0
+          },
+          "relative_size_errors": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": 1.0
+          }
+        }
+      },
+      "stroke_only_logreg": {
+        "strategy": "stroke_only_logreg",
+        "macro_f1": 0.771345029239766,
+        "micro_f1": 0.8641975308641975,
+        "weighted_f1": 0.8880886426592797,
+        "hamming_loss": 0.18333333333333332,
+        "subset_accuracy": 0.2,
+        "per_label": {
+          "omissions": {
+            "precision": 0.5,
+            "recall": 1.0,
+            "f1": 0.6666666666666666,
+            "support": 4,
+            "actual_positives": 4,
+            "predicted_positives": 8,
+            "true_positive_matches": 4,
+            "threshold": 0.5
+          },
+          "distortions": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": 0.5
+          },
+          "perseverations": {
+            "precision": 0.5,
+            "recall": 1.0,
+            "f1": 0.6666666666666666,
+            "support": 2,
+            "actual_positives": 2,
+            "predicted_positives": 4,
+            "true_positive_matches": 2,
+            "threshold": 0.5
+          },
+          "rotations": {
+            "precision": 0.3333333333333333,
+            "recall": 0.5,
+            "f1": 0.4,
+            "support": 2,
+            "actual_positives": 2,
+            "predicted_positives": 3,
+            "true_positive_matches": 1,
+            "threshold": 0.5
+          },
+          "displacements": {
+            "precision": 1.0,
+            "recall": 0.9,
+            "f1": 0.9473684210526315,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 9,
+            "true_positive_matches": 9,
+            "threshold": 0.5
+          },
+          "relative_size_errors": {
+            "precision": 1.0,
+            "recall": 0.9,
+            "f1": 0.9473684210526315,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 9,
+            "true_positive_matches": 9,
+            "threshold": 0.5
+          }
+        }
+      },
+      "stroke_only_linearsvm": {
+        "strategy": "stroke_only_linearsvm",
+        "macro_f1": 0.771345029239766,
+        "micro_f1": 0.8641975308641975,
+        "weighted_f1": 0.8880886426592797,
+        "hamming_loss": 0.18333333333333332,
+        "subset_accuracy": 0.2,
+        "per_label": {
+          "omissions": {
+            "precision": 0.5,
+            "recall": 1.0,
+            "f1": 0.6666666666666666,
+            "support": 4,
+            "actual_positives": 4,
+            "predicted_positives": 8,
+            "true_positive_matches": 4,
+            "threshold": NaN
+          },
+          "distortions": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": NaN
+          },
+          "perseverations": {
+            "precision": 0.5,
+            "recall": 1.0,
+            "f1": 0.6666666666666666,
+            "support": 2,
+            "actual_positives": 2,
+            "predicted_positives": 4,
+            "true_positive_matches": 2,
+            "threshold": NaN
+          },
+          "rotations": {
+            "precision": 0.3333333333333333,
+            "recall": 0.5,
+            "f1": 0.4,
+            "support": 2,
+            "actual_positives": 2,
+            "predicted_positives": 3,
+            "true_positive_matches": 1,
+            "threshold": NaN
+          },
+          "displacements": {
+            "precision": 1.0,
+            "recall": 0.9,
+            "f1": 0.9473684210526315,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 9,
+            "true_positive_matches": 9,
+            "threshold": NaN
+          },
+          "relative_size_errors": {
+            "precision": 1.0,
+            "recall": 0.9,
+            "f1": 0.9473684210526315,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 9,
+            "true_positive_matches": 9,
+            "threshold": NaN
+          }
+        }
+      },
+      "geometry_stroke_logreg": {
+        "strategy": "geometry_stroke_logreg",
+        "macro_f1": 0.5977095516569201,
+        "micro_f1": 0.8450704225352113,
+        "weighted_f1": 0.8253308710372422,
+        "hamming_loss": 0.18333333333333332,
+        "subset_accuracy": 0.3,
+        "per_label": {
+          "omissions": {
+            "precision": 0.75,
+            "recall": 0.75,
+            "f1": 0.75,
+            "support": 4,
+            "actual_positives": 4,
+            "predicted_positives": 4,
+            "true_positive_matches": 3,
+            "threshold": 0.5
+          },
+          "distortions": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": 0.5
+          },
+          "perseverations": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2,
+            "actual_positives": 2,
+            "predicted_positives": 2,
+            "true_positive_matches": 0,
+            "threshold": 0.5
+          },
+          "rotations": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2,
+            "actual_positives": 2,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": 0.5
+          },
+          "displacements": {
+            "precision": 1.0,
+            "recall": 0.8,
+            "f1": 0.8888888888888888,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 8,
+            "true_positive_matches": 8,
+            "threshold": 0.5
+          },
+          "relative_size_errors": {
+            "precision": 1.0,
+            "recall": 0.9,
+            "f1": 0.9473684210526315,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 9,
+            "true_positive_matches": 9,
+            "threshold": 0.5
+          }
+        }
+      },
+      "geometry_stroke_linearsvm": {
+        "strategy": "geometry_stroke_linearsvm",
+        "macro_f1": 0.5838206627680311,
+        "micro_f1": 0.8333333333333334,
+        "weighted_f1": 0.8165589412126808,
+        "hamming_loss": 0.2,
+        "subset_accuracy": 0.3,
+        "per_label": {
+          "omissions": {
+            "precision": 0.6,
+            "recall": 0.75,
+            "f1": 0.6666666666666666,
+            "support": 4,
+            "actual_positives": 4,
+            "predicted_positives": 5,
+            "true_positive_matches": 3,
+            "threshold": NaN
+          },
+          "distortions": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": NaN
+          },
+          "perseverations": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2,
+            "actual_positives": 2,
+            "predicted_positives": 2,
+            "true_positive_matches": 0,
+            "threshold": NaN
+          },
+          "rotations": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2,
+            "actual_positives": 2,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": NaN
+          },
+          "displacements": {
+            "precision": 1.0,
+            "recall": 0.8,
+            "f1": 0.8888888888888888,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 8,
+            "true_positive_matches": 8,
+            "threshold": NaN
+          },
+          "relative_size_errors": {
+            "precision": 1.0,
+            "recall": 0.9,
+            "f1": 0.9473684210526315,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 9,
+            "true_positive_matches": 9,
+            "threshold": NaN
+          }
+        }
+      },
+      "resnet18_pair_features_logreg": {
+        "strategy": "resnet18_pair_features_logreg",
+        "macro_f1": 0.5396825396825397,
+        "micro_f1": 0.6363636363636364,
+        "weighted_f1": 0.6215538847117794,
+        "hamming_loss": 0.5333333333333333,
+        "subset_accuracy": 0.0,
+        "per_label": {
+          "omissions": {
+            "precision": 0.4,
+            "recall": 1.0,
+            "f1": 0.5714285714285714,
+            "support": 4,
+            "actual_positives": 4,
+            "predicted_positives": 10,
+            "true_positive_matches": 4,
+            "threshold": 0.5
+          },
+          "distortions": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": 0.5
+          },
+          "perseverations": {
+            "precision": 0.2,
+            "recall": 1.0,
+            "f1": 0.3333333333333333,
+            "support": 2,
+            "actual_positives": 2,
+            "predicted_positives": 10,
+            "true_positive_matches": 2,
+            "threshold": 0.5
+          },
+          "rotations": {
+            "precision": 0.2,
+            "recall": 1.0,
+            "f1": 0.3333333333333333,
+            "support": 2,
+            "actual_positives": 2,
+            "predicted_positives": 10,
+            "true_positive_matches": 2,
+            "threshold": 0.5
+          },
+          "displacements": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": 0.5
+          },
+          "relative_size_errors": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": 0.5
+          }
+        }
+      },
+      "resnet18_pair_features_linearsvm": {
+        "strategy": "resnet18_pair_features_linearsvm",
+        "macro_f1": 0.5396825396825397,
+        "micro_f1": 0.6363636363636364,
+        "weighted_f1": 0.6215538847117794,
+        "hamming_loss": 0.5333333333333333,
+        "subset_accuracy": 0.0,
+        "per_label": {
+          "omissions": {
+            "precision": 0.4,
+            "recall": 1.0,
+            "f1": 0.5714285714285714,
+            "support": 4,
+            "actual_positives": 4,
+            "predicted_positives": 10,
+            "true_positive_matches": 4,
+            "threshold": NaN
+          },
+          "distortions": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": NaN
+          },
+          "perseverations": {
+            "precision": 0.2,
+            "recall": 1.0,
+            "f1": 0.3333333333333333,
+            "support": 2,
+            "actual_positives": 2,
+            "predicted_positives": 10,
+            "true_positive_matches": 2,
+            "threshold": NaN
+          },
+          "rotations": {
+            "precision": 0.2,
+            "recall": 1.0,
+            "f1": 0.3333333333333333,
+            "support": 2,
+            "actual_positives": 2,
+            "predicted_positives": 10,
+            "true_positive_matches": 2,
+            "threshold": NaN
+          },
+          "displacements": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": NaN
+          },
+          "relative_size_errors": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": NaN
+          }
+        }
+      },
+      "resnet18_pair_features_plus_geometry_stroke_logreg": {
+        "strategy": "resnet18_pair_features_plus_geometry_stroke_logreg",
+        "macro_f1": 0.5396825396825397,
+        "micro_f1": 0.6363636363636364,
+        "weighted_f1": 0.6215538847117794,
+        "hamming_loss": 0.5333333333333333,
+        "subset_accuracy": 0.0,
+        "per_label": {
+          "omissions": {
+            "precision": 0.4,
+            "recall": 1.0,
+            "f1": 0.5714285714285714,
+            "support": 4,
+            "actual_positives": 4,
+            "predicted_positives": 10,
+            "true_positive_matches": 4,
+            "threshold": 0.5
+          },
+          "distortions": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": 0.5
+          },
+          "perseverations": {
+            "precision": 0.2,
+            "recall": 1.0,
+            "f1": 0.3333333333333333,
+            "support": 2,
+            "actual_positives": 2,
+            "predicted_positives": 10,
+            "true_positive_matches": 2,
+            "threshold": 0.5
+          },
+          "rotations": {
+            "precision": 0.2,
+            "recall": 1.0,
+            "f1": 0.3333333333333333,
+            "support": 2,
+            "actual_positives": 2,
+            "predicted_positives": 10,
+            "true_positive_matches": 2,
+            "threshold": 0.5
+          },
+          "displacements": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": 0.5
+          },
+          "relative_size_errors": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": 0.5
+          }
+        }
+      },
+      "resnet18_pair_features_plus_geometry_stroke_linearsvm": {
+        "strategy": "resnet18_pair_features_plus_geometry_stroke_linearsvm",
+        "macro_f1": 0.5396825396825397,
+        "micro_f1": 0.6363636363636364,
+        "weighted_f1": 0.6215538847117794,
+        "hamming_loss": 0.5333333333333333,
+        "subset_accuracy": 0.0,
+        "per_label": {
+          "omissions": {
+            "precision": 0.4,
+            "recall": 1.0,
+            "f1": 0.5714285714285714,
+            "support": 4,
+            "actual_positives": 4,
+            "predicted_positives": 10,
+            "true_positive_matches": 4,
+            "threshold": NaN
+          },
+          "distortions": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": NaN
+          },
+          "perseverations": {
+            "precision": 0.2,
+            "recall": 1.0,
+            "f1": 0.3333333333333333,
+            "support": 2,
+            "actual_positives": 2,
+            "predicted_positives": 10,
+            "true_positive_matches": 2,
+            "threshold": NaN
+          },
+          "rotations": {
+            "precision": 0.2,
+            "recall": 1.0,
+            "f1": 0.3333333333333333,
+            "support": 2,
+            "actual_positives": 2,
+            "predicted_positives": 10,
+            "true_positive_matches": 2,
+            "threshold": NaN
+          },
+          "displacements": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": NaN
+          },
+          "relative_size_errors": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": NaN
+          }
+        }
+      },
+      "resnet18_pair_features_plus_geometry_stroke_classifier_chain_logreg": {
+        "strategy": "resnet18_pair_features_plus_geometry_stroke_classifier_chain_logreg",
+        "macro_f1": 0.5396825396825397,
+        "micro_f1": 0.6363636363636364,
+        "weighted_f1": 0.6215538847117794,
+        "hamming_loss": 0.5333333333333333,
+        "subset_accuracy": 0.0,
+        "per_label": {
+          "omissions": {
+            "precision": 0.4,
+            "recall": 1.0,
+            "f1": 0.5714285714285714,
+            "support": 4,
+            "actual_positives": 4,
+            "predicted_positives": 10,
+            "true_positive_matches": 4,
+            "threshold": 0.5
+          },
+          "distortions": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": 0.5
+          },
+          "perseverations": {
+            "precision": 0.2,
+            "recall": 1.0,
+            "f1": 0.3333333333333333,
+            "support": 2,
+            "actual_positives": 2,
+            "predicted_positives": 10,
+            "true_positive_matches": 2,
+            "threshold": 0.5
+          },
+          "rotations": {
+            "precision": 0.2,
+            "recall": 1.0,
+            "f1": 0.3333333333333333,
+            "support": 2,
+            "actual_positives": 2,
+            "predicted_positives": 10,
+            "true_positive_matches": 2,
+            "threshold": 0.5
+          },
+          "displacements": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": 0.5
+          },
+          "relative_size_errors": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": 0.5
+          }
+        }
+      },
+      "resnet18_pair_features_plus_geometry_stroke_classifier_chain_linearsvm": {
+        "strategy": "resnet18_pair_features_plus_geometry_stroke_classifier_chain_linearsvm",
+        "macro_f1": 0.5396825396825397,
+        "micro_f1": 0.6363636363636364,
+        "weighted_f1": 0.6215538847117794,
+        "hamming_loss": 0.5333333333333333,
+        "subset_accuracy": 0.0,
+        "per_label": {
+          "omissions": {
+            "precision": 0.4,
+            "recall": 1.0,
+            "f1": 0.5714285714285714,
+            "support": 4,
+            "actual_positives": 4,
+            "predicted_positives": 10,
+            "true_positive_matches": 4,
+            "threshold": NaN
+          },
+          "distortions": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": NaN
+          },
+          "perseverations": {
+            "precision": 0.2,
+            "recall": 1.0,
+            "f1": 0.3333333333333333,
+            "support": 2,
+            "actual_positives": 2,
+            "predicted_positives": 10,
+            "true_positive_matches": 2,
+            "threshold": NaN
+          },
+          "rotations": {
+            "precision": 0.2,
+            "recall": 1.0,
+            "f1": 0.3333333333333333,
+            "support": 2,
+            "actual_positives": 2,
+            "predicted_positives": 10,
+            "true_positive_matches": 2,
+            "threshold": NaN
+          },
+          "displacements": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": NaN
+          },
+          "relative_size_errors": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": NaN
+          }
+        }
+      },
+      "resnet18_pair_features_plus_geometry_stroke_classifier_chain_logreg_ensemble": {
+        "strategy": "resnet18_pair_features_plus_geometry_stroke_classifier_chain_logreg_ensemble",
+        "macro_f1": 0.5396825396825397,
+        "micro_f1": 0.6363636363636364,
+        "weighted_f1": 0.6215538847117794,
+        "hamming_loss": 0.5333333333333333,
+        "subset_accuracy": 0.0,
+        "per_label": {
+          "omissions": {
+            "precision": 0.4,
+            "recall": 1.0,
+            "f1": 0.5714285714285714,
+            "support": 4,
+            "actual_positives": 4,
+            "predicted_positives": 10,
+            "true_positive_matches": 4,
+            "threshold": 0.5
+          },
+          "distortions": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": 0.5
+          },
+          "perseverations": {
+            "precision": 0.2,
+            "recall": 1.0,
+            "f1": 0.3333333333333333,
+            "support": 2,
+            "actual_positives": 2,
+            "predicted_positives": 10,
+            "true_positive_matches": 2,
+            "threshold": 0.5
+          },
+          "rotations": {
+            "precision": 0.2,
+            "recall": 1.0,
+            "f1": 0.3333333333333333,
+            "support": 2,
+            "actual_positives": 2,
+            "predicted_positives": 10,
+            "true_positive_matches": 2,
+            "threshold": 0.5
+          },
+          "displacements": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 10,
+            "true_positive_matches": 10,
+            "threshold": 0.5
+          },
+          "relative_size_errors": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 10,
+            "actual_positives": 10,
+            "predicted_positives": 0,
+            "true_positive_matches": 0,
+            "threshold": 0.5
+          }
+        }
+      }
+    }
+  }
+]

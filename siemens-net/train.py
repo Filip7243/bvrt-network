@@ -30,7 +30,12 @@ from baselines import (
     pattern_majority_predictions,
 )
 from dataset import SiameseBVRTDataset
-from model import SiameseEfficientNet, SiameseEfficientNetGeometryFusion, SiameseEfficientNetLateFusion
+from model import (
+    SiameseEfficientNet,
+    SiameseEfficientNetGeometryFusion,
+    SiameseEfficientNetLateFusion,
+    SiameseResNet18GeometryFusion,
+)
 
 
 ERROR_CATEGORIES = [
@@ -470,6 +475,14 @@ def build_model(
             include_raw_features=include_raw_features,
             pretrained=pretrained,
         )
+    if model_arch == "resnet18_vector_geometry_fusion":
+        return SiameseResNet18GeometryFusion(
+            num_classes=num_classes,
+            geometry_feature_dim=geometry_feature_dim,
+            spatial_dropout_rate=spatial_dropout,
+            include_raw_features=include_raw_features,
+            pretrained=pretrained,
+        )
     if model_arch == "late_fusion":
         return SiameseEfficientNetLateFusion(
             num_classes=num_classes,
@@ -479,7 +492,8 @@ def build_model(
         )
     raise ValueError(
         f"Unknown model_arch={model_arch!r}. "
-        "Use 'vector_geometry_fusion', 'late_fusion' or 'vector_fusion'."
+        "Use 'resnet18_vector_geometry_fusion', 'vector_geometry_fusion', "
+        "'late_fusion' or 'vector_fusion'."
     )
 
 
@@ -500,6 +514,7 @@ def run_loso_training(
     fine_tune_backbone=False,
     model_arch="vector_geometry_fusion",
     use_semantic_augmentation=True,
+    max_folds=None,
 ):
     set_seed(seed)
 
@@ -507,6 +522,8 @@ def run_loso_training(
     patient_dirs = sorted([d.name for d in root_path.iterdir() if d.is_dir()])
     if patient_list is not None:
         patient_dirs = sorted(patient_list)
+    if max_folds is not None:
+        patient_dirs = patient_dirs[:max_folds]
     if len(patient_dirs) < 3:
         raise ValueError("Nested LOSO requires at least 3 patients.")
 
@@ -519,10 +536,13 @@ def run_loso_training(
 
     output_dir = Path(results_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
-    use_geometry_features = model_arch == "vector_geometry_fusion"
+    use_geometry_features = model_arch in {"vector_geometry_fusion", "resnet18_vector_geometry_fusion"}
 
     config = {
         "model": (
+            "SiameseResNet18GeometryFusion"
+            if model_arch == "resnet18_vector_geometry_fusion"
+            else
             "SiameseEfficientNetGeometryFusion"
             if model_arch == "vector_geometry_fusion"
             else "SiameseEfficientNetLateFusion"
@@ -530,10 +550,14 @@ def run_loso_training(
             else "SiameseEfficientNet"
         ),
         "pretrained": pretrained,
-        "backbone": "efficientnet_b0",
+        "backbone": "resnet18" if model_arch == "resnet18_vector_geometry_fusion" else "efficientnet_b0",
         "model_arch": model_arch,
         "fusion": (
-            "vector_absdiff_multiply_plus_geometry_mlp"
+            "resnet18_vector_absdiff_multiply_plus_geometry_mlp"
+            if model_arch == "resnet18_vector_geometry_fusion" and not include_raw_features
+            else "resnet18_vector_child_pattern_absdiff_multiply_plus_geometry_mlp"
+            if model_arch == "resnet18_vector_geometry_fusion"
+            else "vector_absdiff_multiply_plus_geometry_mlp"
             if model_arch == "vector_geometry_fusion" and not include_raw_features
             else "vector_child_pattern_absdiff_multiply_plus_geometry_mlp"
             if model_arch == "vector_geometry_fusion"
@@ -823,7 +847,7 @@ def run_loso_training(
     )
 
     tuned = summary["strategies"]["model_tuned_thresholds"]
-    print("\nSiamese EfficientNet summary:")
+    print(f"\nSiamese {config['backbone']} summary:")
     print(f"Macro F1: {tuned['macro_f1_mean']:.4f} +/- {tuned['macro_f1_std']:.4f}")
     print(f"Micro F1: {tuned['micro_f1_mean']:.4f} +/- {tuned['micro_f1_std']:.4f}")
     print(f"Results saved in: {output_dir.resolve()}")
