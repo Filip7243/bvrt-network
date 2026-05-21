@@ -3,6 +3,7 @@ import cv2
 import numpy as np
 import cairosvg
 import io
+import shutil
 from pathlib import Path
 from PIL import Image
 
@@ -72,7 +73,17 @@ def process_drawing(drawing_info, summary_path, pattern_dir, output_base_dir):
     patient_name = summary_path.parent.parent.name
     test_id = summary_path.parent.name
     
-    patient_output_dir = output_base_dir / patient_name / test_id / f"p{pattern_idx}"
+    test_output_dir = output_base_dir / patient_name / test_id
+    test_output_dir.mkdir(parents=True, exist_ok=True)
+
+    # Keep the processed dataset reproducible from raw files alone.
+    for filename in ["summary.json", "labels.json"]:
+        src = summary_path.parent / filename
+        dst = test_output_dir / filename
+        if src.exists() and not dst.exists():
+            shutil.copy(str(src), str(dst))
+
+    patient_output_dir = test_output_dir / f"p{pattern_idx}"
     patient_output_dir.mkdir(parents=True, exist_ok=True)
 
     cv2.imwrite(str(patient_output_dir / "child.png"), child_img_full)

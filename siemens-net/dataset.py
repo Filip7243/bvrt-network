@@ -3,7 +3,6 @@ import torch
 from pathlib import Path
 from PIL import Image
 from torch.utils.data import Dataset
-import torchvision.transforms as transforms
 
 class SiameseBVRTDataset(Dataset):
     """
@@ -12,7 +11,7 @@ class SiameseBVRTDataset(Dataset):
     and a multi-label vector of errors.
     """
 
-    def __init__(self, root_dir, patient_ids=None, transform=None):
+    def __init__(self, root_dir, patient_ids=None, transform=None, geometry_feature_fn=None):
         """
         Initializes the dataset.
 
@@ -22,6 +21,7 @@ class SiameseBVRTDataset(Dataset):
         """
         self.root_dir = Path(root_dir)
         self.transform = transform
+        self.geometry_feature_fn = geometry_feature_fn
         self.samples = []
         
         self.error_categories = [
@@ -61,12 +61,27 @@ class SiameseBVRTDataset(Dataset):
                     pattern_path = p_dir / "pattern.png"
 
                     if child_path.exists() and pattern_path.exists() and drawing_idx in drawings_labels:
-                        self.samples.append({
+                        sample = {
                             "child_path": child_path,
                             "pattern_path": pattern_path,
                             "labels": drawings_labels[drawing_idx],
-                            "patient": patient_dir.name
-                        })
+                            "patient": patient_dir.name,
+                            # The same BVRT pattern numbers are shown to every patient.
+                            # Keeping this metadata makes it possible to build a strict
+                            # pattern-only baseline that checks whether a neural network
+                            # is really using the drawing, not only memorizing that a
+                            # given BVRT card is usually associated with specific errors.
+                            "drawing_id": drawing_idx,
+                            "test_id": test_dir.name,
+                        }
+                        if self.geometry_feature_fn is not None:
+                            # Geometry features are deterministic descriptors
+                            # of the original child-pattern pair. They are not
+                            # recomputed after online augmentation, because
+                            # their role is to provide stable, interpretable
+                            # shape information to the neural model.
+                            sample["geometry_features"] = self.geometry_feature_fn(sample)
+                        self.samples.append(sample)
 
     def __len__(self):
         """
@@ -86,15 +101,20 @@ class SiameseBVRTDataset(Dataset):
         img_child = Image.open(sample["child_path"]).convert("RGB")
         img_pattern = Image.open(sample["pattern_path"]).convert("RGB")
 
-        if self.transform:
+        if self.transform and hasattr(self.transform, "apply_pair"):
+            img_child, img_pattern = self.transform.apply_pair(img_child, img_pattern)
+        elif self.transform:
             img_child = self.transform(img_child)
             img_pattern = self.transform(img_pattern)
 
-        # Multi-label target: 1 if count > 0, else 0
-        target = torch.tensor([
-            1.0 if sample["labels"].get(cat, 0) > 0 else 0.0
-            for cat in self.error_categories
-        ], dtype=torch.float)
+        # Multi-label target: 1 if at least one error of a given category was
+        # annotated, otherwise 0. Count/ordinal prediction can be added later
+        # without changing the image loading logic.
+        target = torch.tensor(self.label_vector_for_sample(sample), dtype=torch.float)
+
+        if self.geometry_feature_fn is not None:
+            geometry_features = torch.tensor(sample["geometry_features"], dtype=torch.float)
+            return img_child, img_pattern, geometry_features, target
 
         return img_child, img_pattern, target
 
@@ -111,3 +131,13 @@ class SiameseBVRTDataset(Dataset):
             ]
             all_labels.append(target)
         return torch.tensor(all_labels, dtype=torch.float)
+
+    def label_vector_for_sample(self, sample):
+        """
+        Converts the raw count annotations for one drawing into the binary
+        multi-label representation used by the current experiments.
+        """
+        return [
+            1.0 if sample["labels"].get(cat, 0) > 0 else 0.0
+            for cat in self.error_categories
+        ]

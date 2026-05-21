@@ -25,20 +25,19 @@ def run_sanity_check():
     # In a real sanity check, we might want to temporarily mock the patient list
     # but for simplicity, we'll just run the training function with minimal epochs.
     patient_dirs = os.listdir(data_dir)
-    test_patients = sorted([d for d in patient_dirs if os.path.isdir(os.path.join(data_dir, d))])[:2]
+    test_patients = sorted([d for d in patient_dirs if os.path.isdir(os.path.join(data_dir, d))])[:3]
     
     print(f"This script will run LOSO training with patients: {test_patients}")
-    print(" - 1 epoch for Phase 1 (Head)")
-    print(" - 1 epoch for Phase 2 (Fine-tuning)")
+    print(" - 1 epoch head-only nested LOSO")
     print(" - Results will be saved in 'sanity_check_results' directory.")
     
     # We call run_loso_training with minimal epochs and minimal patients
     run_loso_training(
         root_dir=data_dir,
-        num_epochs_head=1,
-        num_epochs_full=1,
+        num_epochs=1,
         results_dir="sanity_check_results",
-        patient_list=test_patients
+        patient_list=test_patients,
+        pretrained=False
     )
 
 if __name__ == "__main__":

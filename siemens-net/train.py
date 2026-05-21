@@ -1,313 +1,854 @@
+import copy
+import csv
+import json
+import random
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Sequence, Tuple
+
+import numpy as np
 import torch
 import torch.nn as nn
 import torch.optim as optim
+from PIL import Image, ImageFilter
+from sklearn.metrics import (
+    accuracy_score,
+    f1_score,
+    hamming_loss,
+    precision_recall_fscore_support,
+)
 from torch.utils.data import DataLoader
 from torchvision import transforms
-from pathlib import Path
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.metrics import f1_score, hamming_loss, precision_recall_fscore_support
-import copy
-import time
+from torchvision.transforms import InterpolationMode
+from torchvision.transforms import functional as TF
 
-from model import SiameseEfficientNet
+from baselines import (
+    GEOMETRY_FEATURE_DIM,
+    constant_predictions,
+    geometric_features_for_sample,
+    geometric_logreg_predictions,
+    majority_baseline_vector,
+    pattern_majority_predictions,
+)
 from dataset import SiameseBVRTDataset
+from model import SiameseEfficientNet, SiameseEfficientNetGeometryFusion, SiameseEfficientNetLateFusion
 
-def calculate_pos_weights(labels_tensor):
+
+ERROR_CATEGORIES = [
+    "omissions",
+    "distortions",
+    "perseverations",
+    "rotations",
+    "displacements",
+    "relative_size_errors",
+]
+
+
+class ResizeLongSideAndPad:
+    """Preserve BVRT geometry by resizing the long side and padding to a square."""
+
+    def __init__(self, size: int = 224, fill: int = 0):
+        self.size = size
+        self.fill = fill
+
+    def __call__(self, image: Image.Image) -> Image.Image:
+        image = image.convert("RGB")
+        width, height = image.size
+        scale = self.size / max(width, height)
+        new_width = max(1, int(round(width * scale)))
+        new_height = max(1, int(round(height * scale)))
+        resized = image.resize((new_width, new_height), Image.BILINEAR)
+        canvas = Image.new("RGB", (self.size, self.size), (self.fill, self.fill, self.fill))
+        left = (self.size - new_width) // 2
+        top = (self.size - new_height) // 2
+        canvas.paste(resized, (left, top))
+        return canvas
+
+
+class SiameseEvalTransform:
+    def __init__(self, image_size: int = 224):
+        self.transform = transforms.Compose(
+            [
+                ResizeLongSideAndPad(size=image_size, fill=0),
+                transforms.ToTensor(),
+                transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+            ]
+        )
+
+    def __call__(self, image: Image.Image) -> torch.Tensor:
+        return self.transform(image)
+
+    def apply_pair(self, child: Image.Image, pattern: Image.Image) -> Tuple[torch.Tensor, torch.Tensor]:
+        return self.transform(child), self.transform(pattern)
+
+
+class SiameseTrainTransform:
     """
-    Calculates the positive weight for each class to handle class imbalance.
-    
-    @param labels_tensor Tensor of shape (num_samples, num_classes) containing binary labels.
-    @return Tensor of positive weights for each class.
+    Paired, semantics-preserving augmentation for BVRT drawings.
+
+    The key rule is that geometric transforms are applied to child and pattern
+    together. This changes camera/canvas placement but does not create or
+    remove BVRT errors such as rotations or displacements between the two
+    images. Label-changing augmentations, for example rotating only the child
+    drawing, are intentionally avoided.
     """
-    num_samples = labels_tensor.shape[0]
+
+    def __init__(
+        self,
+        image_size: int = 224,
+        affine_probability: float = 0.75,
+        blur_probability: float = 0.15,
+        translate: Tuple[float, float] = (0.02, 0.02),
+        scale: Tuple[float, float] = (0.97, 1.03),
+        degrees: Tuple[float, float] = (-2.0, 2.0),
+    ):
+        self.resize = ResizeLongSideAndPad(size=image_size, fill=0)
+        self.affine_probability = affine_probability
+        self.blur_probability = blur_probability
+        self.translate = translate
+        self.scale = scale
+        self.degrees = degrees
+        self.to_tensor = transforms.Compose(
+            [
+                transforms.ToTensor(),
+                transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+            ]
+        )
+
+    def _maybe_apply_joint_affine(
+        self, child: Image.Image, pattern: Image.Image
+    ) -> Tuple[Image.Image, Image.Image]:
+        if random.random() >= self.affine_probability:
+            return child, pattern
+
+        angle, translations, scale, shear = transforms.RandomAffine.get_params(
+            degrees=self.degrees,
+            translate=self.translate,
+            scale_ranges=self.scale,
+            shears=None,
+            img_size=[child.height, child.width],
+        )
+        kwargs = {
+            "angle": angle,
+            "translate": translations,
+            "scale": scale,
+            "shear": shear,
+            "interpolation": InterpolationMode.BILINEAR,
+            "fill": 0,
+        }
+        return TF.affine(child, **kwargs), TF.affine(pattern, **kwargs)
+
+    def _maybe_apply_joint_blur(
+        self, child: Image.Image, pattern: Image.Image
+    ) -> Tuple[Image.Image, Image.Image]:
+        if random.random() >= self.blur_probability:
+            return child, pattern
+
+        # Light blur simulates rasterization/tablet variability. It is applied
+        # to both images, so the clinical relation between child and pattern is
+        # preserved.
+        radius = random.uniform(0.2, 0.6)
+        return child.filter(ImageFilter.GaussianBlur(radius)), pattern.filter(ImageFilter.GaussianBlur(radius))
+
+    def __call__(self, image: Image.Image) -> torch.Tensor:
+        return self.to_tensor(self.resize(image))
+
+    def apply_pair(self, child: Image.Image, pattern: Image.Image) -> Tuple[torch.Tensor, torch.Tensor]:
+        child = self.resize(child)
+        pattern = self.resize(pattern)
+        child, pattern = self._maybe_apply_joint_affine(child, pattern)
+        child, pattern = self._maybe_apply_joint_blur(child, pattern)
+        return self.to_tensor(child), self.to_tensor(pattern)
+
+
+def set_seed(seed: int) -> None:
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
+
+
+def calculate_pos_weights(labels_tensor: torch.Tensor) -> torch.Tensor:
+    """
+    Class-balancing weights for BCEWithLogitsLoss.
+
+    With very small folds, a label can be absent or always present in the
+    training split. In that case the theoretical neg/pos ratio is either
+    undefined or unhelpfully extreme, so the weight falls back to 1.0. A clamp
+    also prevents a single rare label from dominating the whole optimization.
+    """
     positives = labels_tensor.sum(dim=0)
-    negatives = num_samples - positives
-    # Avoid division by zero
-    pos_weights = negatives / (positives + 1e-5)
-    return pos_weights
+    negatives = labels_tensor.shape[0] - positives
+    raw_weights = negatives / (positives + 1e-6)
+    safe_weights = torch.where((positives == 0) | (negatives == 0), torch.ones_like(raw_weights), raw_weights)
+    return torch.clamp(safe_weights, min=0.1, max=20.0)
 
-def train_one_epoch(model, loader, criterion, optimizer, device):
+
+def unpack_batch(batch, device):
     """
-    Trains the model for one epoch.
-    
-    @param model The Siamese network model.
-    @param loader DataLoader for the training set.
-    @param criterion The loss function.
-    @param optimizer The optimizer.
-    @param device The device to run on (cuda or cpu).
-    @return The average training loss for the epoch.
+    Supports both dataset formats:
+    - image-only siamese batches: child, pattern, labels
+    - geometry-assisted batches: child, pattern, geometry_features, labels
     """
+    if len(batch) == 4:
+        img_child, img_pattern, geometry_features, labels = batch
+        return (
+            img_child.to(device),
+            img_pattern.to(device),
+            geometry_features.to(device),
+            labels.to(device),
+        )
+
+    img_child, img_pattern, labels = batch
+    return img_child.to(device), img_pattern.to(device), None, labels.to(device)
+
+
+def model_forward(model, img_child, img_pattern, geometry_features):
+    """
+    Calls the correct model signature. Geometry-aware models require a third
+    tensor, while the original siamese models use only the image pair.
+    """
+    if geometry_features is None:
+        return model(img_child, img_pattern)
+    return model(img_child, img_pattern, geometry_features)
+
+
+def train_one_epoch(model, loader, criterion, optimizer, device, freeze_backbone_bn=True):
     model.train()
+    if freeze_backbone_bn and hasattr(model, "freeze_backbone_batchnorm"):
+        model.freeze_backbone_batchnorm()
+
     running_loss = 0.0
-    for img_child, img_pattern, labels in loader:
-        img_child, img_pattern, labels = img_child.to(device), img_pattern.to(device), labels.to(device)
-        
+    for batch in loader:
+        img_child, img_pattern, geometry_features, labels = unpack_batch(batch, device)
+
         optimizer.zero_grad()
-        outputs = model(img_child, img_pattern)
+        outputs = model_forward(model, img_child, img_pattern, geometry_features)
         loss = criterion(outputs, labels)
         loss.backward()
         optimizer.step()
-        
+
         running_loss += loss.item() * img_child.size(0)
-    
+
     return running_loss / len(loader.dataset)
 
+
 def evaluate(model, loader, criterion, device):
-    """
-    Evaluates the model on the validation set.
-    
-    @param model The Siamese network model.
-    @param loader DataLoader for the validation set.
-    @param criterion The loss function.
-    @param device The device to run on (cuda or cpu).
-    @return A tuple (average loss, all predictions, all ground truth labels).
-    """
     model.eval()
     running_loss = 0.0
-    all_preds = []
+    all_probs = []
     all_labels = []
-    
+
     with torch.no_grad():
-        for img_child, img_pattern, labels in loader:
-            img_child, img_pattern, labels = img_child.to(device), img_pattern.to(device), labels.to(device)
-            
-            outputs = model(img_child, img_pattern)
-            loss = criterion(outputs, labels)
-            
+        for batch in loader:
+            img_child, img_pattern, geometry_features, labels = unpack_batch(batch, device)
+
+            logits = model_forward(model, img_child, img_pattern, geometry_features)
+            loss = criterion(logits, labels)
+            probs = torch.sigmoid(logits)
+
             running_loss += loss.item() * img_child.size(0)
-            
-            # Apply sigmoid to get probabilities for multi-label classification
-            preds = torch.sigmoid(outputs).cpu().numpy()
-            all_preds.append(preds)
+            all_probs.append(probs.cpu().numpy())
             all_labels.append(labels.cpu().numpy())
-            
-    avg_loss = running_loss / len(loader.dataset)
-    all_preds = np.vstack(all_preds)
-    all_labels = np.vstack(all_labels)
-    
-    return avg_loss, all_preds, all_labels
 
-def plot_training_results(history, output_dir="results"):
-    """
-    Generates and saves plots of the training metrics for each fold.
-    
-    @param history Dictionary containing training history for each fold.
-    @param output_dir Directory where plots will be saved.
-    """
-    output_path = Path(output_dir)
-    output_path.mkdir(parents=True, exist_ok=True)
-    
-    # 1. Aggregate mean loss across folds for overview
-    plt.figure(figsize=(12, 5))
-    
-    # Loss Plot
-    plt.subplot(1, 2, 1)
-    for patient, h in history.items():
-        # Combine phases
-        total_val_loss = h['phase1_val_loss'] + h['phase2_val_loss']
-        plt.plot(total_val_loss, label=f'Fold {patient}', alpha=0.3)
-    
-    plt.title('Validation Loss per Fold')
-    plt.xlabel('Total Epochs')
-    plt.ylabel('BCE Loss')
-    # plt.legend() # Too many patients for a small legend
-    
-    # F1 Plot
-    plt.subplot(1, 2, 2)
-    for patient, h in history.items():
-        total_f1 = h['phase1_f1'] + h['phase2_f1']
-        plt.plot(total_f1, label=f'Fold {patient}', alpha=0.3)
-    
-    plt.title('Validation F1 Macro per Fold')
-    plt.xlabel('Total Epochs')
-    plt.ylabel('F1 Score')
-    
-    plt.tight_layout()
-    plt.savefig(output_path / "loso_overview.png")
-    plt.close()
-    
-    print(f"\n[Visual] Overview plot saved to {output_path / 'loso_overview.png'}")
+    return running_loss / len(loader.dataset), np.vstack(all_probs), np.vstack(all_labels)
 
-def run_loso_training(root_dir, num_epochs_head=10, num_epochs_full=20, results_dir="results", 
-                      patient_list=None, spatial_dropout=0.1, early_stopping_patience=3):
-    """
-    Runs Leave-One-Subject-Out (LOSO) training and evaluation.
-    
-    @param root_dir Path to the processed data directory.
-    @param num_epochs_head Number of epochs for training only the head.
-    @param num_epochs_full Number of epochs for fine-tuning the un-frozen backbone.
-    @param results_dir Directory to save metrics and plots.
-    @param patient_list Optional list of patient names to use. If None, uses all subdirectories in root_dir.
-    @param spatial_dropout Dropout probability for the spatial dropout (Dropout2d).
-    @param early_stopping_patience Number of epochs to wait for improvement before stopping Phase 2.
-    """
-    root_path = Path(root_dir)
-    if patient_list is None:
-        patient_dirs = sorted([d.name for d in root_path.iterdir() if d.is_dir()])
-    else:
-        patient_dirs = sorted(patient_list)
-        
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    
-    print(f"Starting LOSO Training on {len(patient_dirs)} patients...")
-    print(f"Device: {device}")
-    
-    # Transformations
-    train_transform = transforms.Compose([
-        transforms.Resize((224, 224)),
-        transforms.ColorJitter(brightness=0.1, contrast=0.1),
-        transforms.RandomAffine(degrees=2, translate=(0.02, 0.02), scale=(0.98, 1.02)),
-        transforms.ToTensor(),
-        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
-    ])
-    
-    val_transform = transforms.Compose([
-        transforms.Resize((224, 224)),
-        transforms.ToTensor(),
-        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
-    ])
-    
-    results = {}
-    history_per_fold = {}
-    
-    start_time = time.time()
-    
-    for i, test_patient in enumerate(patient_dirs):
-        fold_start_time = time.time()
-        print(f"\n{'='*60}")
-        print(f"FOLD {i+1}/{len(patient_dirs)}: Test Patient = {test_patient}")
-        print(f"{'='*60}")
-        
-        train_patients = [p for p in patient_dirs if p != test_patient]
-        
-        train_ds = SiameseBVRTDataset(root_dir, patient_ids=train_patients, transform=train_transform)
-        val_ds = SiameseBVRTDataset(root_dir, patient_ids=[test_patient], transform=val_transform)
-        
-        if len(train_ds) == 0 or len(val_ds) == 0:
-            print(f"Skipping {test_patient} due to empty dataset.")
+
+def labels_from_dataset(dataset: SiameseBVRTDataset) -> np.ndarray:
+    return dataset.get_labels().numpy()
+
+
+def select_validation_patient(train_candidates: Sequence[str], fold_idx: int) -> str:
+    candidates = sorted(train_candidates)
+    if not candidates:
+        raise ValueError("Cannot select a validation patient from an empty candidate list.")
+    return candidates[fold_idx % len(candidates)]
+
+
+def sanity_check_splits(train_patients: Sequence[str], val_patient: str, test_patient: str) -> None:
+    train_set = set(train_patients)
+    val_set = {val_patient}
+    test_set = {test_patient}
+    if train_set & val_set or train_set & test_set or val_set & test_set:
+        raise ValueError(
+            f"Patient leakage detected: train={train_patients}, val={val_patient}, test={test_patient}"
+        )
+
+
+def apply_thresholds(probs: np.ndarray, thresholds: np.ndarray) -> np.ndarray:
+    return (probs >= thresholds.reshape(1, -1)).astype(int)
+
+
+def tune_thresholds(
+    probs: np.ndarray,
+    labels: np.ndarray,
+    thresholds: Sequence[float],
+) -> Tuple[np.ndarray, Dict[str, Any]]:
+    tuned = np.full(labels.shape[1], 0.5, dtype=np.float32)
+    details: Dict[str, Any] = {}
+
+    for idx, category in enumerate(ERROR_CATEGORIES):
+        support = int(labels[:, idx].sum())
+        if support == 0:
+            details[category] = {
+                "threshold": 0.5,
+                "best_f1": 0.0,
+                "fallback": "no_positive_validation_samples",
+            }
             continue
-            
-        train_loader = DataLoader(train_ds, batch_size=8, shuffle=True)
-        val_loader = DataLoader(val_ds, batch_size=8, shuffle=False)
-        
-        # Calculate pos_weight for this fold
-        train_labels = train_ds.get_labels()
-        pos_weight = calculate_pos_weights(train_labels).to(device)
-        
-        # Initialize model
-        model = SiameseEfficientNet(num_classes=6, spatial_dropout_rate=spatial_dropout).to(device)
-        
-        fold_history = {
-            'phase1_train_loss': [], 'phase1_val_loss': [], 'phase1_f1': [],
-            'phase2_train_loss': [], 'phase2_val_loss': [], 'phase2_f1': []
+
+        best_threshold = 0.5
+        best_f1 = -1.0
+        for threshold in thresholds:
+            pred = (probs[:, idx] >= threshold).astype(int)
+            score = f1_score(labels[:, idx], pred, zero_division=0)
+            if score > best_f1:
+                best_f1 = score
+                best_threshold = threshold
+
+        tuned[idx] = float(best_threshold)
+        details[category] = {
+            "threshold": float(best_threshold),
+            "best_f1": float(best_f1),
+            "fallback": None,
         }
-        
-        # --- PHASE 1: Train Head ---
-        print(f"\nPhase 1: Training classifier head ({num_epochs_head} epochs)...")
-        model.freeze_backbone()
+
+    return tuned, details
+
+
+def compute_multilabel_metrics(
+    labels: np.ndarray,
+    preds_binary: np.ndarray,
+    thresholds: np.ndarray,
+    strategy: str,
+) -> Dict[str, Any]:
+    precision, recall, f1, support = precision_recall_fscore_support(
+        labels,
+        preds_binary,
+        average=None,
+        zero_division=0,
+    )
+
+    per_label = {}
+    for idx, category in enumerate(ERROR_CATEGORIES):
+        per_label[category] = {
+            "precision": float(precision[idx]),
+            "recall": float(recall[idx]),
+            "f1": float(f1[idx]),
+            "support": int(support[idx]),
+            "actual_positives": int(labels[:, idx].sum()),
+            "predicted_positives": int(preds_binary[:, idx].sum()),
+            "true_positive_matches": int(((labels[:, idx] == 1) & (preds_binary[:, idx] == 1)).sum()),
+            "threshold": float(thresholds[idx]),
+        }
+
+    return {
+        "strategy": strategy,
+        "macro_f1": float(f1_score(labels, preds_binary, average="macro", zero_division=0)),
+        "micro_f1": float(f1_score(labels, preds_binary, average="micro", zero_division=0)),
+        "weighted_f1": float(f1_score(labels, preds_binary, average="weighted", zero_division=0)),
+        "hamming_loss": float(hamming_loss(labels, preds_binary)),
+        "subset_accuracy": float(accuracy_score(labels, preds_binary)),
+        "per_label": per_label,
+    }
+
+
+def write_json(path: Path, payload: Any) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(payload, f, indent=2, ensure_ascii=False)
+
+
+def write_csv(path: Path, rows: List[Dict[str, Any]], fieldnames: List[str]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with open(path, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(rows)
+
+
+def flatten_fold_metrics(fold_metrics: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    rows = []
+    for fold in fold_metrics:
+        for strategy, metrics in fold["test_metrics"].items():
+            rows.append(
+                {
+                    "fold": fold["fold"],
+                    "test_patient": fold["test_patient"],
+                    "val_patient": fold["val_patient"],
+                    "strategy": strategy,
+                    "macro_f1": metrics["macro_f1"],
+                    "micro_f1": metrics["micro_f1"],
+                    "weighted_f1": metrics["weighted_f1"],
+                    "hamming_loss": metrics["hamming_loss"],
+                    "subset_accuracy": metrics["subset_accuracy"],
+                    "best_val_loss": fold["best_val_loss"],
+                    "epochs_trained": fold["epochs_trained"],
+                }
+            )
+    return rows
+
+
+def flatten_per_label_metrics(fold_metrics: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    rows = []
+    for fold in fold_metrics:
+        for strategy, metrics in fold["test_metrics"].items():
+            for label, label_metrics in metrics["per_label"].items():
+                row = {
+                    "fold": fold["fold"],
+                    "test_patient": fold["test_patient"],
+                    "val_patient": fold["val_patient"],
+                    "strategy": strategy,
+                    "label": label,
+                }
+                row.update(label_metrics)
+                rows.append(row)
+    return rows
+
+
+def summarize_results(fold_metrics: List[Dict[str, Any]], config: Dict[str, Any]) -> Dict[str, Any]:
+    summary: Dict[str, Any] = {"config": config, "strategies": {}}
+    strategies = sorted(fold_metrics[0]["test_metrics"].keys()) if fold_metrics else []
+
+    for strategy in strategies:
+        strategy_metrics = [fold["test_metrics"][strategy] for fold in fold_metrics]
+        summary["strategies"][strategy] = {}
+        for key in ["macro_f1", "micro_f1", "weighted_f1", "hamming_loss", "subset_accuracy"]:
+            values = np.asarray([metrics[key] for metrics in strategy_metrics], dtype=np.float32)
+            summary["strategies"][strategy][f"{key}_mean"] = float(values.mean())
+            summary["strategies"][strategy][f"{key}_std"] = float(values.std())
+
+        per_label = {}
+        for label in ERROR_CATEGORIES:
+            f1_values = np.asarray(
+                [metrics["per_label"][label]["f1"] for metrics in strategy_metrics],
+                dtype=np.float32,
+            )
+            per_label[label] = {
+                "f1_mean": float(f1_values.mean()),
+                "f1_std": float(f1_values.std()),
+            }
+        summary["strategies"][strategy]["per_label"] = per_label
+
+    return summary
+
+
+def build_transforms(image_size: int = 224, use_augmentation: bool = True) -> Tuple[Any, Any]:
+    """
+    Builds separate train/eval transforms.
+
+    Validation and test data must remain deterministic. Augmentation is used
+    only for training folds and is paired across child/pattern images.
+    """
+    eval_transform = SiameseEvalTransform(image_size=image_size)
+    train_transform = SiameseTrainTransform(image_size=image_size) if use_augmentation else eval_transform
+    return train_transform, eval_transform
+
+
+def build_model(
+    model_arch: str,
+    num_classes: int,
+    spatial_dropout: float,
+    include_raw_features: bool,
+    pretrained: bool,
+    geometry_feature_dim: int = GEOMETRY_FEATURE_DIM,
+) -> nn.Module:
+    """Factory for the available siamese architectures."""
+    if model_arch == "vector_fusion":
+        return SiameseEfficientNet(
+            num_classes=num_classes,
+            spatial_dropout_rate=spatial_dropout,
+            include_raw_features=include_raw_features,
+            pretrained=pretrained,
+        )
+    if model_arch == "vector_geometry_fusion":
+        return SiameseEfficientNetGeometryFusion(
+            num_classes=num_classes,
+            geometry_feature_dim=geometry_feature_dim,
+            spatial_dropout_rate=spatial_dropout,
+            include_raw_features=include_raw_features,
+            pretrained=pretrained,
+        )
+    if model_arch == "late_fusion":
+        return SiameseEfficientNetLateFusion(
+            num_classes=num_classes,
+            spatial_dropout_rate=spatial_dropout,
+            include_raw_features=include_raw_features,
+            pretrained=pretrained,
+        )
+    raise ValueError(
+        f"Unknown model_arch={model_arch!r}. "
+        "Use 'vector_geometry_fusion', 'late_fusion' or 'vector_fusion'."
+    )
+
+
+def run_loso_training(
+    root_dir,
+    num_epochs=20,
+    results_dir="results/siamese-efficientnet-vector-geometry",
+    patient_list=None,
+    spatial_dropout=0.0,
+    early_stopping_patience=4,
+    batch_size=8,
+    learning_rate=3e-4,
+    weight_decay=1e-4,
+    image_size=224,
+    seed=42,
+    include_raw_features=False,
+    pretrained=True,
+    fine_tune_backbone=False,
+    model_arch="vector_geometry_fusion",
+    use_semantic_augmentation=True,
+):
+    set_seed(seed)
+
+    root_path = Path(root_dir)
+    patient_dirs = sorted([d.name for d in root_path.iterdir() if d.is_dir()])
+    if patient_list is not None:
+        patient_dirs = sorted(patient_list)
+    if len(patient_dirs) < 3:
+        raise ValueError("Nested LOSO requires at least 3 patients.")
+
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    train_transform, eval_transform = build_transforms(
+        image_size=image_size,
+        use_augmentation=use_semantic_augmentation,
+    )
+    threshold_grid = [round(x, 2) for x in np.arange(0.05, 1.0, 0.05)]
+
+    output_dir = Path(results_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+    use_geometry_features = model_arch == "vector_geometry_fusion"
+
+    config = {
+        "model": (
+            "SiameseEfficientNetGeometryFusion"
+            if model_arch == "vector_geometry_fusion"
+            else "SiameseEfficientNetLateFusion"
+            if model_arch == "late_fusion"
+            else "SiameseEfficientNet"
+        ),
+        "pretrained": pretrained,
+        "backbone": "efficientnet_b0",
+        "model_arch": model_arch,
+        "fusion": (
+            "vector_absdiff_multiply_plus_geometry_mlp"
+            if model_arch == "vector_geometry_fusion" and not include_raw_features
+            else "vector_child_pattern_absdiff_multiply_plus_geometry_mlp"
+            if model_arch == "vector_geometry_fusion"
+            else "feature_map_late_fusion_child_pattern_absdiff_multiply"
+            if model_arch == "late_fusion" and include_raw_features
+            else "feature_map_late_fusion_absdiff_multiply"
+            if model_arch == "late_fusion"
+            else "vector_concat_child_pattern_absdiff_multiply"
+            if include_raw_features
+            else "vector_concat_absdiff_multiply"
+        ),
+        "geometry_features": {
+            "enabled": use_geometry_features,
+            "feature_dim": GEOMETRY_FEATURE_DIM if use_geometry_features else 0,
+            "source": "deterministic_child_pattern_mask_descriptors",
+            "augmentation_applied_to_geometry": False,
+        },
+        "training": "head_only" if not fine_tune_backbone else "optional_backbone_finetuning",
+        "use_semantic_augmentation": use_semantic_augmentation,
+        "augmentation": {
+            "scope": "train_only",
+            "paired_child_pattern_affine": True,
+            "paired_child_pattern_blur": True,
+            "label_changing_single_branch_transforms": False,
+        },
+        "image_resize": {
+            "method": "resize_long_side_then_black_pad",
+            "image_size": image_size,
+            "preserve_aspect_ratio": True,
+        },
+        "num_epochs": num_epochs,
+        "early_stopping_patience": early_stopping_patience,
+        "batch_size": batch_size,
+        "learning_rate": learning_rate,
+        "weight_decay": weight_decay,
+        "seed": seed,
+        "threshold_grid": threshold_grid,
+        "patients": patient_dirs,
+        "labels": ERROR_CATEGORIES,
+        "device": str(device),
+    }
+    write_json(output_dir / "experiment_config.json", config)
+
+    geometry_feature_fn = geometric_features_for_sample if use_geometry_features else None
+
+    full_ds = SiameseBVRTDataset(
+        root_dir,
+        patient_ids=patient_dirs,
+        transform=eval_transform,
+        geometry_feature_fn=geometry_feature_fn,
+    )
+    print(f"Dataset sanity check: {len(full_ds)} samples, {len(patient_dirs)} patients.")
+
+    fold_metrics: List[Dict[str, Any]] = []
+    print(f"Starting nested LOSO on {len(patient_dirs)} patients. Device: {device}")
+
+    for fold_idx, test_patient in enumerate(patient_dirs):
+        candidates = [p for p in patient_dirs if p != test_patient]
+        val_patient = select_validation_patient(candidates, fold_idx)
+        train_patients = [p for p in candidates if p != val_patient]
+        sanity_check_splits(train_patients, val_patient, test_patient)
+
+        print("\n" + "=" * 72)
+        print(f"Fold {fold_idx + 1}/{len(patient_dirs)}")
+        print(f"Train patients: {train_patients}")
+        print(f"Validation patient: {val_patient}")
+        print(f"Test patient: {test_patient}")
+
+        train_ds = SiameseBVRTDataset(
+            root_dir,
+            patient_ids=train_patients,
+            transform=train_transform,
+            geometry_feature_fn=geometry_feature_fn,
+        )
+        val_ds = SiameseBVRTDataset(
+            root_dir,
+            patient_ids=[val_patient],
+            transform=eval_transform,
+            geometry_feature_fn=geometry_feature_fn,
+        )
+        test_ds = SiameseBVRTDataset(
+            root_dir,
+            patient_ids=[test_patient],
+            transform=eval_transform,
+            geometry_feature_fn=geometry_feature_fn,
+        )
+
+        generator = torch.Generator()
+        generator.manual_seed(seed + fold_idx)
+        train_loader = DataLoader(train_ds, batch_size=batch_size, shuffle=True, generator=generator)
+        val_loader = DataLoader(val_ds, batch_size=batch_size, shuffle=False)
+        test_loader = DataLoader(test_ds, batch_size=batch_size, shuffle=False)
+
+        pos_weight = calculate_pos_weights(train_ds.get_labels()).to(device)
         criterion = nn.BCEWithLogitsLoss(pos_weight=pos_weight)
-        optimizer = optim.AdamW(filter(lambda p: p.requires_grad, model.parameters()), lr=3e-4, weight_decay=1e-4)
-        
-        best_val_loss = float('inf')
-        best_model_wts = copy.deepcopy(model.state_dict())
-        
-        for epoch in range(num_epochs_head):
-            t_loss = train_one_epoch(model, train_loader, criterion, optimizer, device)
-            v_loss, preds, labels = evaluate(model, val_loader, criterion, device)
-            
-            # Metrics
-            preds_bin = (preds > 0.5).astype(int)
-            f1 = f1_score(labels, preds_bin, average='macro', zero_division=0)
-            
-            fold_history['phase1_train_loss'].append(t_loss)
-            fold_history['phase1_val_loss'].append(v_loss)
-            fold_history['phase1_f1'].append(f1)
-            
-            if v_loss < best_val_loss:
-                best_val_loss = v_loss
+        model = build_model(
+            model_arch=model_arch,
+            num_classes=len(ERROR_CATEGORIES),
+            spatial_dropout=spatial_dropout,
+            include_raw_features=include_raw_features,
+            pretrained=pretrained,
+            geometry_feature_dim=GEOMETRY_FEATURE_DIM,
+        ).to(device)
+
+        model.freeze_backbone()
+        if fine_tune_backbone:
+            model.unfreeze_blocks([6, 7])
+
+        optimizer = optim.AdamW(
+            filter(lambda p: p.requires_grad, model.parameters()),
+            lr=learning_rate,
+            weight_decay=weight_decay,
+        )
+
+        best_val_loss = float("inf")
+        best_model_wts: Optional[Dict[str, torch.Tensor]] = None
+        patience_counter = 0
+        history = []
+
+        for epoch in range(num_epochs):
+            train_loss = train_one_epoch(
+                model,
+                train_loader,
+                criterion,
+                optimizer,
+                device,
+                freeze_backbone_bn=not fine_tune_backbone,
+            )
+            val_loss, val_probs, val_labels = evaluate(model, val_loader, criterion, device)
+            val_preds_05 = apply_thresholds(val_probs, np.full(len(ERROR_CATEGORIES), 0.5))
+            val_macro_f1 = f1_score(val_labels, val_preds_05, average="macro", zero_division=0)
+
+            improved = val_loss < best_val_loss
+            if improved:
+                best_val_loss = val_loss
                 best_model_wts = copy.deepcopy(model.state_dict())
-                
-            print(f"  [P1 E{epoch+1:02d}] T-Loss: {t_loss:.4f} | V-Loss: {v_loss:.4f} | F1: {f1:.4f}")
-            
-        model.load_state_dict(best_model_wts)
-        
-        # --- PHASE 2: Fine-tuning ---
-        print(f"\nPhase 2: Fine-tuning backbone blocks 6 & 7 ({num_epochs_full} epochs, early stopping patience={early_stopping_patience})...")
-        model.unfreeze_blocks([6, 7])
-        optimizer = optim.AdamW([
-            {'params': model.feature_extractor.parameters(), 'lr': 5e-6}, # Reduced LR as recommended
-            {'params': model.classifier.parameters(), 'lr': 1e-4}
-        ], weight_decay=1e-4)
-        
-        scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.5, patience=2)
-        
-        epochs_no_improve = 0
-        best_val_loss_phase2 = best_val_loss
-        
-        for epoch in range(num_epochs_full):
-            t_loss = train_one_epoch(model, train_loader, criterion, optimizer, device)
-            v_loss, preds, labels = evaluate(model, val_loader, criterion, device)
-            
-            scheduler.step(v_loss)
-            
-            # Metrics
-            preds_bin = (preds > 0.5).astype(int)
-            f1 = f1_score(labels, preds_bin, average='macro', zero_division=0)
-            
-            fold_history['phase2_train_loss'].append(t_loss)
-            fold_history['phase2_val_loss'].append(v_loss)
-            fold_history['phase2_f1'].append(f1)
-            
-            if v_loss < best_val_loss:
-                best_val_loss = v_loss
-                best_model_wts = copy.deepcopy(model.state_dict())
-                epochs_no_improve = 0
+                patience_counter = 0
             else:
-                epochs_no_improve += 1
-            
-            print(f"  [P2 E{epoch+1:02d}] T-Loss: {t_loss:.4f} | V-Loss: {v_loss:.4f} | F1: {f1:.4f}")
-            
-            if epochs_no_improve >= early_stopping_patience:
-                print(f"  Early stopping triggered after {epoch+1} epochs.")
+                patience_counter += 1
+
+            history.append(
+                {
+                    "epoch": epoch + 1,
+                    "train_loss": float(train_loss),
+                    "val_loss": float(val_loss),
+                    "val_macro_f1_threshold_0_5": float(val_macro_f1),
+                    "checkpoint_selected": improved,
+                }
+            )
+            print(
+                f"E{epoch + 1:02d} | train_loss={train_loss:.4f} | "
+                f"val_loss={val_loss:.4f} | val_macro_f1@0.5={val_macro_f1:.4f} "
+                f"{'*New Best*' if improved else ''}"
+            )
+
+            if patience_counter >= early_stopping_patience:
+                print(f"Early stopping after {epoch + 1} epochs.")
                 break
-            
+
+        if best_model_wts is None:
+            raise RuntimeError("No checkpoint was selected.")
+
         model.load_state_dict(best_model_wts)
-        history_per_fold[test_patient] = fold_history
-        
-        # Final evaluation for this fold
-        _, final_preds, final_labels = evaluate(model, val_loader, criterion, device)
-        final_preds_bin = (final_preds > 0.5).astype(int)
-        
-        fold_f1 = f1_score(final_labels, final_preds_bin, average='macro', zero_division=0)
-        fold_hamming = hamming_loss(final_labels, final_preds_bin)
-        
-        results[test_patient] = {
-            'f1_macro': fold_f1,
-            'hamming_loss': fold_hamming
+        val_loss, val_probs, val_labels = evaluate(model, val_loader, criterion, device)
+        tuned_thresholds, threshold_details = tune_thresholds(val_probs, val_labels, threshold_grid)
+
+        test_loss, test_probs, test_labels = evaluate(model, test_loader, criterion, device)
+        fixed_thresholds = np.full(len(ERROR_CATEGORIES), 0.5, dtype=np.float32)
+        train_reference_labels = labels_from_dataset(train_ds)
+        majority_vector = majority_baseline_vector(train_reference_labels)
+        baseline_thresholds = np.full(len(ERROR_CATEGORIES), 0.5, dtype=np.float32)
+
+        pattern_majority_preds = pattern_majority_predictions(train_ds, test_ds)
+        geometric_logreg_preds = geometric_logreg_predictions(train_ds, test_ds, seed + fold_idx)
+
+        test_metrics = {
+            "model_tuned_thresholds": compute_multilabel_metrics(
+                test_labels,
+                apply_thresholds(test_probs, tuned_thresholds),
+                tuned_thresholds,
+                "model_tuned_thresholds",
+            ),
+            "model_threshold_0_5": compute_multilabel_metrics(
+                test_labels,
+                apply_thresholds(test_probs, fixed_thresholds),
+                fixed_thresholds,
+                "model_threshold_0_5",
+            ),
+            "majority_baseline": compute_multilabel_metrics(
+                test_labels,
+                constant_predictions(test_labels, majority_vector),
+                majority_vector,
+                "majority_baseline",
+            ),
+            "pattern_majority_baseline": compute_multilabel_metrics(
+                test_labels,
+                pattern_majority_preds,
+                baseline_thresholds,
+                "pattern_majority_baseline",
+            ),
+            "geometric_logreg_baseline": compute_multilabel_metrics(
+                test_labels,
+                geometric_logreg_preds,
+                baseline_thresholds,
+                "geometric_logreg_baseline",
+            ),
+            "always_positive_baseline": compute_multilabel_metrics(
+                test_labels,
+                np.ones_like(test_labels, dtype=int),
+                np.ones(len(ERROR_CATEGORIES), dtype=np.float32),
+                "always_positive_baseline",
+            ),
         }
-        
-        fold_end_time = time.time()
-        print(f"\nFold {test_patient} Finished in {fold_end_time - fold_start_time:.2f}s | Final F1: {fold_f1:.4f}")
-        
-    # Aggregate results
-    all_f1 = [r['f1_macro'] for r in results.values()]
-    all_hamming = [r['hamming_loss'] for r in results.values()]
-    
-    total_time = time.time() - start_time
-    print("\n" + "="*60)
-    print(f"LOSO FINAL SUMMARY (Total Time: {total_time/60:.2f} min)")
-    print(f"  Mean F1 Macro:     {np.mean(all_f1):.4f} (+/- {np.std(all_f1):.4f})")
-    print(f"  Mean Hamming Loss: {np.mean(all_hamming):.4f}")
-    print("="*60)
-    
-    # Save plots
-    plot_training_results(history_per_fold, results_dir)
+
+        fold_result = {
+            "fold": fold_idx + 1,
+            "train_patients": train_patients,
+            "val_patient": val_patient,
+            "test_patient": test_patient,
+            "train_samples": len(train_ds),
+            "val_samples": len(val_ds),
+            "test_samples": len(test_ds),
+            "best_val_loss": float(best_val_loss),
+            "final_val_loss": float(val_loss),
+            "test_loss": float(test_loss),
+            "epochs_trained": len(history),
+            "history": history,
+            "threshold_details": threshold_details,
+            "tuned_thresholds": {
+                label: float(tuned_thresholds[i]) for i, label in enumerate(ERROR_CATEGORIES)
+            },
+            "majority_baseline_vector": {
+                label: int(majority_vector[i]) for i, label in enumerate(ERROR_CATEGORIES)
+            },
+            "test_metrics": test_metrics,
+        }
+        fold_metrics.append(fold_result)
+
+        print(
+            f"Test macro F1 tuned={test_metrics['model_tuned_thresholds']['macro_f1']:.4f} | "
+            f"@0.5={test_metrics['model_threshold_0_5']['macro_f1']:.4f} | "
+            f"pattern={test_metrics['pattern_majority_baseline']['macro_f1']:.4f} | "
+            f"geom={test_metrics['geometric_logreg_baseline']['macro_f1']:.4f} | "
+            f"majority={test_metrics['majority_baseline']['macro_f1']:.4f} | "
+            f"always-positive={test_metrics['always_positive_baseline']['macro_f1']:.4f}"
+        )
+
+    summary = summarize_results(fold_metrics, config)
+    write_json(output_dir / "fold_metrics.json", fold_metrics)
+    write_json(output_dir / "summary_metrics.json", summary)
+
+    write_csv(
+        output_dir / "fold_metrics.csv",
+        flatten_fold_metrics(fold_metrics),
+        [
+            "fold",
+            "test_patient",
+            "val_patient",
+            "strategy",
+            "macro_f1",
+            "micro_f1",
+            "weighted_f1",
+            "hamming_loss",
+            "subset_accuracy",
+            "best_val_loss",
+            "epochs_trained",
+        ],
+    )
+    write_csv(
+        output_dir / "per_label_metrics.csv",
+        flatten_per_label_metrics(fold_metrics),
+        [
+            "fold",
+            "test_patient",
+            "val_patient",
+            "strategy",
+            "label",
+            "precision",
+            "recall",
+            "f1",
+            "support",
+            "actual_positives",
+            "predicted_positives",
+            "true_positive_matches",
+            "threshold",
+        ],
+    )
+
+    tuned = summary["strategies"]["model_tuned_thresholds"]
+    print("\nSiamese EfficientNet summary:")
+    print(f"Macro F1: {tuned['macro_f1_mean']:.4f} +/- {tuned['macro_f1_std']:.4f}")
+    print(f"Micro F1: {tuned['micro_f1_mean']:.4f} +/- {tuned['micro_f1_std']:.4f}")
+    print(f"Results saved in: {output_dir.resolve()}")
+    return {"fold_metrics": fold_metrics, "summary": summary}
+
 
 if __name__ == "__main__":
-    # Use relative path from project root
     data_path = "data/processed/siemens-net-data"
     if not Path(data_path).exists():
         data_path = "../data/processed/siemens-net-data"
-        
-    run_loso_training(data_path)
+
+    run_loso_training(
+        root_dir=data_path,
+        num_epochs=20,
+        results_dir="results/siamese-efficientnet-vector-geometry",
+        spatial_dropout=0.0,
+        early_stopping_patience=4,
+        batch_size=8,
+        learning_rate=3e-4,
+        weight_decay=1e-4,
+        image_size=224,
+        seed=42,
+        include_raw_features=False,
+        pretrained=True,
+        fine_tune_backbone=False,
+        model_arch="vector_geometry_fusion",
+        use_semantic_augmentation=True,
+    )
