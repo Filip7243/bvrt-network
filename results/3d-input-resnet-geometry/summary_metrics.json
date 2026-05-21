@@ -1,0 +1,327 @@
+{
+  "config": {
+    "model": "resnet18_geometry",
+    "pretrained": true,
+    "training": "head_only_transfer_learning",
+    "freeze_backbone": true,
+    "unfreeze_layer4": false,
+    "input_channels": "processed_png_cv2_merge_child_pattern_diff_read_by_PIL_for_CNN",
+    "geometry_features": [
+      "child_area_ratio",
+      "child_bbox_area_ratio",
+      "child_bbox_width_ratio",
+      "child_bbox_height_ratio",
+      "child_centroid_x",
+      "child_centroid_y",
+      "child_component_count_norm",
+      "child_aspect_ratio",
+      "pattern_area_ratio",
+      "pattern_bbox_area_ratio",
+      "pattern_bbox_width_ratio",
+      "pattern_bbox_height_ratio",
+      "pattern_centroid_x",
+      "pattern_centroid_y",
+      "pattern_component_count_norm",
+      "pattern_aspect_ratio",
+      "centroid_distance_norm",
+      "mask_iou",
+      "child_only_area_ratio",
+      "pattern_only_area_ratio"
+    ],
+    "geometry_channel_source": "cv2_BGR_channels_B_child_G_pattern_R_diff",
+    "image_resize": {
+      "method": "resize_long_side_then_black_pad",
+      "image_size": 224,
+      "preserve_aspect_ratio": true
+    },
+    "augmentation": {
+      "enabled": true,
+      "spatial_affine": "degrees=1, translate=1%, scale=99-101%",
+      "color_jitter": "disabled_semantic_channels"
+    },
+    "num_epochs": 25,
+    "early_stopping_patience": 4,
+    "checkpoint_metric": "val_macro_f1",
+    "batch_size": 8,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "dropout": 0.35,
+    "seed": 42,
+    "threshold_grid": [
+      0.05,
+      0.1,
+      0.15,
+      0.2,
+      0.25,
+      0.3,
+      0.35,
+      0.4,
+      0.45,
+      0.5,
+      0.55,
+      0.6,
+      0.65,
+      0.7,
+      0.75,
+      0.8,
+      0.85,
+      0.9,
+      0.95
+    ],
+    "patients": [
+      "Aniela_Sonczewa",
+      "Antonina_Lonc",
+      "Franciszek_Lonc",
+      "Jakub_B",
+      "Kacper_B",
+      "Karol_K",
+      "Karolina_Witanek",
+      "Liliana_B",
+      "Maja_B",
+      "Michal_B",
+      "Rita_Kaminska",
+      "Tymoteusz_K",
+      "Wojtek_Swiatek",
+      "Zosia_B"
+    ],
+    "labels": [
+      "omissions",
+      "distortions",
+      "perseverations",
+      "rotations",
+      "displacements",
+      "relative_size_errors"
+    ],
+    "device": "cpu"
+  },
+  "strategies": {
+    "always_positive_baseline": {
+      "macro_f1_mean": 0.6704874038696289,
+      "macro_f1_std": 0.07153311371803284,
+      "micro_f1_mean": 0.7423414587974548,
+      "micro_f1_std": 0.05129913240671158,
+      "weighted_f1_mean": 0.8680822253227234,
+      "weighted_f1_std": 0.03841559961438179,
+      "hamming_loss_mean": 0.4071428179740906,
+      "hamming_loss_std": 0.0638432726264,
+      "subset_accuracy_mean": 0.06428571790456772,
+      "subset_accuracy_std": 0.10424657166004181,
+      "per_label": {
+        "omissions": {
+          "f1_mean": 0.4520241916179657,
+          "f1_std": 0.17675641179084778
+        },
+        "distortions": {
+          "f1_mean": 0.9807853102684021,
+          "f1_std": 0.033259857445955276
+        },
+        "perseverations": {
+          "f1_mean": 0.37533894181251526,
+          "f1_std": 0.1560504138469696
+        },
+        "rotations": {
+          "f1_mean": 0.3015555739402771,
+          "f1_std": 0.22722046077251434
+        },
+        "displacements": {
+          "f1_mean": 0.9578112363815308,
+          "f1_std": 0.03699749335646629
+        },
+        "relative_size_errors": {
+          "f1_mean": 0.9554094076156616,
+          "f1_std": 0.06593261659145355
+        }
+      }
+    },
+    "geometric_logreg_baseline": {
+      "macro_f1_mean": 0.6806719899177551,
+      "macro_f1_std": 0.07486682385206223,
+      "micro_f1_mean": 0.7955107688903809,
+      "micro_f1_std": 0.04514657333493233,
+      "weighted_f1_mean": 0.8411514163017273,
+      "weighted_f1_std": 0.053872000426054,
+      "hamming_loss_mean": 0.25357142090797424,
+      "hamming_loss_std": 0.04462301358580589,
+      "subset_accuracy_mean": 0.15000000596046448,
+      "subset_accuracy_std": 0.0981980487704277,
+      "per_label": {
+        "omissions": {
+          "f1_mean": 0.5404452681541443,
+          "f1_std": 0.3013760447502136
+        },
+        "distortions": {
+          "f1_mean": 0.9471381306648254,
+          "f1_std": 0.059894364327192307
+        },
+        "perseverations": {
+          "f1_mean": 0.48939910531044006,
+          "f1_std": 0.2361278533935547
+        },
+        "rotations": {
+          "f1_mean": 0.3042156398296356,
+          "f1_std": 0.22383931279182434
+        },
+        "displacements": {
+          "f1_mean": 0.9088223576545715,
+          "f1_std": 0.03676051273941994
+        },
+        "relative_size_errors": {
+          "f1_mean": 0.8940114378929138,
+          "f1_std": 0.07500071823596954
+        }
+      }
+    },
+    "majority_baseline": {
+      "macro_f1_mean": 0.48233434557914734,
+      "macro_f1_std": 0.021037325263023376,
+      "micro_f1_mean": 0.8566953539848328,
+      "micro_f1_std": 0.05558808147907257,
+      "weighted_f1_mean": 0.7676081657409668,
+      "weighted_f1_std": 0.07740572094917297,
+      "hamming_loss_mean": 0.15714284777641296,
+      "hamming_loss_std": 0.06226998195052147,
+      "subset_accuracy_mean": 0.45000001788139343,
+      "subset_accuracy_std": 0.17627088725566864,
+      "per_label": {
+        "omissions": {
+          "f1_mean": 0.0,
+          "f1_std": 0.0
+        },
+        "distortions": {
+          "f1_mean": 0.9807853102684021,
+          "f1_std": 0.033259857445955276
+        },
+        "perseverations": {
+          "f1_mean": 0.0,
+          "f1_std": 0.0
+        },
+        "rotations": {
+          "f1_mean": 0.0,
+          "f1_std": 0.0
+        },
+        "displacements": {
+          "f1_mean": 0.9578112363815308,
+          "f1_std": 0.03699749335646629
+        },
+        "relative_size_errors": {
+          "f1_mean": 0.9554094076156616,
+          "f1_std": 0.06593261659145355
+        }
+      }
+    },
+    "model_threshold_0_5": {
+      "macro_f1_mean": 0.6964492797851562,
+      "macro_f1_std": 0.09162747859954834,
+      "micro_f1_mean": 0.8336911797523499,
+      "micro_f1_std": 0.04549917206168175,
+      "weighted_f1_mean": 0.8766278624534607,
+      "weighted_f1_std": 0.049944713711738586,
+      "hamming_loss_mean": 0.21785715222358704,
+      "hamming_loss_std": 0.047335464507341385,
+      "subset_accuracy_mean": 0.2571428418159485,
+      "subset_accuracy_std": 0.11157499998807907,
+      "per_label": {
+        "omissions": {
+          "f1_mean": 0.5220292210578918,
+          "f1_std": 0.22027578949928284
+        },
+        "distortions": {
+          "f1_mean": 0.9807853102684021,
+          "f1_std": 0.033259857445955276
+        },
+        "perseverations": {
+          "f1_mean": 0.4174242317676544,
+          "f1_std": 0.25100138783454895
+        },
+        "rotations": {
+          "f1_mean": 0.3540816605091095,
+          "f1_std": 0.2730104327201843
+        },
+        "displacements": {
+          "f1_mean": 0.9578112363815308,
+          "f1_std": 0.03699749335646629
+        },
+        "relative_size_errors": {
+          "f1_mean": 0.946563720703125,
+          "f1_std": 0.0742061585187912
+        }
+      }
+    },
+    "model_tuned_thresholds": {
+      "macro_f1_mean": 0.6855292916297913,
+      "macro_f1_std": 0.10502705723047256,
+      "micro_f1_mean": 0.8101495504379272,
+      "micro_f1_std": 0.060186974704265594,
+      "weighted_f1_mean": 0.8690385222434998,
+      "weighted_f1_std": 0.06202845275402069,
+      "hamming_loss_mean": 0.255952388048172,
+      "hamming_loss_std": 0.0656491219997406,
+      "subset_accuracy_mean": 0.16428570449352264,
+      "subset_accuracy_std": 0.12876969575881958,
+      "per_label": {
+        "omissions": {
+          "f1_mean": 0.5118199586868286,
+          "f1_std": 0.27428942918777466
+        },
+        "distortions": {
+          "f1_mean": 0.9807853102684021,
+          "f1_std": 0.033259857445955276
+        },
+        "perseverations": {
+          "f1_mean": 0.40317460894584656,
+          "f1_std": 0.24682924151420593
+        },
+        "rotations": {
+          "f1_mean": 0.3329622447490692,
+          "f1_std": 0.2551640570163727
+        },
+        "displacements": {
+          "f1_mean": 0.9536095261573792,
+          "f1_std": 0.035267412662506104
+        },
+        "relative_size_errors": {
+          "f1_mean": 0.9308241605758667,
+          "f1_std": 0.08980535715818405
+        }
+      }
+    },
+    "pattern_majority_baseline": {
+      "macro_f1_mean": 0.6547832489013672,
+      "macro_f1_std": 0.056893136352300644,
+      "micro_f1_mean": 0.8700775504112244,
+      "micro_f1_std": 0.03851832449436188,
+      "weighted_f1_mean": 0.8511924743652344,
+      "weighted_f1_std": 0.054911065846681595,
+      "hamming_loss_mean": 0.15238095819950104,
+      "hamming_loss_std": 0.044031523168087006,
+      "subset_accuracy_mean": 0.3928571343421936,
+      "subset_accuracy_std": 0.1162772849202156,
+      "per_label": {
+        "omissions": {
+          "f1_mean": 0.5438776016235352,
+          "f1_std": 0.2382868379354477
+        },
+        "distortions": {
+          "f1_mean": 0.9807853102684021,
+          "f1_std": 0.033259857445955276
+        },
+        "perseverations": {
+          "f1_mean": 0.4908163547515869,
+          "f1_std": 0.17171616852283478
+        },
+        "rotations": {
+          "f1_mean": 0.0,
+          "f1_std": 0.0
+        },
+        "displacements": {
+          "f1_mean": 0.9578112363815308,
+          "f1_std": 0.03699749335646629
+        },
+        "relative_size_errors": {
+          "f1_mean": 0.9554094076156616,
+          "f1_std": 0.06593261659145355
+        }
+      }
+    }
+  }
+}
